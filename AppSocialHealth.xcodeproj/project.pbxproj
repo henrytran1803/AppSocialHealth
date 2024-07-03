@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D2EA70852C359939005CC9D1 /* AppSocialHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70842C359939005CC9D1 /* AppSocialHealthApp.swift */; };
+		D2EA70872C359939005CC9D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70862C359939005CC9D1 /* ContentView.swift */; };
+		D2EA70892C35993C005CC9D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EA70882C35993C005CC9D1 /* Assets.xcassets */; };
+		D2EA708C2C35993C005CC9D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EA708B2C35993C005CC9D1 /* Preview Assets.xcassets */; };
+		D2EA70962C35993D005CC9D1 /* AppSocialHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70952C35993D005CC9D1 /* AppSocialHealthTests.swift */; };
+		D2EA70A02C35993D005CC9D1 /* AppSocialHealthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA709F2C35993D005CC9D1 /* AppSocialHealthUITests.swift */; };
+		D2EA70A22C35993D005CC9D1 /* AppSocialHealthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70A12C35993D005CC9D1 /* AppSocialHealthUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2EA70922C35993D005CC9D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2EA70792C359939005CC9D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2EA70802C359939005CC9D1;
+			remoteInfo = AppSocialHealth;
+		};
+		D2EA709C2C35993D005CC9D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2EA70792C359939005CC9D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2EA70802C359939005CC9D1;
+			remoteInfo = AppSocialHealth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D2EA70812C359939005CC9D1 /* AppSocialHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppSocialHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2EA70842C359939005CC9D1 /* AppSocialHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSocialHealthApp.swift; sourceTree = "<group>"; };
+		D2EA70862C359939005CC9D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D2EA70882C35993C005CC9D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2EA708B2C35993C005CC9D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D2EA70912C35993D005CC9D1 /* AppSocialHealthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppSocialHealthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2EA70952C35993D005CC9D1 /* AppSocialHealthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSocialHealthTests.swift; sourceTree = "<group>"; };
+		D2EA709B2C35993D005CC9D1 /* AppSocialHealthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppSocialHealthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2EA709F2C35993D005CC9D1 /* AppSocialHealthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSocialHealthUITests.swift; sourceTree = "<group>"; };
+		D2EA70A12C35993D005CC9D1 /* AppSocialHealthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSocialHealthUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2EA707E2C359939005CC9D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EA708E2C35993D005CC9D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EA70982C35993D005CC9D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D2EA70782C359939005CC9D1 = {
+			isa = PBXGroup;
+			children = (
+				D2EA70832C359939005CC9D1 /* AppSocialHealth */,
+				D2EA70942C35993D005CC9D1 /* AppSocialHealthTests */,
+				D2EA709E2C35993D005CC9D1 /* AppSocialHealthUITests */,
+				D2EA70822C359939005CC9D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D2EA70822C359939005CC9D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA70812C359939005CC9D1 /* AppSocialHealth.app */,
+				D2EA70912C35993D005CC9D1 /* AppSocialHealthTests.xctest */,
+				D2EA709B2C35993D005CC9D1 /* AppSocialHealthUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2EA70832C359939005CC9D1 /* AppSocialHealth */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA70842C359939005CC9D1 /* AppSocialHealthApp.swift */,
+				D2EA70862C359939005CC9D1 /* ContentView.swift */,
+				D2EA70882C35993C005CC9D1 /* Assets.xcassets */,
+				D2EA708A2C35993C005CC9D1 /* Preview Content */,
+			);
+			path = AppSocialHealth;
+			sourceTree = "<group>";
+		};
+		D2EA708A2C35993C005CC9D1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA708B2C35993C005CC9D1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D2EA70942C35993D005CC9D1 /* AppSocialHealthTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA70952C35993D005CC9D1 /* AppSocialHealthTests.swift */,
+			);
+			path = AppSocialHealthTests;
+			sourceTree = "<group>";
+		};
+		D2EA709E2C35993D005CC9D1 /* AppSocialHealthUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA709F2C35993D005CC9D1 /* AppSocialHealthUITests.swift */,
+				D2EA70A12C35993D005CC9D1 /* AppSocialHealthUITestsLaunchTests.swift */,
+			);
+			path = AppSocialHealthUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2EA70802C359939005CC9D1 /* AppSocialHealth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2EA70A52C35993D005CC9D1 /* Build configuration list for PBXNativeTarget "AppSocialHealth" */;
+			buildPhases = (
+				D2EA707D2C359939005CC9D1 /* Sources */,
+				D2EA707E2C359939005CC9D1 /* Frameworks */,
+				D2EA707F2C359939005CC9D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppSocialHealth;
+			productName = AppSocialHealth;
+			productReference = D2EA70812C359939005CC9D1 /* AppSocialHealth.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2EA70902C35993D005CC9D1 /* AppSocialHealthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2EA70A82C35993D005CC9D1 /* Build configuration list for PBXNativeTarget "AppSocialHealthTests" */;
+			buildPhases = (
+				D2EA708D2C35993D005CC9D1 /* Sources */,
+				D2EA708E2C35993D005CC9D1 /* Frameworks */,
+				D2EA708F2C35993D005CC9D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2EA70932C35993D005CC9D1 /* PBXTargetDependency */,
+			);
+			name = AppSocialHealthTests;
+			productName = AppSocialHealthTests;
+			productReference = D2EA70912C35993D005CC9D1 /* AppSocialHealthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D2EA709A2C35993D005CC9D1 /* AppSocialHealthUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2EA70AB2C35993D005CC9D1 /* Build configuration list for PBXNativeTarget "AppSocialHealthUITests" */;
+			buildPhases = (
+				D2EA70972C35993D005CC9D1 /* Sources */,
+				D2EA70982C35993D005CC9D1 /* Frameworks */,
+				D2EA70992C35993D005CC9D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2EA709D2C35993D005CC9D1 /* PBXTargetDependency */,
+			);
+			name = AppSocialHealthUITests;
+			productName = AppSocialHealthUITests;
+			productReference = D2EA709B2C35993D005CC9D1 /* AppSocialHealthUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2EA70792C359939005CC9D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					D2EA70802C359939005CC9D1 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					D2EA70902C35993D005CC9D1 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = D2EA70802C359939005CC9D1;
+					};
+					D2EA709A2C35993D005CC9D1 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = D2EA70802C359939005CC9D1;
+					};
+				};
+			};
+			buildConfigurationList = D2EA707C2C359939005CC9D1 /* Build configuration list for PBXProject "AppSocialHealth" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2EA70782C359939005CC9D1;
+			productRefGroup = D2EA70822C359939005CC9D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2EA70802C359939005CC9D1 /* AppSocialHealth */,
+				D2EA70902C35993D005CC9D1 /* AppSocialHealthTests */,
+				D2EA709A2C35993D005CC9D1 /* AppSocialHealthUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2EA707F2C359939005CC9D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2EA708C2C35993C005CC9D1 /* Preview Assets.xcassets in Resources */,
+				D2EA70892C35993C005CC9D1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EA708F2C35993D005CC9D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EA70992C35993D005CC9D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2EA707D2C359939005CC9D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2EA70872C359939005CC9D1 /* ContentView.swift in Sources */,
+				D2EA70852C359939005CC9D1 /* AppSocialHealthApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EA708D2C35993D005CC9D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2EA70962C35993D005CC9D1 /* AppSocialHealthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EA70972C35993D005CC9D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2EA70A02C35993D005CC9D1 /* AppSocialHealthUITests.swift in Sources */,
+				D2EA70A22C35993D005CC9D1 /* AppSocialHealthUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D2EA70932C35993D005CC9D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2EA70802C359939005CC9D1 /* AppSocialHealth */;
+			targetProxy = D2EA70922C35993D005CC9D1 /* PBXContainerItemProxy */;
+		};
+		D2EA709D2C35993D005CC9D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2EA70802C359939005CC9D1 /* AppSocialHealth */;
+			targetProxy = D2EA709C2C35993D005CC9D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D2EA70A32C35993D005CC9D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D2EA70A42C35993D005CC9D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D2EA70A62C35993D005CC9D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AppSocialHealth/Preview Content\"";
+				DEVELOPMENT_TEAM = YAH93RZF3C;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.AppSocialHealth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2EA70A72C35993D005CC9D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AppSocialHealth/Preview Content\"";
+				DEVELOPMENT_TEAM = YAH93RZF3C;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.AppSocialHealth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D2EA70A92C35993D005CC9D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YAH93RZF3C;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.AppSocialHealthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppSocialHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppSocialHealth";
+			};
+			name = Debug;
+		};
+		D2EA70AA2C35993D005CC9D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YAH93RZF3C;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.AppSocialHealthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppSocialHealth.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppSocialHealth";
+			};
+			name = Release;
+		};
+		D2EA70AC2C35993D005CC9D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YAH93RZF3C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.AppSocialHealthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AppSocialHealth;
+			};
+			name = Debug;
+		};
+		D2EA70AD2C35993D005CC9D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YAH93RZF3C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.AppSocialHealthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AppSocialHealth;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2EA707C2C359939005CC9D1 /* Build configuration list for PBXProject "AppSocialHealth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EA70A32C35993D005CC9D1 /* Debug */,
+				D2EA70A42C35993D005CC9D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2EA70A52C35993D005CC9D1 /* Build configuration list for PBXNativeTarget "AppSocialHealth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EA70A62C35993D005CC9D1 /* Debug */,
+				D2EA70A72C35993D005CC9D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2EA70A82C35993D005CC9D1 /* Build configuration list for PBXNativeTarget "AppSocialHealthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EA70A92C35993D005CC9D1 /* Debug */,
+				D2EA70AA2C35993D005CC9D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2EA70AB2C35993D005CC9D1 /* Build configuration list for PBXNativeTarget "AppSocialHealthUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EA70AC2C35993D005CC9D1 /* Debug */,
+				D2EA70AD2C35993D005CC9D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2EA70792C359939005CC9D1 /* Project object */;
+}
