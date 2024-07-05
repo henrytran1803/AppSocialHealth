@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  AppDesktopSocialHealth
+
+  Created by Tran Viet Anh on 4/7/24.
+  
+*/
+"text.username" = "Tên đăng nhập";
+"text.password" = "Mật khẩu";
+"text.repeatpassword" = "Nhập lại mật khẩu";
+"text.welcome" = "Chào mừng đến Fit Health";
