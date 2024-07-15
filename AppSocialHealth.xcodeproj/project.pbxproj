@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D208BAB72C44A977008BB9E5 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAB62C44A977008BB9E5 /* loginView.swift */; };
+		D208BAB92C44AD2B008BB9E5 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAB82C44AD2B008BB9E5 /* login.swift */; };
+		D208BABB2C44AD58008BB9E5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BABA2C44AD58008BB9E5 /* LoginViewModel.swift */; };
+		D208BABD2C44AEB8008BB9E5 /* enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BABC2C44AEB8008BB9E5 /* enum.swift */; };
+		D208BABF2C44AF5D008BB9E5 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BABE2C44AF5D008BB9E5 /* Register.swift */; };
+		D208BAC22C44B18F008BB9E5 /* registerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAC12C44B18F008BB9E5 /* registerView.swift */; };
+		D208BAC52C44B4E7008BB9E5 /* homeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAC42C44B4E7008BB9E5 /* homeView.swift */; };
+		D208BAC72C44C19D008BB9E5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAC62C44C19D008BB9E5 /* RegisterViewModel.swift */; };
+		D208BAC92C455C27008BB9E5 /* resetpassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAC82C455C27008BB9E5 /* resetpassword.swift */; };
+		D208BACB2C455C3E008BB9E5 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BACA2C455C3E008BB9E5 /* ResetPasswordViewModel.swift */; };
+		D208BACE2C455E26008BB9E5 /* RequestResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BACD2C455E26008BB9E5 /* RequestResetPasswordView.swift */; };
+		D208BAD02C455E36008BB9E5 /* ConfirmResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BACF2C455E36008BB9E5 /* ConfirmResetView.swift */; };
+		D208BAD32C455E53008BB9E5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAD22C455E53008BB9E5 /* WelcomeView.swift */; };
+		D208BAD52C457146008BB9E5 /* Tabbarcustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAD42C457146008BB9E5 /* Tabbarcustom.swift */; };
 		D2B32AA52C383230009E0C56 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2B32AA42C383230009E0C56 /* Localizable.strings */; };
 		D2EA70852C359939005CC9D1 /* AppSocialHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70842C359939005CC9D1 /* AppSocialHealthApp.swift */; };
 		D2EA70872C359939005CC9D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70862C359939005CC9D1 /* ContentView.swift */; };
@@ -35,6 +49,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D208BAB62C44A977008BB9E5 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
+		D208BAB82C44AD2B008BB9E5 /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
+		D208BABA2C44AD58008BB9E5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D208BABC2C44AEB8008BB9E5 /* enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enum.swift; sourceTree = "<group>"; };
+		D208BABE2C44AF5D008BB9E5 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		D208BAC12C44B18F008BB9E5 /* registerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerView.swift; sourceTree = "<group>"; };
+		D208BAC42C44B4E7008BB9E5 /* homeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeView.swift; sourceTree = "<group>"; };
+		D208BAC62C44C19D008BB9E5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		D208BAC82C455C27008BB9E5 /* resetpassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetpassword.swift; sourceTree = "<group>"; };
+		D208BACA2C455C3E008BB9E5 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		D208BACD2C455E26008BB9E5 /* RequestResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResetPasswordView.swift; sourceTree = "<group>"; };
+		D208BACF2C455E36008BB9E5 /* ConfirmResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmResetView.swift; sourceTree = "<group>"; };
+		D208BAD22C455E53008BB9E5 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		D208BAD42C457146008BB9E5 /* Tabbarcustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbarcustom.swift; sourceTree = "<group>"; };
 		D2B32AA32C383230009E0C56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2B32AA82C38326E009E0C56 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2EA70812C359939005CC9D1 /* AppSocialHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppSocialHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,10 +102,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D208BAB52C44A961008BB9E5 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				D208BAB62C44A977008BB9E5 /* loginView.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		D208BAC02C44B17C008BB9E5 /* register */ = {
+			isa = PBXGroup;
+			children = (
+				D208BAC12C44B18F008BB9E5 /* registerView.swift */,
+			);
+			path = register;
+			sourceTree = "<group>";
+		};
+		D208BAC32C44B4D6008BB9E5 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				D208BAC42C44B4E7008BB9E5 /* homeView.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		D208BACC2C455E0C008BB9E5 /* resetpassword */ = {
+			isa = PBXGroup;
+			children = (
+				D208BACD2C455E26008BB9E5 /* RequestResetPasswordView.swift */,
+				D208BACF2C455E36008BB9E5 /* ConfirmResetView.swift */,
+			);
+			path = resetpassword;
+			sourceTree = "<group>";
+		};
+		D208BAD12C455E42008BB9E5 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				D208BAD22C455E53008BB9E5 /* WelcomeView.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		D2B32A9C2C383019009E0C56 /* comon */ = {
 			isa = PBXGroup;
 			children = (
 				D2B32AA42C383230009E0C56 /* Localizable.strings */,
+				D208BABC2C44AEB8008BB9E5 /* enum.swift */,
 			);
 			path = comon;
 			sourceTree = "<group>";
@@ -85,6 +155,7 @@
 		D2B32A9D2C383021009E0C56 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				D208BAD42C457146008BB9E5 /* Tabbarcustom.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -92,6 +163,11 @@
 		D2B32A9E2C383031009E0C56 /* component */ = {
 			isa = PBXGroup;
 			children = (
+				D208BAD12C455E42008BB9E5 /* Welcome */,
+				D208BACC2C455E0C008BB9E5 /* resetpassword */,
+				D208BAC32C44B4D6008BB9E5 /* home */,
+				D208BAC02C44B17C008BB9E5 /* register */,
+				D208BAB52C44A961008BB9E5 /* login */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -99,6 +175,9 @@
 		D2B32A9F2C38303B009E0C56 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D208BAB82C44AD2B008BB9E5 /* login.swift */,
+				D208BABE2C44AF5D008BB9E5 /* Register.swift */,
+				D208BAC82C455C27008BB9E5 /* resetpassword.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -106,6 +185,9 @@
 		D2B32AA02C383043009E0C56 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				D208BABA2C44AD58008BB9E5 /* LoginViewModel.swift */,
+				D208BAC62C44C19D008BB9E5 /* RegisterViewModel.swift */,
+				D208BACA2C455C3E008BB9E5 /* ResetPasswordViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -304,7 +386,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2EA70872C359939005CC9D1 /* ContentView.swift in Sources */,
+				D208BAD02C455E36008BB9E5 /* ConfirmResetView.swift in Sources */,
+				D208BAC72C44C19D008BB9E5 /* RegisterViewModel.swift in Sources */,
+				D208BAB72C44A977008BB9E5 /* loginView.swift in Sources */,
+				D208BAD52C457146008BB9E5 /* Tabbarcustom.swift in Sources */,
+				D208BACE2C455E26008BB9E5 /* RequestResetPasswordView.swift in Sources */,
+				D208BABD2C44AEB8008BB9E5 /* enum.swift in Sources */,
 				D2EA70852C359939005CC9D1 /* AppSocialHealthApp.swift in Sources */,
+				D208BACB2C455C3E008BB9E5 /* ResetPasswordViewModel.swift in Sources */,
+				D208BABF2C44AF5D008BB9E5 /* Register.swift in Sources */,
+				D208BAC22C44B18F008BB9E5 /* registerView.swift in Sources */,
+				D208BAD32C455E53008BB9E5 /* WelcomeView.swift in Sources */,
+				D208BAC92C455C27008BB9E5 /* resetpassword.swift in Sources */,
+				D208BABB2C44AD58008BB9E5 /* LoginViewModel.swift in Sources */,
+				D208BAB92C44AD2B008BB9E5 /* login.swift in Sources */,
+				D208BAC52C44B4E7008BB9E5 /* homeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +502,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -464,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
