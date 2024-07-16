@@ -76,7 +76,7 @@ class LoginViewModel: ObservableObject {
     }
     func logout() {
         UserDefaults.standard.removeObject(forKey: "token")
-        UserDefaults.standard.removeObject(forKey: "id_user")
+        UserDefaults.standard.removeObject(forKey: "user_id")
         UserDefaults.standard.set(false, forKey: "isLogin")
     }
 }

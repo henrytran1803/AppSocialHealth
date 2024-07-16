@@ -20,11 +20,8 @@ struct ContentView: View {
             if isFirstTime {
                 WelcomeView(isFirstTime : $isFirstTime)
             }else {
-                
-                
-                
                 if isLogin {
-                    homeView(isLogin: $isLogin)
+                    TabBarView(isLogin: $isLogin)
                 }else {
                     if login {
                         loginView(isLogin: $isLogin, isForgot: $isForgot, isRegister: $isRegister,login: $login)
