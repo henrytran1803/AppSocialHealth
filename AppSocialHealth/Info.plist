@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Ứng dụng sẽ sử dụng dữ liệu bước chân để tính toán các thống kê sức khỏe cá nhân.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Ứng dụng sẽ sử dụng dữ liệu bước chân để tính toán các thống kê sức khỏe cá nhân.</string>
+</dict>
+</plist>

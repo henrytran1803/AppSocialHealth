@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20773632C48047E00642B9E /* exersice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20773622C48047E00642B9E /* exersice.swift */; };
+		D20773652C48048800642B9E /* schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20773642C48048800642B9E /* schedule.swift */; };
+		D20773672C4804EE00642B9E /* ExersiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20773662C4804EE00642B9E /* ExersiceViewModel.swift */; };
+		D20773692C4806E000642B9E /* InfomationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20773682C4806E000642B9E /* InfomationViewModel.swift */; };
+		D207736B2C4812FA00642B9E /* ExersiceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207736A2C4812FA00642B9E /* ExersiceListView.swift */; };
+		D207736D2C48130500642B9E /* DetailExersice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207736C2C48130500642B9E /* DetailExersice.swift */; };
+		D207736F2C48136400642B9E /* ExersiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207736E2C48136400642B9E /* ExersiceItemView.swift */; };
+		D20773712C481B9800642B9E /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20773702C481B9800642B9E /* ScheduleViewModel.swift */; };
 		D208BAB72C44A977008BB9E5 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAB62C44A977008BB9E5 /* loginView.swift */; };
 		D208BAB92C44AD2B008BB9E5 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAB82C44AD2B008BB9E5 /* login.swift */; };
 		D208BABB2C44AD58008BB9E5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BABA2C44AD58008BB9E5 /* LoginViewModel.swift */; };
@@ -21,6 +29,10 @@
 		D208BAD02C455E36008BB9E5 /* ConfirmResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BACF2C455E36008BB9E5 /* ConfirmResetView.swift */; };
 		D208BAD32C455E53008BB9E5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAD22C455E53008BB9E5 /* WelcomeView.swift */; };
 		D208BAD52C457146008BB9E5 /* Tabbarcustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BAD42C457146008BB9E5 /* Tabbarcustom.swift */; };
+		D21722342C4769CA00F30627 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21722332C4769CA00F30627 /* Health.swift */; };
+		D21722362C4769E600F30627 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21722352C4769E600F30627 /* HealthView.swift */; };
+		D21722382C47733D00F30627 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21722372C47733D00F30627 /* LoadingView.swift */; };
+		D238DBCC2C47BCA1008B9485 /* DetailFoodUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D238DBCB2C47BCA1008B9485 /* DetailFoodUpdateView.swift */; };
 		D2673DC32C46B83A00685A06 /* food.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC22C46B83A00685A06 /* food.swift */; };
 		D2673DC52C46B88100685A06 /* FoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC42C46B88100685A06 /* FoodViewModel.swift */; };
 		D2673DC72C46B89D00685A06 /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC62C46B89D00685A06 /* FoodListView.swift */; };
@@ -61,6 +73,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20773622C48047E00642B9E /* exersice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exersice.swift; sourceTree = "<group>"; };
+		D20773642C48048800642B9E /* schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schedule.swift; sourceTree = "<group>"; };
+		D20773662C4804EE00642B9E /* ExersiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExersiceViewModel.swift; sourceTree = "<group>"; };
+		D20773682C4806E000642B9E /* InfomationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfomationViewModel.swift; sourceTree = "<group>"; };
+		D207736A2C4812FA00642B9E /* ExersiceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExersiceListView.swift; sourceTree = "<group>"; };
+		D207736C2C48130500642B9E /* DetailExersice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailExersice.swift; sourceTree = "<group>"; };
+		D207736E2C48136400642B9E /* ExersiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExersiceItemView.swift; sourceTree = "<group>"; };
+		D20773702C481B9800642B9E /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		D208BAB62C44A977008BB9E5 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		D208BAB82C44AD2B008BB9E5 /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		D208BABA2C44AD58008BB9E5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -75,6 +95,12 @@
 		D208BACF2C455E36008BB9E5 /* ConfirmResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmResetView.swift; sourceTree = "<group>"; };
 		D208BAD22C455E53008BB9E5 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		D208BAD42C457146008BB9E5 /* Tabbarcustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbarcustom.swift; sourceTree = "<group>"; };
+		D21722312C47687000F30627 /* AppSocialHealth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppSocialHealth.entitlements; sourceTree = "<group>"; };
+		D21722322C4768D700F30627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D21722332C4769CA00F30627 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
+		D21722352C4769E600F30627 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		D21722372C47733D00F30627 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D238DBCB2C47BCA1008B9485 /* DetailFoodUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodUpdateView.swift; sourceTree = "<group>"; };
 		D2673DC22C46B83A00685A06 /* food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = food.swift; sourceTree = "<group>"; };
 		D2673DC42C46B88100685A06 /* FoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewModel.swift; sourceTree = "<group>"; };
 		D2673DC62C46B89D00685A06 /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
@@ -163,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				D208BAD22C455E53008BB9E5 /* WelcomeView.swift */,
+				D21722352C4769E600F30627 /* HealthView.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -180,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				D208BAD42C457146008BB9E5 /* Tabbarcustom.swift */,
+				D21722372C47733D00F30627 /* LoadingView.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -209,6 +237,8 @@
 				D208BAC82C455C27008BB9E5 /* resetpassword.swift */,
 				D2CDBF2D2C464F7800013370 /* meal.swift */,
 				D2673DC22C46B83A00685A06 /* food.swift */,
+				D20773622C48047E00642B9E /* exersice.swift */,
+				D20773642C48048800642B9E /* schedule.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -221,6 +251,10 @@
 				D208BACA2C455C3E008BB9E5 /* ResetPasswordViewModel.swift */,
 				D2CDBF2F2C4653D000013370 /* MealViewModel.swift */,
 				D2673DC42C46B88100685A06 /* FoodViewModel.swift */,
+				D21722332C4769CA00F30627 /* Health.swift */,
+				D20773662C4804EE00642B9E /* ExersiceViewModel.swift */,
+				D20773682C4806E000642B9E /* InfomationViewModel.swift */,
+				D20773702C481B9800642B9E /* ScheduleViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -232,6 +266,7 @@
 				D2673DC62C46B89D00685A06 /* FoodListView.swift */,
 				D2673DC82C46B8A700685A06 /* FoodItemView.swift */,
 				D2673DCA2C46B8B500685A06 /* DetailFoodView.swift */,
+				D238DBCB2C47BCA1008B9485 /* DetailFoodUpdateView.swift */,
 			);
 			path = dish;
 			sourceTree = "<group>";
@@ -240,6 +275,9 @@
 			isa = PBXGroup;
 			children = (
 				D2CDBF202C460A7D00013370 /* exersiceView.swift */,
+				D207736A2C4812FA00642B9E /* ExersiceListView.swift */,
+				D207736C2C48130500642B9E /* DetailExersice.swift */,
+				D207736E2C48136400642B9E /* ExersiceItemView.swift */,
 			);
 			path = exersice;
 			sourceTree = "<group>";
@@ -291,6 +329,8 @@
 		D2EA70832C359939005CC9D1 /* AppSocialHealth */ = {
 			isa = PBXGroup;
 			children = (
+				D21722322C4768D700F30627 /* Info.plist */,
+				D21722312C47687000F30627 /* AppSocialHealth.entitlements */,
 				D2B32AA02C383043009E0C56 /* viewmodel */,
 				D2B32A9F2C38303B009E0C56 /* model */,
 				D2B32A9E2C383031009E0C56 /* component */,
@@ -345,6 +385,8 @@
 			dependencies = (
 			);
 			name = AppSocialHealth;
+			packageProductDependencies = (
+			);
 			productName = AppSocialHealth;
 			productReference = D2EA70812C359939005CC9D1 /* AppSocialHealth.app */;
 			productType = "com.apple.product-type.application";
@@ -463,23 +505,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D207736F2C48136400642B9E /* ExersiceItemView.swift in Sources */,
 				D2EA70872C359939005CC9D1 /* ContentView.swift in Sources */,
 				D208BAD02C455E36008BB9E5 /* ConfirmResetView.swift in Sources */,
+				D20773712C481B9800642B9E /* ScheduleViewModel.swift in Sources */,
 				D208BAC72C44C19D008BB9E5 /* RegisterViewModel.swift in Sources */,
 				D2CDBF1E2C460A6A00013370 /* dishView.swift in Sources */,
+				D20773692C4806E000642B9E /* InfomationViewModel.swift in Sources */,
+				D21722342C4769CA00F30627 /* Health.swift in Sources */,
 				D208BAB72C44A977008BB9E5 /* loginView.swift in Sources */,
 				D2673DC52C46B88100685A06 /* FoodViewModel.swift in Sources */,
 				D2673DC32C46B83A00685A06 /* food.swift in Sources */,
+				D207736B2C4812FA00642B9E /* ExersiceListView.swift in Sources */,
 				D208BAD52C457146008BB9E5 /* Tabbarcustom.swift in Sources */,
+				D20773672C4804EE00642B9E /* ExersiceViewModel.swift in Sources */,
 				D208BACE2C455E26008BB9E5 /* RequestResetPasswordView.swift in Sources */,
 				D2673DCB2C46B8B500685A06 /* DetailFoodView.swift in Sources */,
 				D208BABD2C44AEB8008BB9E5 /* enum.swift in Sources */,
 				D2EA70852C359939005CC9D1 /* AppSocialHealthApp.swift in Sources */,
+				D207736D2C48130500642B9E /* DetailExersice.swift in Sources */,
 				D208BACB2C455C3E008BB9E5 /* ResetPasswordViewModel.swift in Sources */,
+				D238DBCC2C47BCA1008B9485 /* DetailFoodUpdateView.swift in Sources */,
 				D208BABF2C44AF5D008BB9E5 /* Register.swift in Sources */,
 				D208BAC22C44B18F008BB9E5 /* registerView.swift in Sources */,
+				D20773632C48047E00642B9E /* exersice.swift in Sources */,
 				D2CDBF272C460A9B00013370 /* chatView.swift in Sources */,
 				D2CDBF212C460A7D00013370 /* exersiceView.swift in Sources */,
+				D21722362C4769E600F30627 /* HealthView.swift in Sources */,
 				D2CDBF2B2C460AAF00013370 /* profileView.swift in Sources */,
 				D208BAD32C455E53008BB9E5 /* WelcomeView.swift in Sources */,
 				D2673DC92C46B8A700685A06 /* FoodItemView.swift in Sources */,
@@ -489,7 +541,9 @@
 				D208BABB2C44AD58008BB9E5 /* LoginViewModel.swift in Sources */,
 				D2673DC72C46B89D00685A06 /* FoodListView.swift in Sources */,
 				D208BAB92C44AD2B008BB9E5 /* login.swift in Sources */,
+				D20773652C48048800642B9E /* schedule.swift in Sources */,
 				D2CDBF2E2C464F7800013370 /* meal.swift in Sources */,
+				D21722382C47733D00F30627 /* LoadingView.swift in Sources */,
 				D208BAC52C44B4E7008BB9E5 /* homeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,12 +719,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppSocialHealth/AppSocialHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppSocialHealth/Preview Content\"";
 				DEVELOPMENT_TEAM = YAH93RZF3C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppSocialHealth/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -694,12 +750,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppSocialHealth/AppSocialHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppSocialHealth/Preview Content\"";
 				DEVELOPMENT_TEAM = YAH93RZF3C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppSocialHealth/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -1,29 +1,30 @@
 //
-//  FoodViewModel.swift
+//  ExersiceViewModel.swift
 //  AppSocialHealth
 //
-//  Created by Tran Viet Anh on 16/7/24.
+//  Created by Tran Viet Anh on 17/7/24.
 //
 
 import Foundation
-class FoodViewModel: ObservableObject {
-    @Published var foods: [Food] = []
+
+
+class ExersiceViewModel:ObservableObject{
     
-    func fetchAllFood(completion: @escaping (Bool) -> Void) {
+    @Published var exersices:[Exersice] = []
+    @Published var exersicesType: [ExersiceType] = []
+    func fetchAllExersice(completion: @escaping (Bool) -> Void) {
         guard let token = UserDefaults.standard.string(forKey: "token") else {
             print("Token không hợp lệ")
             completion(false)
             return
         }
-        print(token)
-        guard let url = API.getListFood.asURLRequest().url else {
+        guard let url = API.getListExercise.asURLRequest().url else {
             print("URL không hợp lệ")
             completion(false)
             return
         }
-        
         var request = URLRequest(url: url)
-        request.httpMethod = API.getListFood.method
+        request.httpMethod = API.getListExercise.method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
@@ -47,8 +48,8 @@ class FoodViewModel: ObservableObject {
                     return
                 }
                 do {
-                    let foodResponse = try JSONDecoder().decode(FoodResponseData.self, from: data)
-                    self.foods = foodResponse.data
+                    let exResponse = try JSONDecoder().decode(ExersiceResponseData.self, from: data)
+                    self.exersices = exResponse.data
                     completion(true)
                 } catch {
                     print("Failed to decode JSON: \(error.localizedDescription)")
@@ -56,24 +57,21 @@ class FoodViewModel: ObservableObject {
                 }
             }
         }
-        
         dataTask.resume()
     }
-    func fetchFood(food: Food,completion: @escaping (Bool) -> Void) {
+    func fetchAllExersiceType(completion: @escaping (Bool) -> Void) {
         guard let token = UserDefaults.standard.string(forKey: "token") else {
             print("Token không hợp lệ")
             completion(false)
             return
         }
-        print(token)
-        guard let url = API.getListFood.asURLRequest().url else {
+        guard let url = API.exType.asURLRequest().url else {
             print("URL không hợp lệ")
             completion(false)
             return
         }
-        
         var request = URLRequest(url: url)
-        request.httpMethod = API.getListFood.method
+        request.httpMethod = API.exType.method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
@@ -97,8 +95,8 @@ class FoodViewModel: ObservableObject {
                     return
                 }
                 do {
-                    let foodResponse = try JSONDecoder().decode(FoodResponseData.self, from: data)
-                    self.foods = foodResponse.data
+                    let exResponse = try JSONDecoder().decode([ExersiceType].self, from: data)
+                    self.exersicesType = exResponse
                     completion(true)
                 } catch {
                     print("Failed to decode JSON: \(error.localizedDescription)")
@@ -106,7 +104,6 @@ class FoodViewModel: ObservableObject {
                 }
             }
         }
-        
         dataTask.resume()
     }
 }

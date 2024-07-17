@@ -15,7 +15,7 @@ struct Food: Codable {
     var fat: Double
     var carb: Double
     var sugar: Double
-    var serving: Int
+    var serving: Double
     var photos: [PhotoFood]
 
     

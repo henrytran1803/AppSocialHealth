@@ -11,6 +11,8 @@ struct DetailFoodView: View {
     @State var food : Food
     @State var isAdd = false
     @State private var inputNumber = ""
+    @State var alertsuccess = false
+    @State var alertfail = false
     var body: some View {
         GeometryReader { geometry in
             ScrollView{
@@ -53,14 +55,42 @@ struct DetailFoodView: View {
                 } label: {
                     Text("ADD")
                 }
-
+                
+            }
+            .alert("Thêm thành công", isPresented: $alertsuccess) {
+                Button("OK",role: .cancel){
+//                    dismiss()
+                }
+            }
+            .alert("Thêm thất bại", isPresented: $alertfail) {
+                Button("OK",role: .cancel){
+//                    dismiss()
+                }
             }
             .alert("Enter a Number", isPresented: $isAdd) {
                            TextField("Number(g)", text: $inputNumber)
                                .keyboardType(.numberPad)
                            Button("OK", action: {
-                               if let num = Int(inputNumber) {
-//                                   number = num
+                               if let num = Double(inputNumber) {
+                                   let isMealEmpty = UserDefaults.standard.bool(forKey: "mealEmpty")
+                                   print(isMealEmpty)
+                                   if isMealEmpty {
+                                       MealViewModel().CreateMeal(detail: Mealdetail(id: food.id, serving: num)){success in
+                                           if success {
+                                               alertsuccess = true
+                                           }else {
+                                               alertfail = true
+                                           }
+                                       }
+                                   }else {
+                                           MealViewModel().CreateMealDetail(dish_id: food.id, serving: num){success in
+                                               if success {
+                                                   alertsuccess = true
+                                               }else {
+                                                   alertfail = true
+                                               }
+                                           }
+                                   }
                                }
                            })
                            Button("Cancel", role: .cancel, action: {})

@@ -10,12 +10,12 @@ import SwiftUI
 struct FoodListView: View {
     @Binding var isOpen :Bool
     @State var searchText = ""
-    @State var isLoading = true
-    @ObservedObject var model = FoodViewModel()
+    @State var isLoading = false
+    @ObservedObject var model: FoodViewModel
     var body: some View {
         NavigationStack{
             if isLoading {
-                ProgressView()
+                LoadingView()
             }else {
                 VStack{
                     HStack{
@@ -33,9 +33,8 @@ struct FoodListView: View {
                     }.padding([.leading, .trailing])
                     ScrollView{
                         ForEach(filteredFoods, id: \.id) { food in
-                            
                             NavigationLink {
-                               DetailFoodView(food: food)
+                                DetailFoodView(food: food)
                             } label: {
                                 FoodItemView(food: food)
                             }
@@ -45,19 +44,19 @@ struct FoodListView: View {
                     }
                 }
             }
-               
-        }.onAppear{
-            isLoading = true
-            model.fetchAllFood{
-                success in
-                if success {
-                    isLoading = false
-                }else {
-                    
-                }
-                
-            }
         }
+//        }.onAppear{
+//            isLoading = true
+//            model.fetchAllFood{
+//                success in
+//                if success {
+//                    isLoading = false
+//                }else {
+//                    
+//                }
+//                
+//            }
+//        }
     }
     
     

@@ -9,7 +9,6 @@ import SwiftUI
 import Charts
 
 
-
 struct FloatingPickerView: View {
     @State private var isPickerVisible = false
     @Binding var selected: String
@@ -79,6 +78,7 @@ struct homeView: View {
                             }
                     }.padding([.leading, .trailing])
                     SummaryView(carb: 10, fat: 10, sugar: 10, protein: 10, totalCalories: 10, calorieDeficit: 10)
+                    
                     HStack{
                         ChartsCustom(stackedBarData: .constant([DataCharts(name: "Protein", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Carb", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Fat", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Sugar", count: 10, color: .black.opacity(0.3) )]), text: "g")
                             .frame( height: geometry.size.height * 0.4)
@@ -141,12 +141,12 @@ struct ChartsCustom:View {
 }
 
 struct SummaryView: View {
-    let carb: Int
-    let fat: Int
-    let sugar: Int
-    let protein: Int
-    let totalCalories: Int
-    let calorieDeficit: Int
+    let carb: Double
+    let fat: Double
+    let sugar: Double
+    let protein: Double
+    let totalCalories: Double
+    let calorieDeficit: Double
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -158,20 +158,20 @@ struct SummaryView: View {
 
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Carb: \(carb)g")
-                    Text("Sugar: \(sugar)g")
+                    Text("Carb:\(String(format: "%.2f", carb))g")
+                    Text("Sugar: \(String(format: "%.2f", sugar))g")
                 }
                 Spacer()
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Fat: \(fat)g")
-                    Text("Protein: \(protein)g")
+                    Text("Fat: \(String(format: "%.2f", fat))g")
+                    Text("Protein: \(String(format: "%.2f", protein))g")
                 }
             }
-            Text("Tổng calories : \(totalCalories) calo")
+            Text("Tổng calories : \(String(format: "%.2f", totalCalories)) calo")
                 .font(.headline)
                 .fontWeight(.bold)
             if calorieDeficit > 0 {
-                Text("*Còn thiếu so với bạn \(calorieDeficit) calo")
+                Text("*Còn thiếu so với bạn \(String(format: "%.2f", calorieDeficit)) calo")
                     .foregroundColor(.red)
             }
         }
@@ -197,7 +197,7 @@ struct TabBarView: View {
                 case .dish:
                     dishView()
                 case .exersice:
-                    exersiceView()
+                    LoadingView()
                 case .content:
                     contentView()
                 case .chat :

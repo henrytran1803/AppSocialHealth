@@ -24,10 +24,11 @@ struct FoodItemView: View {
                     .foregroundColor(.black)
                 Spacer()
                 VStack{
-                    Text("Calorie:\(food.calorie)")
+                    Text("Calorie: \(String(format: "%.2f", food.calorie))")
                         .foregroundColor(.black.opacity(0.3))
-                    Text("Serving:\(food.serving)")
+                    Text("Serving: \(String(format: "%.2f", food.serving))")
                         .foregroundColor(.black.opacity(0.3))
+
                 }
                 
                

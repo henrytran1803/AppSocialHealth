@@ -12,13 +12,17 @@ struct dishView: View {
     @State var searchText = ""
     @State private var selected = ""
     @State private var isOpen = false
-    
+    @State private var isOpenDetail = false
+    @State var modelInfo = InfomationViewModel()
+@State var foodSelected = Food(id: 0, name: "", description: "", calorie: 0, protein: 0, fat: 0, carb: 0, sugar: 0, serving: 0, photos: [])
+    @State var id = 0
+    @ObservedObject var modelFood = FoodViewModel()
     @State var isLoading = true
     let list = ["Add", "Edit"]
     var body: some View {
         GeometryReader { geometry in
             if isLoading {
-                ProgressView()
+                LoadingView()
             }else {
                 ZStack{
                     ScrollView{
@@ -44,7 +48,30 @@ struct dishView: View {
                                             Text("It's empty")
                                         } else {
                                             ForEach(dishes, id: \.id) { dish in
-                                                Text("\(dish.id)")
+                                                if let matchingFood = modelFood.foods.first(where: { $0.id == dish.dish_id }) {
+                                                       FoodItemView(
+                                                           food: Food(
+                                                               id: dish.dish_id,
+                                                               name: matchingFood.name,
+                                                               description: matchingFood.description,
+                                                               calorie: dish.calorie,
+                                                               protein: matchingFood.protein,
+                                                               fat: matchingFood.fat,
+                                                               carb: matchingFood.carb,
+                                                               sugar: matchingFood.sugar,
+                                                               serving: dish.serving,
+                                                               photos: matchingFood.photos
+                                                           )
+                                                       )
+                                                       .onTapGesture {
+                                                           foodSelected = matchingFood
+                                                           id = dish.id
+                                                           isOpenDetail = true
+                                                       }
+                                                   } else {
+                                                       // Xử lý trường hợp không tìm thấy món ăn với id tương ứng
+                                                       Text("Food not found")
+                                                   }
                                             }
                                         }
                                     } else {
@@ -58,9 +85,9 @@ struct dishView: View {
                                 }
                             
                             
-                            SummaryView(carb: 10, fat: 10, sugar: 10, protein: 10, totalCalories: 10, calorieDeficit: 10)
+                            SummaryView(carb: modelInfo.info.nutrition.total_carb, fat: modelInfo.info.nutrition.total_fat, sugar: modelInfo.info.nutrition.total_sugar, protein: modelInfo.info.nutrition.total_protein, totalCalories: modelInfo.info.meal, calorieDeficit: modelInfo.info.calorie)
                             HStack{
-                                ChartsCustom(stackedBarData: .constant([DataCharts(name: "Protein", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Carb", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Fat", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Sugar", count: 10, color: .black.opacity(0.3) )]), text: "%")
+                                ChartsCustom(stackedBarData: .constant([DataCharts(name: "Protein", count: modelInfo.info.nutrition.total_protein, color: .black.opacity(0.3) ),DataCharts(name: "Carb", count: modelInfo.info.nutrition.total_carb, color: .black.opacity(0.3) ),DataCharts(name: "Fat", count: modelInfo.info.nutrition.total_fat, color: .black.opacity(0.3) ),DataCharts(name: "Sugar", count: modelInfo.info.nutrition.total_sugar, color: .black.opacity(0.3) )]), text: "g")
                                     .frame( height: geometry.size.height * 0.4)
                             }
                             Spacer()
@@ -80,6 +107,7 @@ struct dishView: View {
                        if newValue == "Add" {
                            isOpen = true
                        } else {
+                           
                        }
                    }
                 }
@@ -87,18 +115,42 @@ struct dishView: View {
                
 
         } .fullScreenCover(isPresented: $isOpen){
-            FoodListView(isOpen: $isOpen)
+            FoodListView(isOpen: $isOpen, model: modelFood)
+            
+        }
+        .fullScreenCover(isPresented: $isOpenDetail){
+            DetailFoodUpdateView(isOpen: $isOpenDetail, id: $id, food: $foodSelected)
         }
         .onAppear {
             isLoading = true
-            model.GetMealByIdAndDate{
+            modelFood.fetchAllFood{
                 success in
                 if success {
-                    isLoading = false
+                    model.GetMealByIdAndDate{
+                        
+                        success in
+                        if success {
+                            
+                            modelInfo.fetchInfoBydate{
+                                
+                                success in
+                                if success {
+                                    isLoading = false
+                                }else {
+                                    
+                                }
+                            }
+                            
+                           
+                        }else {
+                            print("error")
+                        }
+                    }
                 }else {
                     print("error")
                 }
             }
+            
            
         }
     }
