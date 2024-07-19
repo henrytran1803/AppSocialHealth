@@ -32,12 +32,25 @@
 		D21722342C4769CA00F30627 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21722332C4769CA00F30627 /* Health.swift */; };
 		D21722362C4769E600F30627 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21722352C4769E600F30627 /* HealthView.swift */; };
 		D21722382C47733D00F30627 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21722372C47733D00F30627 /* LoadingView.swift */; };
+		D2210A592C4AB89800B55D04 /* DetailExersiceUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2210A582C4AB89800B55D04 /* DetailExersiceUpdateView.swift */; };
+		D2210A5B2C4AC0DA00B55D04 /* NewScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2210A5A2C4AC0DA00B55D04 /* NewScheduleView.swift */; };
+		D2210A5D2C4AC0F200B55D04 /* ListScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2210A5C2C4AC0F200B55D04 /* ListScheduleView.swift */; };
 		D238DBCC2C47BCA1008B9485 /* DetailFoodUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D238DBCB2C47BCA1008B9485 /* DetailFoodUpdateView.swift */; };
+		D23C036C2C48A35D0096DA92 /* SmallCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23C036B2C48A35D0096DA92 /* SmallCalendar.swift */; };
+		D23C036E2C48A3BC0096DA92 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23C036D2C48A3BC0096DA92 /* DatePicker.swift */; };
 		D2673DC32C46B83A00685A06 /* food.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC22C46B83A00685A06 /* food.swift */; };
 		D2673DC52C46B88100685A06 /* FoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC42C46B88100685A06 /* FoodViewModel.swift */; };
 		D2673DC72C46B89D00685A06 /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC62C46B89D00685A06 /* FoodListView.swift */; };
 		D2673DC92C46B8A700685A06 /* FoodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC82C46B8A700685A06 /* FoodItemView.swift */; };
 		D2673DCB2C46B8B500685A06 /* DetailFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DCA2C46B8B500685A06 /* DetailFoodView.swift */; };
+		D27DF81A2C49EFE000972820 /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF8192C49EFE000972820 /* post.swift */; };
+		D27DF81C2C49EFE800972820 /* like.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF81B2C49EFE800972820 /* like.swift */; };
+		D27DF81E2C49EFF700972820 /* comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF81D2C49EFF700972820 /* comment.swift */; };
+		D27DF8202C49F08800972820 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF81F2C49F08800972820 /* Websocket.swift */; };
+		D27DF8222C49F12E00972820 /* WebsocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF8212C49F12E00972820 /* WebsocketViewModel.swift */; };
+		D27DF8242C4A52A300972820 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF8232C4A52A300972820 /* PostViewModel.swift */; };
+		D27DF8262C4A5A4E00972820 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF8252C4A5A4E00972820 /* user.swift */; };
+		D27DF8282C4A5A7C00972820 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF8272C4A5A7C00972820 /* UserViewModel.swift */; };
 		D2B32AA52C383230009E0C56 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2B32AA42C383230009E0C56 /* Localizable.strings */; };
 		D2CDBF1E2C460A6A00013370 /* dishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CDBF1D2C460A6A00013370 /* dishView.swift */; };
 		D2CDBF212C460A7D00013370 /* exersiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CDBF202C460A7D00013370 /* exersiceView.swift */; };
@@ -100,12 +113,25 @@
 		D21722332C4769CA00F30627 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		D21722352C4769E600F30627 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
 		D21722372C47733D00F30627 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D2210A582C4AB89800B55D04 /* DetailExersiceUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailExersiceUpdateView.swift; sourceTree = "<group>"; };
+		D2210A5A2C4AC0DA00B55D04 /* NewScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleView.swift; sourceTree = "<group>"; };
+		D2210A5C2C4AC0F200B55D04 /* ListScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScheduleView.swift; sourceTree = "<group>"; };
 		D238DBCB2C47BCA1008B9485 /* DetailFoodUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodUpdateView.swift; sourceTree = "<group>"; };
+		D23C036B2C48A35D0096DA92 /* SmallCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCalendar.swift; sourceTree = "<group>"; };
+		D23C036D2C48A3BC0096DA92 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		D2673DC22C46B83A00685A06 /* food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = food.swift; sourceTree = "<group>"; };
 		D2673DC42C46B88100685A06 /* FoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewModel.swift; sourceTree = "<group>"; };
 		D2673DC62C46B89D00685A06 /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
 		D2673DC82C46B8A700685A06 /* FoodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemView.swift; sourceTree = "<group>"; };
 		D2673DCA2C46B8B500685A06 /* DetailFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodView.swift; sourceTree = "<group>"; };
+		D27DF8192C49EFE000972820 /* post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
+		D27DF81B2C49EFE800972820 /* like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = like.swift; sourceTree = "<group>"; };
+		D27DF81D2C49EFF700972820 /* comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comment.swift; sourceTree = "<group>"; };
+		D27DF81F2C49F08800972820 /* Websocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
+		D27DF8212C49F12E00972820 /* WebsocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketViewModel.swift; sourceTree = "<group>"; };
+		D27DF8232C4A52A300972820 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		D27DF8252C4A5A4E00972820 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		D27DF8272C4A5A7C00972820 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		D2B32AA32C383230009E0C56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2B32AA82C38326E009E0C56 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2CDBF1D2C460A6A00013370 /* dishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dishView.swift; sourceTree = "<group>"; };
@@ -199,6 +225,7 @@
 			children = (
 				D2B32AA42C383230009E0C56 /* Localizable.strings */,
 				D208BABC2C44AEB8008BB9E5 /* enum.swift */,
+				D27DF81F2C49F08800972820 /* Websocket.swift */,
 			);
 			path = comon;
 			sourceTree = "<group>";
@@ -208,6 +235,8 @@
 			children = (
 				D208BAD42C457146008BB9E5 /* Tabbarcustom.swift */,
 				D21722372C47733D00F30627 /* LoadingView.swift */,
+				D23C036B2C48A35D0096DA92 /* SmallCalendar.swift */,
+				D23C036D2C48A3BC0096DA92 /* DatePicker.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -239,6 +268,10 @@
 				D2673DC22C46B83A00685A06 /* food.swift */,
 				D20773622C48047E00642B9E /* exersice.swift */,
 				D20773642C48048800642B9E /* schedule.swift */,
+				D27DF8192C49EFE000972820 /* post.swift */,
+				D27DF81B2C49EFE800972820 /* like.swift */,
+				D27DF81D2C49EFF700972820 /* comment.swift */,
+				D27DF8252C4A5A4E00972820 /* user.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -255,6 +288,9 @@
 				D20773662C4804EE00642B9E /* ExersiceViewModel.swift */,
 				D20773682C4806E000642B9E /* InfomationViewModel.swift */,
 				D20773702C481B9800642B9E /* ScheduleViewModel.swift */,
+				D27DF8212C49F12E00972820 /* WebsocketViewModel.swift */,
+				D27DF8232C4A52A300972820 /* PostViewModel.swift */,
+				D27DF8272C4A5A7C00972820 /* UserViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -278,6 +314,9 @@
 				D207736A2C4812FA00642B9E /* ExersiceListView.swift */,
 				D207736C2C48130500642B9E /* DetailExersice.swift */,
 				D207736E2C48136400642B9E /* ExersiceItemView.swift */,
+				D2210A582C4AB89800B55D04 /* DetailExersiceUpdateView.swift */,
+				D2210A5A2C4AC0DA00B55D04 /* NewScheduleView.swift */,
+				D2210A5C2C4AC0F200B55D04 /* ListScheduleView.swift */,
 			);
 			path = exersice;
 			sourceTree = "<group>";
@@ -505,16 +544,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27DF8242C4A52A300972820 /* PostViewModel.swift in Sources */,
 				D207736F2C48136400642B9E /* ExersiceItemView.swift in Sources */,
 				D2EA70872C359939005CC9D1 /* ContentView.swift in Sources */,
+				D27DF81C2C49EFE800972820 /* like.swift in Sources */,
 				D208BAD02C455E36008BB9E5 /* ConfirmResetView.swift in Sources */,
 				D20773712C481B9800642B9E /* ScheduleViewModel.swift in Sources */,
 				D208BAC72C44C19D008BB9E5 /* RegisterViewModel.swift in Sources */,
 				D2CDBF1E2C460A6A00013370 /* dishView.swift in Sources */,
 				D20773692C4806E000642B9E /* InfomationViewModel.swift in Sources */,
 				D21722342C4769CA00F30627 /* Health.swift in Sources */,
+				D2210A5B2C4AC0DA00B55D04 /* NewScheduleView.swift in Sources */,
 				D208BAB72C44A977008BB9E5 /* loginView.swift in Sources */,
 				D2673DC52C46B88100685A06 /* FoodViewModel.swift in Sources */,
+				D27DF81E2C49EFF700972820 /* comment.swift in Sources */,
 				D2673DC32C46B83A00685A06 /* food.swift in Sources */,
 				D207736B2C4812FA00642B9E /* ExersiceListView.swift in Sources */,
 				D208BAD52C457146008BB9E5 /* Tabbarcustom.swift in Sources */,
@@ -534,17 +577,26 @@
 				D21722362C4769E600F30627 /* HealthView.swift in Sources */,
 				D2CDBF2B2C460AAF00013370 /* profileView.swift in Sources */,
 				D208BAD32C455E53008BB9E5 /* WelcomeView.swift in Sources */,
+				D27DF8202C49F08800972820 /* Websocket.swift in Sources */,
+				D23C036E2C48A3BC0096DA92 /* DatePicker.swift in Sources */,
 				D2673DC92C46B8A700685A06 /* FoodItemView.swift in Sources */,
 				D208BAC92C455C27008BB9E5 /* resetpassword.swift in Sources */,
+				D27DF8222C49F12E00972820 /* WebsocketViewModel.swift in Sources */,
 				D2CDBF302C4653D000013370 /* MealViewModel.swift in Sources */,
+				D2210A592C4AB89800B55D04 /* DetailExersiceUpdateView.swift in Sources */,
 				D2CDBF242C460A8B00013370 /* contentView.swift in Sources */,
 				D208BABB2C44AD58008BB9E5 /* LoginViewModel.swift in Sources */,
+				D27DF8282C4A5A7C00972820 /* UserViewModel.swift in Sources */,
 				D2673DC72C46B89D00685A06 /* FoodListView.swift in Sources */,
+				D23C036C2C48A35D0096DA92 /* SmallCalendar.swift in Sources */,
 				D208BAB92C44AD2B008BB9E5 /* login.swift in Sources */,
 				D20773652C48048800642B9E /* schedule.swift in Sources */,
 				D2CDBF2E2C464F7800013370 /* meal.swift in Sources */,
 				D21722382C47733D00F30627 /* LoadingView.swift in Sources */,
+				D27DF8262C4A5A4E00972820 /* user.swift in Sources */,
 				D208BAC52C44B4E7008BB9E5 /* homeView.swift in Sources */,
+				D2210A5D2C4AC0F200B55D04 /* ListScheduleView.swift in Sources */,
+				D27DF81A2C49EFE000972820 /* post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +779,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppSocialHealth/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Ứng dụng sẽ sử dụng dữ liệu bước chân để tính toán các thống kê sức khỏe cá nhân.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Ứng dụng sẽ sử dụng dữ liệu bước chân để tính toán các thống kê sức khỏe cá nhân.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -758,6 +812,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppSocialHealth/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Ứng dụng sẽ sử dụng dữ liệu bước chân để tính toán các thống kê sức khỏe cá nhân.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Ứng dụng sẽ sử dụng dữ liệu bước chân để tính toán các thống kê sức khỏe cá nhân.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

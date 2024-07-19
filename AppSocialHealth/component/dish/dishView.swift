@@ -45,7 +45,11 @@ struct dishView: View {
                                 ScrollView {
                                     if let dishes = model.meal.dishes {
                                         if dishes.isEmpty {
-                                            Text("It's empty")
+                                            HStack{
+                                                Spacer()
+                                                Text("It's empty")
+                                                Spacer()
+                                            }
                                         } else {
                                             ForEach(dishes, id: \.id) { dish in
                                                 if let matchingFood = modelFood.foods.first(where: { $0.id == dish.dish_id }) {
@@ -75,7 +79,11 @@ struct dishView: View {
                                             }
                                         }
                                     } else {
-                                        Text("It's empty")
+                                        HStack{
+                                            Spacer()
+                                            Text("It's empty")
+                                            Spacer()
+                                        }
                                     }
                                 }
                             }.frame(height: geometry.size.height * 0.5)

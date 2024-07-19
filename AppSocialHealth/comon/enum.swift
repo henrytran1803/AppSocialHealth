@@ -52,8 +52,8 @@ enum API {
     case createScheduleDetail
     case getAllSchedule
     case getSchedule(id: Int)
-    case updateSchedule(id: Int)
-    case updateScheduleDetail(detailId: Int)
+    case updateSchedule
+    case updateScheduleDetail
     case deleteSchedule(id: Int)
     case deleteScheduleDetail(detailId: Int)
     case createConversation
@@ -77,6 +77,8 @@ enum API {
     case getMealByidAndDate(id : Int, date : String)
     case getInfomationByIdAndDate(id : Int, date : String)
     case getScheduleByidAndDate(id : Int, date : String)
+    case getScheduleFromDateToDate(id : Int,fromDate: String, date: String)
+    
     var path: String {
         switch self {
         case .register:
@@ -121,10 +123,14 @@ enum API {
             return "/v1/schedule"
         case .createScheduleDetail:
             return "/v1/schedule/detail"
-        case .getSchedule(let id), .updateSchedule(let id), .deleteSchedule(let id):
+        case .getSchedule(let id), .deleteSchedule(let id):
             return "/v1/schedule/\(id)"
-        case .updateScheduleDetail(let detailId), .deleteScheduleDetail(let detailId):
+        case .updateSchedule:
+            return "/v1/schedule"
+        case  .deleteScheduleDetail(let detailId):
             return "/v1/schedule/detail/\(detailId)"
+        case .updateScheduleDetail:
+            return "/v1/schedule/detail"
         case .createConversation:
             return "/v1/conversation"
         case .sendMessage(let conversationId):
@@ -158,12 +164,13 @@ enum API {
         case .getMealByidAndDate(let id, let date):
             return"/v1/meal/user/\(id)/date/\(date)"
         case .getScheduleByidAndDate(let id, let date):
-            return"/v1/meal/user/\(id)/date/\(date)"
+            return"/v1/schedule/user/\(id)/date/\(date)"
         case .getInfomationByIdAndDate(let id, let date):
             return"/v1/meal/calorie/user/\(id)/date/\(date)"
+        case .getScheduleFromDateToDate(let id,let fromdate, let date):
+            return "/v1/schedule/user/\(id)/fromdate/\(fromdate)/date/\(date)"
         }
     }
-
     var method: String {
         switch self {
         case .register, .login, .requestPasswordReset, .confirmPasswordReset, .createFood, .createExercise, .createUser, .createMeal, .createMealDetail, .createPost, .likePost, .createComment, .createSchedule, .createScheduleDetail, .createConversation, .sendMessage, .createReminder,.createPhoto, .createListPhoto:
@@ -172,7 +179,7 @@ enum API {
             return "PUT"
         case .deleteFood, .deleteExercise, .deleteUser, .deleteMeal, .deleteMealDetail, .deletePost, .deleteLike, .deleteSchedule, .deleteScheduleDetail, .deleteConversation, .deleteMessage, .deleteReminder,.deletePhotoById:
             return "DELETE"
-        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate:
+        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate :
             return "GET"
         }
     }

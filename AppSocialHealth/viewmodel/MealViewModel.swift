@@ -111,7 +111,7 @@ class MealViewModel: ObservableObject {
                         }
                         do {
                             let meal = try JSONDecoder().decode(MealCreateResponse.self, from: data)
-                                UserDefaults.standard.setValue(meal, forKey: "mealId")
+                            UserDefaults.standard.setValue(meal.id, forKey: "mealId")
                                 UserDefaults.standard.setValue(false, forKey: "mealEmpty")
                             print(meal)
                             completion(true)

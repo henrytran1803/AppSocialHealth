@@ -59,12 +59,10 @@ struct DetailFoodView: View {
             }
             .alert("Thêm thành công", isPresented: $alertsuccess) {
                 Button("OK",role: .cancel){
-//                    dismiss()
                 }
             }
             .alert("Thêm thất bại", isPresented: $alertfail) {
                 Button("OK",role: .cancel){
-//                    dismiss()
                 }
             }
             .alert("Enter a Number", isPresented: $isAdd) {
@@ -99,7 +97,3 @@ struct DetailFoodView: View {
                        }
     }
 }
-//
-//#Preview {
-//    DetailFoodView()
-//}

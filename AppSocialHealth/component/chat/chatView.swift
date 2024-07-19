@@ -8,8 +8,31 @@
 import SwiftUI
 
 struct chatView: View {
+    @StateObject private var viewModel = WebSocketViewModel()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Button("Connect") {
+                viewModel.connect()
+            }
+            Button("Disconnect") {
+                viewModel.disconnect()
+            }
+            Button("Send Message") {
+                viewModel.sendMessage(message: "Hello WebSocket")
+            }
+            Text("Received Message: \(viewModel.receivedMessage)")
+                .padding()
+        }
+        .onAppear {
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                if settings.authorizationStatus != .authorized {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                }
+            }
+        }
     }
 }
 

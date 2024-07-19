@@ -197,7 +197,7 @@ struct TabBarView: View {
                 case .dish:
                     dishView()
                 case .exersice:
-                    LoadingView()
+                    exersiceView()
                 case .content:
                     contentView()
                 case .chat :
