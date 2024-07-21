@@ -12,7 +12,7 @@ struct Schedule : Codable {
     var time : String
     var calories : Double
     var status : Int
-    var create_at : String
+    var create_at : String?
     var detail : [Schedule_Detail]?
 }
 

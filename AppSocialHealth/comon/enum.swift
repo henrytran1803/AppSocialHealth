@@ -43,8 +43,8 @@ enum API {
     case likePost
     case deleteLike
     case deletePost(id: Int)
-    case createComment(postId: Int)
-    case updatePost(id: Int)
+    case createComment
+    case updatePost
     case getPost(id: Int)
     case getAllPost
     case getAllComments(postId: Int)
@@ -78,7 +78,8 @@ enum API {
     case getInfomationByIdAndDate(id : Int, date : String)
     case getScheduleByidAndDate(id : Int, date : String)
     case getScheduleFromDateToDate(id : Int,fromDate: String, date: String)
-    
+    case checkIsLikeUserIdAndPostId(id : Int, post : Int)
+    case createCommentNonePhoto
     var path: String {
         switch self {
         case .register:
@@ -109,14 +110,14 @@ enum API {
             return "/v1/meal/detail"
         case .updateMealDetail(let detailId), .deleteMealDetail(let detailId):
             return "/v1/meal/detail/\(detailId)"
-        case .createPost, .getAllPost:
+        case .createPost, .getAllPost,.updatePost:
             return "/v1/content"
         case .likePost, .deleteLike:
             return "/v1/content/like"
-        case .deletePost(let id), .updatePost(let id), .getPost(let id):
+        case .deletePost(let id), .getPost(let id):
             return "/v1/content/\(id)"
-        case .createComment(let postId):
-            return "/v1/content/coment/\(postId)"
+        case .createComment:
+            return "/v1/content/comment"
         case .getAllComments(let postId):
             return "/v1/content/coment/\(postId)"
         case .createSchedule, .getAllSchedule:
@@ -169,17 +170,21 @@ enum API {
             return"/v1/meal/calorie/user/\(id)/date/\(date)"
         case .getScheduleFromDateToDate(let id,let fromdate, let date):
             return "/v1/schedule/user/\(id)/fromdate/\(fromdate)/date/\(date)"
+        case .checkIsLikeUserIdAndPostId(let id, let post):
+            return "/v1/content/islike/user/\(id)/post/\(post)"
+        case .createCommentNonePhoto:
+            return "/v1/content/commentnonephoto"
         }
     }
     var method: String {
         switch self {
-        case .register, .login, .requestPasswordReset, .confirmPasswordReset, .createFood, .createExercise, .createUser, .createMeal, .createMealDetail, .createPost, .likePost, .createComment, .createSchedule, .createScheduleDetail, .createConversation, .sendMessage, .createReminder,.createPhoto, .createListPhoto:
+        case .register, .login, .requestPasswordReset, .confirmPasswordReset, .createFood, .createExercise, .createUser, .createMeal, .createMealDetail, .createPost, .likePost, .createComment, .createSchedule, .createScheduleDetail, .createConversation, .sendMessage, .createReminder,.createPhoto, .createListPhoto,.createCommentNonePhoto:
             return "POST"
         case .updateFood, .updateExercise, .updateUser, .updateMealDetail, .updatePost, .updateSchedule, .updateScheduleDetail, .updateReminder,.updateFoodNonePhoto,.updateExersiceNonePhoto:
             return "PUT"
         case .deleteFood, .deleteExercise, .deleteUser, .deleteMeal, .deleteMealDetail, .deletePost, .deleteLike, .deleteSchedule, .deleteScheduleDetail, .deleteConversation, .deleteMessage, .deleteReminder,.deletePhotoById:
             return "DELETE"
-        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate :
+        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate ,.checkIsLikeUserIdAndPostId:
             return "GET"
         }
     }

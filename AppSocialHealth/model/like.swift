@@ -12,4 +12,10 @@ struct CreateLike: Codable {
 }
 
 
+struct LikeResponse: Codable {
+    var data :Bool
+}
+
+
+
 

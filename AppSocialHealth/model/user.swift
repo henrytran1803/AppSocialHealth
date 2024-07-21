@@ -18,11 +18,23 @@ struct User: Codable {
     var calorie: Double
     var id: Int
     var status: Int
+    var photo: PhotoUser?
 
 
     enum CodingKeys: String, CodingKey {
-        case email, firstname, lastname, role, height, weight, bdf, tdee, calorie, id, status
+        case email, firstname, lastname, role, height, weight, bdf, tdee, calorie, id, status,photo
  
+    }
+}
+
+struct PhotoUser: Codable {
+    var id: Int
+    var photoType: String
+    var image: Data?
+    var url: String
+    var userId: String
+    enum CodingKeys: String, CodingKey {
+        case id, photoType = "photo_type", image, url, userId = "user_id"
     }
 }
 

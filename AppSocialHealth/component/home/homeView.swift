@@ -201,7 +201,7 @@ struct TabBarView: View {
                 case .content:
                     contentView()
                 case .chat :
-                    chatView()
+                    PhotoPicker()
                 case .profile:
                     profileView(isLogin: $isLogin)
                 }

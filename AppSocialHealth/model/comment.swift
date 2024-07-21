@@ -10,12 +10,17 @@ struct CreateComment :Codable {
     var body :String
     var user_id: Int
     var post_id : Int
-    var photos : CreateCommentPhoto
+    var photo : Data?
+}
+struct CreateCommentNonePhoto :Codable {
+    var body :String
+    var user_id: Int
+    var post_id : Int
 }
 
 struct CreateCommentPhoto: Codable {
     var photo_type : String
-    var image :Data
+    var image :Data?
     var url : String
     var post_id : Int?
     var comment_id:Int?
@@ -30,6 +35,9 @@ struct Comment: Codable {
     var id : Int
     var body: String
     var user_id: Int
-    var name: String
-    var photo: PostPhoto
+    var user :User
+    var photos: PostPhoto?
+}
+struct CommentResponse: Codable {
+    var data : [Comment]?
 }

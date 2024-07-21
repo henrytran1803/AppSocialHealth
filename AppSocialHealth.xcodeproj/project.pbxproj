@@ -38,6 +38,11 @@
 		D238DBCC2C47BCA1008B9485 /* DetailFoodUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D238DBCB2C47BCA1008B9485 /* DetailFoodUpdateView.swift */; };
 		D23C036C2C48A35D0096DA92 /* SmallCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23C036B2C48A35D0096DA92 /* SmallCalendar.swift */; };
 		D23C036E2C48A3BC0096DA92 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23C036D2C48A3BC0096DA92 /* DatePicker.swift */; };
+		D260C1792C4C9FF600592A43 /* LikeModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C1782C4C9FF600592A43 /* LikeModelView.swift */; };
+		D260C17B2C4CA89900592A43 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C17A2C4CA89900592A43 /* CommentViewModel.swift */; };
+		D260C17D2C4CB60700592A43 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C17C2C4CB60700592A43 /* PhotoPicker.swift */; };
+		D260C17F2C4CFBA500592A43 /* CreateNewPostSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C17E2C4CFBA500592A43 /* CreateNewPostSide.swift */; };
+		D260C1812C4D01C600592A43 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D260C1802C4D01C600592A43 /* CommentView.swift */; };
 		D2673DC32C46B83A00685A06 /* food.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC22C46B83A00685A06 /* food.swift */; };
 		D2673DC52C46B88100685A06 /* FoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC42C46B88100685A06 /* FoodViewModel.swift */; };
 		D2673DC72C46B89D00685A06 /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2673DC62C46B89D00685A06 /* FoodListView.swift */; };
@@ -52,6 +57,13 @@
 		D27DF8262C4A5A4E00972820 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF8252C4A5A4E00972820 /* user.swift */; };
 		D27DF8282C4A5A7C00972820 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF8272C4A5A7C00972820 /* UserViewModel.swift */; };
 		D2B32AA52C383230009E0C56 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2B32AA42C383230009E0C56 /* Localizable.strings */; };
+		D2B884902C4D4C5400EC8DD6 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8848F2C4D4C5400EC8DD6 /* ImageViewModel.swift */; };
+		D2B884922C4D4C7600EC8DD6 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B884912C4D4C7600EC8DD6 /* Photo.swift */; };
+		D2B884942C4D54B300EC8DD6 /* UpdatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B884932C4D54B300EC8DD6 /* UpdatePostView.swift */; };
+		D2B884962C4D55C300EC8DD6 /* ItemCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B884952C4D55C300EC8DD6 /* ItemCommentView.swift */; };
+		D2CBF99D2C4B4E0E0001D471 /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBF99C2C4B4E0E0001D471 /* common.swift */; };
+		D2CBF99F2C4B575D0001D471 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBF99E2C4B575D0001D471 /* PostView.swift */; };
+		D2CBF9A12C4B57800001D471 /* image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBF9A02C4B57800001D471 /* image.swift */; };
 		D2CDBF1E2C460A6A00013370 /* dishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CDBF1D2C460A6A00013370 /* dishView.swift */; };
 		D2CDBF212C460A7D00013370 /* exersiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CDBF202C460A7D00013370 /* exersiceView.swift */; };
 		D2CDBF242C460A8B00013370 /* contentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CDBF232C460A8B00013370 /* contentView.swift */; };
@@ -119,6 +131,11 @@
 		D238DBCB2C47BCA1008B9485 /* DetailFoodUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodUpdateView.swift; sourceTree = "<group>"; };
 		D23C036B2C48A35D0096DA92 /* SmallCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCalendar.swift; sourceTree = "<group>"; };
 		D23C036D2C48A3BC0096DA92 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		D260C1782C4C9FF600592A43 /* LikeModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModelView.swift; sourceTree = "<group>"; };
+		D260C17A2C4CA89900592A43 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		D260C17C2C4CB60700592A43 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		D260C17E2C4CFBA500592A43 /* CreateNewPostSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostSide.swift; sourceTree = "<group>"; };
+		D260C1802C4D01C600592A43 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		D2673DC22C46B83A00685A06 /* food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = food.swift; sourceTree = "<group>"; };
 		D2673DC42C46B88100685A06 /* FoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewModel.swift; sourceTree = "<group>"; };
 		D2673DC62C46B89D00685A06 /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
@@ -134,6 +151,13 @@
 		D27DF8272C4A5A7C00972820 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		D2B32AA32C383230009E0C56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2B32AA82C38326E009E0C56 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2B8848F2C4D4C5400EC8DD6 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
+		D2B884912C4D4C7600EC8DD6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		D2B884932C4D54B300EC8DD6 /* UpdatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostView.swift; sourceTree = "<group>"; };
+		D2B884952C4D55C300EC8DD6 /* ItemCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCommentView.swift; sourceTree = "<group>"; };
+		D2CBF99C2C4B4E0E0001D471 /* common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = common.swift; sourceTree = "<group>"; };
+		D2CBF99E2C4B575D0001D471 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		D2CBF9A02C4B57800001D471 /* image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image.swift; sourceTree = "<group>"; };
 		D2CDBF1D2C460A6A00013370 /* dishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dishView.swift; sourceTree = "<group>"; };
 		D2CDBF202C460A7D00013370 /* exersiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exersiceView.swift; sourceTree = "<group>"; };
 		D2CDBF232C460A8B00013370 /* contentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentView.swift; sourceTree = "<group>"; };
@@ -226,6 +250,7 @@
 				D2B32AA42C383230009E0C56 /* Localizable.strings */,
 				D208BABC2C44AEB8008BB9E5 /* enum.swift */,
 				D27DF81F2C49F08800972820 /* Websocket.swift */,
+				D2CBF99C2C4B4E0E0001D471 /* common.swift */,
 			);
 			path = comon;
 			sourceTree = "<group>";
@@ -237,6 +262,8 @@
 				D21722372C47733D00F30627 /* LoadingView.swift */,
 				D23C036B2C48A35D0096DA92 /* SmallCalendar.swift */,
 				D23C036D2C48A3BC0096DA92 /* DatePicker.swift */,
+				D2CBF9A02C4B57800001D471 /* image.swift */,
+				D260C17C2C4CB60700592A43 /* PhotoPicker.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -272,6 +299,7 @@
 				D27DF81B2C49EFE800972820 /* like.swift */,
 				D27DF81D2C49EFF700972820 /* comment.swift */,
 				D27DF8252C4A5A4E00972820 /* user.swift */,
+				D2B884912C4D4C7600EC8DD6 /* Photo.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -291,6 +319,9 @@
 				D27DF8212C49F12E00972820 /* WebsocketViewModel.swift */,
 				D27DF8232C4A52A300972820 /* PostViewModel.swift */,
 				D27DF8272C4A5A7C00972820 /* UserViewModel.swift */,
+				D260C1782C4C9FF600592A43 /* LikeModelView.swift */,
+				D260C17A2C4CA89900592A43 /* CommentViewModel.swift */,
+				D2B8848F2C4D4C5400EC8DD6 /* ImageViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -325,6 +356,11 @@
 			isa = PBXGroup;
 			children = (
 				D2CDBF232C460A8B00013370 /* contentView.swift */,
+				D2CBF99E2C4B575D0001D471 /* PostView.swift */,
+				D260C17E2C4CFBA500592A43 /* CreateNewPostSide.swift */,
+				D260C1802C4D01C600592A43 /* CommentView.swift */,
+				D2B884932C4D54B300EC8DD6 /* UpdatePostView.swift */,
+				D2B884952C4D55C300EC8DD6 /* ItemCommentView.swift */,
 			);
 			path = content;
 			sourceTree = "<group>";
@@ -550,10 +586,13 @@
 				D27DF81C2C49EFE800972820 /* like.swift in Sources */,
 				D208BAD02C455E36008BB9E5 /* ConfirmResetView.swift in Sources */,
 				D20773712C481B9800642B9E /* ScheduleViewModel.swift in Sources */,
+				D260C17B2C4CA89900592A43 /* CommentViewModel.swift in Sources */,
 				D208BAC72C44C19D008BB9E5 /* RegisterViewModel.swift in Sources */,
 				D2CDBF1E2C460A6A00013370 /* dishView.swift in Sources */,
+				D260C1792C4C9FF600592A43 /* LikeModelView.swift in Sources */,
 				D20773692C4806E000642B9E /* InfomationViewModel.swift in Sources */,
 				D21722342C4769CA00F30627 /* Health.swift in Sources */,
+				D2B884962C4D55C300EC8DD6 /* ItemCommentView.swift in Sources */,
 				D2210A5B2C4AC0DA00B55D04 /* NewScheduleView.swift in Sources */,
 				D208BAB72C44A977008BB9E5 /* loginView.swift in Sources */,
 				D2673DC52C46B88100685A06 /* FoodViewModel.swift in Sources */,
@@ -562,6 +601,7 @@
 				D207736B2C4812FA00642B9E /* ExersiceListView.swift in Sources */,
 				D208BAD52C457146008BB9E5 /* Tabbarcustom.swift in Sources */,
 				D20773672C4804EE00642B9E /* ExersiceViewModel.swift in Sources */,
+				D2B884902C4D4C5400EC8DD6 /* ImageViewModel.swift in Sources */,
 				D208BACE2C455E26008BB9E5 /* RequestResetPasswordView.swift in Sources */,
 				D2673DCB2C46B8B500685A06 /* DetailFoodView.swift in Sources */,
 				D208BABD2C44AEB8008BB9E5 /* enum.swift in Sources */,
@@ -570,23 +610,31 @@
 				D208BACB2C455C3E008BB9E5 /* ResetPasswordViewModel.swift in Sources */,
 				D238DBCC2C47BCA1008B9485 /* DetailFoodUpdateView.swift in Sources */,
 				D208BABF2C44AF5D008BB9E5 /* Register.swift in Sources */,
+				D2CBF99D2C4B4E0E0001D471 /* common.swift in Sources */,
+				D2B884942C4D54B300EC8DD6 /* UpdatePostView.swift in Sources */,
 				D208BAC22C44B18F008BB9E5 /* registerView.swift in Sources */,
 				D20773632C48047E00642B9E /* exersice.swift in Sources */,
 				D2CDBF272C460A9B00013370 /* chatView.swift in Sources */,
 				D2CDBF212C460A7D00013370 /* exersiceView.swift in Sources */,
 				D21722362C4769E600F30627 /* HealthView.swift in Sources */,
 				D2CDBF2B2C460AAF00013370 /* profileView.swift in Sources */,
+				D2CBF9A12C4B57800001D471 /* image.swift in Sources */,
 				D208BAD32C455E53008BB9E5 /* WelcomeView.swift in Sources */,
 				D27DF8202C49F08800972820 /* Websocket.swift in Sources */,
 				D23C036E2C48A3BC0096DA92 /* DatePicker.swift in Sources */,
+				D260C1812C4D01C600592A43 /* CommentView.swift in Sources */,
 				D2673DC92C46B8A700685A06 /* FoodItemView.swift in Sources */,
 				D208BAC92C455C27008BB9E5 /* resetpassword.swift in Sources */,
 				D27DF8222C49F12E00972820 /* WebsocketViewModel.swift in Sources */,
 				D2CDBF302C4653D000013370 /* MealViewModel.swift in Sources */,
+				D260C17F2C4CFBA500592A43 /* CreateNewPostSide.swift in Sources */,
 				D2210A592C4AB89800B55D04 /* DetailExersiceUpdateView.swift in Sources */,
+				D2B884922C4D4C7600EC8DD6 /* Photo.swift in Sources */,
 				D2CDBF242C460A8B00013370 /* contentView.swift in Sources */,
 				D208BABB2C44AD58008BB9E5 /* LoginViewModel.swift in Sources */,
+				D2CBF99F2C4B575D0001D471 /* PostView.swift in Sources */,
 				D27DF8282C4A5A7C00972820 /* UserViewModel.swift in Sources */,
+				D260C17D2C4CB60700592A43 /* PhotoPicker.swift in Sources */,
 				D2673DC72C46B89D00685A06 /* FoodListView.swift in Sources */,
 				D23C036C2C48A35D0096DA92 /* SmallCalendar.swift in Sources */,
 				D208BAB92C44AD2B008BB9E5 /* login.swift in Sources */,

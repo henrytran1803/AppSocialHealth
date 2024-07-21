@@ -49,12 +49,13 @@ struct DetailExersiceUpdateView: View {
                         }else {
                             Text("Rep Serving: \(exersice.rep_serving)")
                         }
-    //                    DatePickerValidationView(selectedDate: $selectedDate)
                         Text("Type exersice: \(exersice.exersice_type)")
                    
                        
                     }
                 }
+            }.toolbar{
+                Button(action: {isAdd = true}, label:  {Text("Edit")})
             }
                 .alert("Thêm thành công", isPresented: $alertsuccess) {
                     Button("OK",role: .cancel){

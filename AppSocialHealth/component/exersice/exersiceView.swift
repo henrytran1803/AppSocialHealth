@@ -63,7 +63,8 @@ struct exersiceView: View {
                                         } else {
                                             ForEach(details, id: \.id) { detail in
                                                 if let matchingEx = modelExersice.exersices.first(where: { $0.id == detail.exersice_id }) {
-                                                       
+                                                    
+                                                    
                                                     ExersiceItemView(exersice: Exersice(id: matchingEx.id, name: matchingEx.name, description: matchingEx.description, calorie: matchingEx.calorie, rep_serving: detail.rep, time_serving: detail.time, exersice_type: matchingEx.exersice_type, photo: matchingEx.photo))
                                                        .onTapGesture {
                                                            exersiceSelected = matchingEx
@@ -140,7 +141,7 @@ struct exersiceView: View {
                 DetailExersiceUpdateView(exersice: $exersiceSelected, id: id, isOpen : $isOpenDetail)
             }
             .fullScreenCover(isPresented: $isAddNewSchedule){
-                
+                ListScheduleView(model: model, isOpen: $isAddNewSchedule)
             }
                 
             }
@@ -215,7 +216,7 @@ func uniqueDates(from schedules: [Schedule]) -> [Date] {
     var uniqueDatesSet = Set<Date>()
     
     for schedule in schedules {
-        if let date = convertToDate(from: schedule.create_at) {
+        if let date = convertToDate(from: schedule.time ?? "") {
             let startOfDay = Calendar.current.startOfDay(for: date)
             uniqueDatesSet.insert(startOfDay)
         }

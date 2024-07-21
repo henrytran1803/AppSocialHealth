@@ -119,9 +119,11 @@ class ScheduleViewModel: ObservableObject {
                     completion(false)
                     return
                 }
+              
                 do {
                     let schedule = try JSONDecoder().decode(ScheduleFromDateToDate.self, from: data)
                     self.scheduleFromDatetoDate = schedule.data ?? []
+                    print(schedule)
                     completion(true)
                 } catch {
                     print("Failed to decode JSON: \(error.localizedDescription)")
@@ -136,7 +138,6 @@ class ScheduleViewModel: ObservableObject {
         let id = UserDefaults.standard.integer(forKey: "user_id")
         var newSchedule = schedule
         newSchedule.user_id = id
-        print(newSchedule)
         guard let token = UserDefaults.standard.string(forKey: "token") else {
                     print("Token không hợp lệ")
                     completion(false)
@@ -404,10 +405,4 @@ class ScheduleViewModel: ObservableObject {
         
     }
     
-}
-func getCurrentDateFullString() -> String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-    let currentDate = Date()
-    return dateFormatter.string(from: currentDate)
 }
