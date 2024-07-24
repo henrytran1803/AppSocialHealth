@@ -57,14 +57,6 @@ class ResetPasswordViewModel: ObservableObject {
                 
                 
                 completion(true)
-//                do {
-//                    let response = try JSONDecoder().decode(ResponseLogin.self, from: data)
-//
-//                    completion(true)
-//                } catch {
-//                    self.errorMessage = "Giải mã dữ liệu phản hồi thất bại: \(error.localizedDescription)"
-//                    completion(false)
-//                }
             }
         }
         dataTask.resume()

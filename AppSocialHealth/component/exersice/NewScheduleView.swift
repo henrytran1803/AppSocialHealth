@@ -11,25 +11,20 @@ struct NewScheduleView: View {
     @ObservedObject var model = ExersiceViewModel()
     @Binding var schedule: Schedule
     @Binding var isOpen : Bool
+    @State var isAdd : Bool = false
     @State var searchText = ""
     @State var exersiceSelected = Exersice(id: 0, name: "", description: "", calorie: 0, rep_serving: 0, time_serving: 0, exersice_type: ExersiceType(id: 0, name: ""), photo: [])
     @State var id = 0
     @State var isOpenDetail = false
+    @State private var reminderDate = Date()
+    @State private var showReminderPicker = false
     var body: some View {
         GeometryReader{ geomtry in
             NavigationStack{
             HStack{
                 Button(action: {isOpen = false}, label: {Text("back")})
-                HStack{
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.black.opacity(0.2))
-                    TextField("Search", text: $searchText)
-                    
-                }.padding([.leading, .trailing])
-                    .overlay{
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(.black.opacity(0.2),lineWidth: 2)
-                    }
+                Spacer()
+                Button(action: {isAdd = true}, label: {Text("Add")})
             }.padding([.leading, .trailing])
                 ScrollView {
                     if let details = schedule.detail {
@@ -62,9 +57,61 @@ struct NewScheduleView: View {
                         }
                     }
                 }
+                Button(action: {
+                    showReminderPicker.toggle()
+                }) {
+                    Text("Set Reminder")
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .sheet(isPresented: $showReminderPicker) {
+                    VStack {
+                        DatePicker("Select reminder time", selection: $reminderDate, displayedComponents: [.date, .hourAndMinute])
+                            .datePickerStyle(WheelDatePickerStyle())
+                        
+                        Button("Set Reminder") {
+                            // Định dạng ngày thành chuỗi
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                            let formattedDate = dateFormatter.string(from: reminderDate)
+                            print(formattedDate)
+                            let reminder = ReminderCreate(
+                                user_id: 0,
+                                description: "Exercise Reminder",
+                                schedule_id: 10,
+                                meal_id: nil,
+                                reminder_type_id: 1,
+                                date: formattedDate
+                            )
+                            
+                            let reminderModel = ReminderModelView()
+                            reminderModel.createReminder(reminder: reminder) { success in
+                                if success {
+                                    print("Reminder set successfully")
+                                } else {
+                                    print("Failed to set reminder")
+                                }
+                                showReminderPicker = false
+                            }
+                        }
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                    }
+                    .padding()
+                }
                 .fullScreenCover(isPresented: $isOpenDetail){
                     DetailExersiceUpdateView(exersice: $exersiceSelected, id: id, isOpen : $isOpenDetail)
                 }
+                .fullScreenCover(isPresented: $isAdd){
+                    ExersiceListCreateView(id: $schedule.id, isOpen: $isAdd, modelEx: model)
+                }
+                
+                
+                
             }.onAppear{
                 model.fetchAllExersice{
                     success in

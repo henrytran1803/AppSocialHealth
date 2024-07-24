@@ -4,31 +4,52 @@
 //
 //  Created by Tran Viet Anh on 3/7/24.
 //
-
 import SwiftUI
 
 @main
 struct AppSocialHealthApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
+    @StateObject private var webSocketManager = WebSocketManager.shared
+    @State var id: Int = 0
+    init() {
+         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+             if granted {
+                 print("Notification permission granted.")
+             } else {
+                 print("Notification permission denied.")
+             }
+         }
+     }
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(webSocketManager)
+                .onAppear {
+                    id = UserDefaults.standard.integer(forKey: "user_id")
+                    webSocketManager.connect(userID: "\(id)")
+                }
+                .onDisappear {
+                    webSocketManager.disconnect()
+                }
         }
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    static var shared: AppDelegate?
+      
+      override init() {
+          super.init()
+          AppDelegate.shared = self
+      }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         return true
     }
 
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // Call your WebSocketManager to check for new messages
         WebSocketManager.shared.checkForMessages { newMessages in
             if newMessages.count > 0 {
-                // Process new messages and show notifications if needed
                 self.showNotifications(for: newMessages)
                 completionHandler(.newData)
             } else {
@@ -37,10 +58,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
     }
 
-    private func showNotifications(for messages: [String]) {
+    func showNotifications(for messages: [String]) {
         for message in messages {
             let content = UNMutableNotificationContent()
-            content.title = "New Message"
+            content.title = "Tin nhắn mới" // Vietnamese for "New Message"
             content.body = message
             content.sound = .default
 

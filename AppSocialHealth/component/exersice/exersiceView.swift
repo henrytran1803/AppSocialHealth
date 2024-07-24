@@ -94,14 +94,8 @@ struct exersiceView: View {
                             
                             // một số thông tin
                             
-                            VStack (alignment: .leading){
-                                Text("Thống kê")
-                                Text("Số bước chân: \(stepCount)")
-                                let calorieStep = calculateCalories(from: Double(stepCount), weight: modelUser.user.weight)
-                                Text("Calorie từ bước chân: \(calorieStep)")
-                                Text("Tổng số calorie từ bài tập:\(modelInfo.info.schedule)" )
-                                Text("Tổng tất cả: \(modelInfo.info.schedule + calorieStep)")
-                            }
+                            StatisticsView(stepCount: $stepCount, user: $modelUser.user, scheduleCalories: .constant(modelInfo.info.schedule))
+
                             // lịch
                             HStack{
                                 SmallCalendarView(daysInMonth: [], markedDates: markedDates)
@@ -152,8 +146,6 @@ struct exersiceView: View {
                     model.fetchScheduleByIdAndDate{
                         success in
                         if success {
-                            print(model.scheduleToday)
-                            print(model.scheduleFromDatetoDate)
                             modelExersice.fetchAllExersice{
                                 success in
                                 if success {
@@ -228,4 +220,61 @@ func getNearestFutureDate(from dates: [Date]) -> Date? {
     let currentDate = Date()
     let futureDates = dates.filter { $0 > currentDate }
     return futureDates.sorted().first
+}
+struct StatisticsView: View {
+    @Binding var stepCount: Int
+    @Binding var user: User
+    @Binding var scheduleCalories: Double
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Thống kê")
+                .font(.title2)
+                .bold()
+                .padding(.bottom, 5)
+            
+            HStack {
+                Image(systemName: "figure.walk")
+                    .foregroundColor(.green)
+                Text("Số bước chân: \(stepCount)")
+            }
+            .font(.body)
+            .padding(.vertical, 5)
+            
+            let calorieStep = calculateCalories(from: Double(stepCount), weight: user.weight)
+            HStack {
+                Image(systemName: "flame")
+                    .foregroundColor(.red)
+                Text("Calorie từ bước chân: \(String(format: "%.2f", calorieStep)) cal")
+            }
+            .font(.body)
+            .padding(.vertical, 5)
+            
+            HStack {
+                Image(systemName: "bolt.fill")
+                    .foregroundColor(.blue)
+                Text("Tổng số calorie từ bài tập: \(String(format: "%.2f", scheduleCalories)) cal")
+            }
+            .font(.body)
+            .padding(.vertical, 5)
+            
+            HStack {
+                Image(systemName: "sum")
+                    .foregroundColor(.orange)
+                Text("Tổng tất cả: \(String(format: "%.2f", scheduleCalories + calorieStep)) cal")
+            }
+            .font(.body)
+            .padding(.vertical, 5)
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
+        .shadow(radius: 5)
+        .padding([.leading, .trailing, .top])
+    }
+    
+    func calculateCalories(from steps: Double, weight: Double) -> Double {
+        // Your calorie calculation logic based on steps and weight
+        return steps * 0.05 * weight
+    }
 }

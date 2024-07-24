@@ -57,10 +57,6 @@ class LoginViewModel: ObservableObject {
                 print(data)
                 do {
                     let response = try JSONDecoder().decode(ResponseLogin.self, from: data)
-                    print("Status: \(response.status)")
-                       print("Message: \(response.message)")
-                       print("ID: \(response.data.id)")
-                       print("Token: \(response.data.token)")
                     UserDefaults.standard.set(response.data.token, forKey: "token")
                     UserDefaults.standard.set(response.data.id, forKey: "user_id")
                     UserDefaults.standard.set(true, forKey: "isLogin")

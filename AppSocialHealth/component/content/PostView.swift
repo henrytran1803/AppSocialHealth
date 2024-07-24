@@ -25,16 +25,23 @@ struct PostView: View {
     @State var isEdit = false
     @State var alertDelete = false
     @Binding var isReload : Bool
+    @State var isOpenProfile = false
     var body: some View {
         VStack {
             HStack {
                 if let uiImage = UIImage(data: post.user.photo?.image ?? Data()) {
                     MiniCircleimage(uiImage: uiImage)
                         .frame(width: 30, height: 30)
+                        .onTapGesture {
+                            isOpenProfile = true
+                        }
                 } else {
                     Circle()
                         .fill(Color.gray)
                         .frame(width: 30, height: 30)
+                        .onTapGesture {
+                            isOpenProfile = true
+                        }
                 }
                 Text("\(post.user.firstname) \(post.user.lastname)")
                     .bold()
@@ -166,6 +173,9 @@ struct PostView: View {
                 }
             }
         }
+        .sheet(isPresented: $isOpenProfile){
+            ProfileViewOrtherUserView(isOpen: $isOpenProfile, id: post.user_id)
+        }
         .sheet(isPresented: $isEdit){
             UpdatePostView( post: $post)
                 .onDisappear{
@@ -173,7 +183,7 @@ struct PostView: View {
                 }
         }
         .sheet(isPresented: $isBubble){
-            CommentView(post: $post, isLike: likeModel.isLike)
+            CommentView(post: $post, isLike: likeModel.isLike , isOpen: $isBubble)
                 .onDisappear{
                     isReload = true
                 }

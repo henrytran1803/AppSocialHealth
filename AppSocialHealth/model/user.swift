@@ -55,3 +55,6 @@ struct UserUpdate:Codable {
 struct GetUserResponse: Codable{
     var data: User
 }
+struct UserResponseData: Codable {
+    var data : [User]
+}

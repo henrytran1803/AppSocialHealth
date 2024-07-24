@@ -12,7 +12,7 @@ import Foundation
 enum API {
     static let baseURL = "http://localhost:8080"
     static var bearerToken: String? = nil
-
+    static let baseURLWS = "ws://localhost:8080/ws"
     case register
     case login
     case requestPasswordReset
@@ -57,7 +57,7 @@ enum API {
     case deleteSchedule(id: Int)
     case deleteScheduleDetail(detailId: Int)
     case createConversation
-    case sendMessage(conversationId: Int)
+    case sendMessage
     case listUserConversations(userId: Int)
     case listConversationMessages(conversationId: Int)
     case deleteConversation(conversationId: Int)
@@ -80,6 +80,7 @@ enum API {
     case getScheduleFromDateToDate(id : Int,fromDate: String, date: String)
     case checkIsLikeUserIdAndPostId(id : Int, post : Int)
     case createCommentNonePhoto
+    case getAllPostByUserId(id : Int)
     var path: String {
         switch self {
         case .register:
@@ -134,8 +135,8 @@ enum API {
             return "/v1/schedule/detail"
         case .createConversation:
             return "/v1/conversation"
-        case .sendMessage(let conversationId):
-            return "/v1/conversation/\(conversationId)/messages"
+        case .sendMessage:
+            return "/v1/conversation/messages"
         case .listUserConversations(let userId):
             return "/v1/conversation/users/\(userId)/conversations"
         case .listConversationMessages(let conversationId):
@@ -174,6 +175,8 @@ enum API {
             return "/v1/content/islike/user/\(id)/post/\(post)"
         case .createCommentNonePhoto:
             return "/v1/content/commentnonephoto"
+        case .getAllPostByUserId(let id):
+            return "/v1/content/user/\(id)"
         }
     }
     var method: String {
@@ -184,7 +187,7 @@ enum API {
             return "PUT"
         case .deleteFood, .deleteExercise, .deleteUser, .deleteMeal, .deleteMealDetail, .deletePost, .deleteLike, .deleteSchedule, .deleteScheduleDetail, .deleteConversation, .deleteMessage, .deleteReminder,.deletePhotoById:
             return "DELETE"
-        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate ,.checkIsLikeUserIdAndPostId:
+        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate ,.checkIsLikeUserIdAndPostId, .getAllPostByUserId:
             return "GET"
         }
     }

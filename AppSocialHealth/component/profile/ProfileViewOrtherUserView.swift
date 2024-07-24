@@ -1,52 +1,39 @@
 //
-//  profileView.swift
+//  ProfileViewOrtherUserView.swift
 //  AppSocialHealth
 //
-//  Created by Tran Viet Anh on 16/7/24.
+//  Created by Tran Viet Anh on 22/7/24.
 //
 
 import SwiftUI
 
-struct ProfileView: View {
-    @Binding var isLogin: Bool
+struct ProfileViewOrtherUserView: View {
+    @Binding var isOpen : Bool
+    @State var id : Int
     @ObservedObject var modeluser = UserViewModel()
     @ObservedObject var modelpost = PostViewModel()
-    @State var isLoading = false
+    @State var isLoading = true
     @State var isEdit = false
     @State var isOpenPost = false
     @State var selectedPost :Post = Post(id: 0, title: "", body: "", user_id: 0, count_likes: 0, count_comments: 0, photos: [], user: User(email: "", firstname: "", lastname: "", role: 0, height: 0, weight: 0, bdf: 0, tdee: 0, calorie: 0, id: 0, status: 0))
     var body: some View {
         GeometryReader{ geomrtry in
             if isLoading {
-                LoadingView()
+                ProgressView()
             }else {
+                HStack{
+                    Button {
+                        isOpen = false
+                    } label: {
+                        Image(systemName: "arrow.left")
+                    }
+                    Spacer()
+                }
                 ScrollView {
                     HStack{
                         Spacer()
                         Text("Trang cá nhân")
                         Spacer()
-                        Menu {
-                            sectionElementButton(title: "Setting", icon: "arrowshape.turn.up.left", action: {
-                                
-                            })
-                            sectionElementButton(title: "Edit profile", icon: "arrowshape.turn.up.left", action: {
-                                isEdit = true
-                            })
-                            sectionElementButton(title: "Logout", icon: "arrowshape.turn.up.left", action: {
-                                isLogin = false
-                                LoginViewModel().logout()
-                            })
-                        } label: {
-                            Circle()
-                                .fill(.gray.opacity(0.15))
-                                .frame(width: 30, height: 30)
-                                .overlay {
-                                    Image(systemName: "gear")
-                                        .font(.system(size: 13.0, weight: .semibold))
-                                        .foregroundColor(.black)
-                                        .padding()
-                                }
-                        }
                     }
                     HStack{
                         if let uiImage = UIImage(data: modeluser.user.photo?.image ?? Data()) {
@@ -106,11 +93,11 @@ struct ProfileView: View {
                 }
         }
         }.onAppear{
-            isLoading = false
-            modeluser.fetchUser{
+            isLoading = true
+            modeluser.fetchUserById(id: id){
                 success in
                 if success {
-                    modelpost.fetchAllPostById{
+                    modelpost.fetchAllPostByIdorther(id: id){
                         success in
                         if success {
                            isLoading = false
@@ -121,9 +108,6 @@ struct ProfileView: View {
         }
         .fullScreenCover(isPresented: $isOpenPost){
             CommentView(post: $selectedPost, isLike: false, isOpen: $isOpenPost)
-        }
-        .fullScreenCover(isPresented: $isEdit){
-            UserUpdateView(isOpen: $isEdit)
         }
     }
     

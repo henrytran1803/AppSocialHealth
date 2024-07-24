@@ -37,6 +37,12 @@ struct ScheduleUpdate : Codable{
     var time : String
 }
 struct ScheduleDetailCreate :Codable {
+    var schedule_id :Int
+    var exersice_id :Int
+    var rep: Int
+    var time : Int
+}
+struct ScheduleDetailCreateSigle :Codable {
     var exersice_id :Int
     var rep: Int
     var time : Int
@@ -44,7 +50,7 @@ struct ScheduleDetailCreate :Codable {
 struct ScheduleCreateFull :Codable {
     var user_id : Int
     var time : String
-    var detail : [ScheduleDetailCreate]
+    var detail : [ScheduleDetailCreateSigle]
 }
 struct ScheduleCreateResponse : Codable {
     var id :Int

@@ -20,10 +20,19 @@ struct CommentView: View {
     @State private var isExpanded = false
     @State var bodyy = ""
     @State var isLike: Bool
+    @Binding var isOpen : Bool
     @ObservedObject var likeModel = LikeModelView()
     @ObservedObject var modelComment = CommentViewModel()
     var body: some View {
         VStack {
+            HStack{
+                Button {
+                    isOpen = false
+                } label: {
+                    Image(systemName: "arrow.left")
+                }
+                Spacer()
+            }
             HStack {
                 if let uiImage = UIImage(data: post.user.photo?.image ?? Data()) {
                     MiniCircleimage(uiImage: uiImage)

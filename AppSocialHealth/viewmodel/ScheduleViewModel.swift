@@ -55,8 +55,8 @@ class ScheduleViewModel: ObservableObject {
                                        }
                             let schedule = try JSONDecoder().decode(ScheduleResponse.self, from: data)
                             self.scheduleToday = schedule.data ?? Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
-                            print(schedule.data)
-                            if schedule.data == nil {
+                            print( self.scheduleToday)
+                            if self.scheduleToday.id == 0  {
                                 UserDefaults.standard.setValue(true, forKey: "scheduleEmpty")
                                 UserDefaults.standard.setValue(self.scheduleToday.id, forKey: "scheduleId")
                             }else {
@@ -97,7 +97,6 @@ class ScheduleViewModel: ObservableObject {
                 completion(false)
                 return
             }
-        print(getCurrentDateString())
         var request = URLRequest(url: url)
         request.httpMethod = API.getScheduleFromDateToDate(id:id,fromDate: fromDate, date: toDate).method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -192,8 +191,6 @@ class ScheduleViewModel: ObservableObject {
                 dataTask.resume()
     }
     func CreateScheduleDetail(schedule : ScheduleDetailCreate,completion: @escaping (Bool) -> Void) {
-//        let id = UserDefaults.standard.integer(forKey: "user_id")
-        
         guard let token = UserDefaults.standard.string(forKey: "token") else {
                     print("Token không hợp lệ")
                     completion(false)
@@ -228,22 +225,9 @@ class ScheduleViewModel: ObservableObject {
                             completion(false)
                             return
                         }
-//                        guard let data = data else {
-//                            print("No data received from server")
-//                            completion(false)
-//                            return
-//                        }
+
                         completion(true)
-//                        do {
-//                            let meal = try JSONDecoder().decode(ScheduleCreateResponse.self, from: data)
-//                            UserDefaults.standard.setValue(meal.id, forKey: "scheduleId")
-//                                UserDefaults.standard.setValue(false, forKey: "scheduleEmpty")
-//                            print(meal)
-//                            completion(true)
-//                        } catch {
-//                            print("Failed to decode JSON: \(error.localizedDescription)")
-//                            completion(false)
-//                        }
+
                     }
                 }
                 dataTask.resume()

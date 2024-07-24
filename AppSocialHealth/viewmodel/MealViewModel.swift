@@ -21,7 +21,6 @@ class MealViewModel: ObservableObject {
                     completion(false)
                     return
                 }
-        print(getCurrentDateString())
                 var request = URLRequest(url: url)
                 request.httpMethod = API.getMealByidAndDate(id: id, date: getCurrentDateString()).method
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")

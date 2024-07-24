@@ -24,10 +24,10 @@ struct MiniCircleimage: View {
 }
 
 struct SuperMiniCircleImage: View {
-    var image: Image
+    var uiImage: UIImage
 
     var body: some View {
-        image
+        Image(uiImage: uiImage)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 15, height: 15)
@@ -39,10 +39,10 @@ struct SuperMiniCircleImage: View {
     }
 }
 struct CircleImage: View {
-    var image: Image
+    var uiImage: UIImage
 
     var body: some View {
-        image
+        Image(uiImage: uiImage)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 70, height: 70)

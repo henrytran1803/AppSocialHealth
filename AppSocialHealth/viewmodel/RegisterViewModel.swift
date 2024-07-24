@@ -9,7 +9,27 @@ import Foundation
 class RegisterViewModel: ObservableObject {
     @Published var register : Register = Register(email: "", firstName: "", lastName: "", role: 1, password: "")
     @Published var errorMessage: String = ""
-    func register(completion: @escaping (Bool) -> Void) {
+    func validateEmail(_ email: String) -> Bool {
+         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Z|a-z]{2,}")
+         return emailPredicate.evaluate(with: email)
+     }
+
+     func validatePassword(_ password: String) -> Bool {
+         return password.count > 8
+     }
+
+     func register(completion: @escaping (Bool) -> Void) {
+         if !validateEmail(register.email) {
+             errorMessage = "Invalid email address"
+             completion(false)
+             return
+         }
+         
+         if !validatePassword(register.password) {
+             errorMessage = "Password must be at least 9 characters long"
+             completion(false)
+             return
+         }
         guard let url = API.register.asURLRequest().url else {
             print("URL không hợp lệ")
             completion(false)
@@ -53,10 +73,8 @@ class RegisterViewModel: ObservableObject {
                 guard (200...299).contains(httpResponse.statusCode), let data = data else {
                     self.errorMessage = "Phản hồi không thành công từ server (mã trạng thái: \(httpResponse.statusCode))"
                     completion(false)
-                    print("2")
                     return
                 }
-                print(data)
                 do {
                     let response = try JSONDecoder().decode(RegisterData.self, from: data)
                     print(response)

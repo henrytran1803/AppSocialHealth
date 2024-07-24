@@ -56,6 +56,103 @@ class PostViewModel : ObservableObject {
         }
         dataTask.resume()
     }
+    func fetchAllPostById(completion: @escaping (Bool) -> Void) {
+        let id =  UserDefaults.standard.integer(forKey: "user_id")
+        guard let token = UserDefaults.standard.string(forKey: "token") else {
+            print("Token không hợp lệ")
+            completion(false)
+            return
+        }
+        guard let url = API.getAllPostByUserId( id: id).asURLRequest().url else {
+            print("URL không hợp lệ")
+            completion(false)
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = API.getAllPostByUserId( id: id).method
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    print("Invalid response from server")
+                    completion(false)
+                    return
+                }
+                
+                guard let data = data else {
+                    print("No data received from server")
+                    completion(false)
+                    return
+                }
+              
+                do {
+                    let exResponse = try JSONDecoder().decode(PostResponse.self, from: data)
+                    self.posts = exResponse.data ?? []
+                    completion(true)
+                } catch {
+                    print("Failed to decode JSON: \(error.localizedDescription)")
+                    completion(false)
+                }
+            }
+        }
+        dataTask.resume()
+    }
+    func fetchAllPostByIdorther(id: Int,completion: @escaping (Bool) -> Void) {
+        guard let token = UserDefaults.standard.string(forKey: "token") else {
+            print("Token không hợp lệ")
+            completion(false)
+            return
+        }
+        guard let url = API.getAllPostByUserId( id: id).asURLRequest().url else {
+            print("URL không hợp lệ")
+            completion(false)
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = API.getAllPostByUserId( id: id).method
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    print("Invalid response from server")
+                    completion(false)
+                    return
+                }
+                
+                guard let data = data else {
+                    print("No data received from server")
+                    completion(false)
+                    return
+                }
+              
+                do {
+                    let exResponse = try JSONDecoder().decode(PostResponse.self, from: data)
+                    self.posts = exResponse.data ?? []
+                    completion(true)
+                } catch {
+                    print("Failed to decode JSON: \(error.localizedDescription)")
+                    completion(false)
+                }
+            }
+        }
+        dataTask.resume()
+    }
     func createPost(post: CreatePost, completion: @escaping (Bool) -> Void) {
         let id = UserDefaults.standard.integer(forKey: "user_id")
         var newPost = post

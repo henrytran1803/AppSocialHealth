@@ -6,38 +6,45 @@
 //
 
 import SwiftUI
-
 struct ExersiceItemView: View {
-    @State var exersice : Exersice
+    @State var exersice: Exersice
+    
     var body: some View {
-            HStack{
-                if let imageData = exersice.photo.first?.image, let uiImage = UIImage(data: imageData) {
-                                  Image(uiImage: uiImage)
-                                      .resizable()
-                                      .aspectRatio(contentMode: .fit)
-                                      .frame(width: 100)
-                              } else {
-                                  ProgressView()
-                              }
-                Spacer()
-                Text("Name:\(exersice.name)")
-                    .foregroundColor(.black)
-                Spacer()
-                VStack{
-                    Text("Calorie: \(String(format: "%.2f", exersice.calorie))")
-                        .foregroundColor(.black.opacity(0.3))
-                    Text("Serving: \(String(format: "%.2f", exersice.rep_serving == 0 ? exersice.time_serving : exersice.rep_serving ))")
-                        .foregroundColor(.black.opacity(0.3))
-
-                }
-                
-               
-            }.frame(height: 110)
-            .overlay {
-                Rectangle()
-                    .stroke( .black.opacity(0.3),lineWidth:3)
+        HStack {
+            if let imageData = exersice.photo.first?.image, let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 80, height: 80)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            } else {
+                ProgressView()
+                    .frame(width: 80, height: 80)
+                    .background(Color.gray.opacity(0.2))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-            .padding([.leading, .trailing])
+            
+            VStack(alignment: .leading, spacing: 5) {
+                Text(exersice.name)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                
+                Text("Calorie: \(String(format: "%.2f", exersice.calorie)) cal")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                
+                Text("Serving: \(String(format: "%.2f", exersice.rep_serving == 0 ? exersice.time_serving : exersice.rep_serving))")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            .padding(.leading, 10)
+            
+            Spacer()
         }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .padding([.leading, .trailing, .top], 10)
+    }
 }
-

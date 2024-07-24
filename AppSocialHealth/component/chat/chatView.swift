@@ -7,35 +7,82 @@
 
 import SwiftUI
 
-struct chatView: View {
-    @StateObject private var viewModel = WebSocketViewModel()
-
+struct ChatView: View {
+    @ObservedObject var convertionModel = ConvertionViewModel()
+    @State var isOpen = false
+    @State var isCreateNew = false
+@State var isLoading = true
+    @State var message = Convertion(id: 0, created_at: "", participants: [], users: [])
     var body: some View {
-        VStack {
-            Button("Connect") {
-                viewModel.connect()
+        GeometryReader{ geomtry in
+        if isLoading {
+            VStack{
+                Spacer()
+                HStack{
+                    Spacer()
+                    LoadingView()
+                    Spacer()
+                }
+                Spacer()
             }
-            Button("Disconnect") {
-                viewModel.disconnect()
-            }
-            Button("Send Message") {
-                viewModel.sendMessage(message: "Hello WebSocket")
-            }
-            Text("Received Message: \(viewModel.receivedMessage)")
-                .padding()
-        }
-        .onAppear {
-            UNUserNotificationCenter.current().getNotificationSettings { settings in
-                if settings.authorizationStatus != .authorized {
-                    DispatchQueue.main.async {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }else {
+            VStack {
+                HStack{
+                    Text("Trung tâm tin nhắn")
+                    Menu("•••") {
+                        Button("Tạo đoạn chat mới", action: {
+                            isCreateNew = true
+                        } )
                     }
+                    
+                }
+                List {
+                    ForEach(convertionModel.convertions, id: \.id) { convertion in
+                        let currentUserID = UserDefaults.standard.integer(forKey: "user_id")
+                        let otherUser = convertion.users.first { $0.id != currentUserID }
+                        let user = otherUser ?? User(email: "", firstname: "", lastname: "", role: 0, height: 0, weight: 0, bdf: 0, tdee: 0, calorie: 0, id: 0, status: 0)
+                        
+                        ItemConversationListView(user: user)
+                            .onTapGesture {
+                                isOpen = true
+                                message = convertion
+                            }
+                    }
+                }.refreshable {
+                    convertionModel.convertions = []
+                    isLoading = true
+                    convertionModel.fetchAllConvertionByuser{success in
+                        if success {
+                            isLoading = false
+                        }else {
+                            print("fail")
+                        }
+                        
+                    }
+                }
+                
+            }
+            .fullScreenCover(isPresented: $isCreateNew){
+                CreateNewConversationView(isOpen : $isCreateNew)
+            }
+            .fullScreenCover(isPresented: $isOpen){
+                let currentUserID = UserDefaults.standard.integer(forKey: "user_id")
+
+                ConversationView(convertion: $message, isOpen : $isOpen, user: message.users.first(where: { $0.id != currentUserID }))
+            }
+        }
+        }
+
+        .onAppear {
+            convertionModel.fetchAllConvertionByuser { success in
+                if success {
+                    isLoading = false
+                }else {
+                    print("fail")
                 }
             }
         }
     }
 }
 
-#Preview {
-    chatView()
-}
+

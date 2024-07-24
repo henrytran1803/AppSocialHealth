@@ -8,137 +8,122 @@
 import SwiftUI
 import Charts
 
-
-struct FloatingPickerView: View {
-    @State private var isPickerVisible = false
-    @Binding var selected: String
-    let list: [String]
+struct homeView: View {
+    @State var modelUser = UserViewModel()
+    @State var modelInfo = InfomationViewModel()
+    @State var isLoading = true
     
     var body: some View {
-        ZStack {
-            if isPickerVisible {
-                ZStack {
-                    ForEach(0..<list.count, id: \.self) { index in
-                        Button(action: {
-                            selected = list[index]
-                            isPickerVisible = false
-                        }) {
-                            Text(list[index])
-                                .foregroundColor(.black)
-                                .padding()
-                                .background(Color.white)
-                                .clipShape(Circle())
-                        }.overlay{
-                            Circle()
-                                .stroke(.black.opacity(0.3), lineWidth: 3)
-                        }
-                        .offset(x: 0, y: -CGFloat(60 * (index + 1)))
-                        .transition(.move(edge: .bottom))
-                    }
-                }
-            }
-            
-            Button(action: {
-                withAnimation {
-                    isPickerVisible.toggle()
-                }
-            }) {
-                Image(systemName: isPickerVisible ? "xmark" : "plus")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(isPickerVisible ? Color.red.opacity(0.3) : Color.red)
-                    .clipShape(Circle())
-                    .shadow(radius: 10)
-            }
-            .padding()
-        }
-    }
-}
-
-struct homeView: View {
-    @State var searchText = ""
-    @State private var selected = ""
-    let list = ["Add", "Edit"]
-    var body: some View {
         GeometryReader { geometry in
-            ZStack{
-                VStack {
-                    HStack{
-                        Text("Lịch ăn hôm nay")
-                            .bold()
-                        HStack{
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.black.opacity(0.2))
-                            TextField("Search", text: $searchText)
-                            
-                        }.padding([.leading, .trailing])
-                            .overlay{
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(.black.opacity(0.2),lineWidth: 2)
-                            }
-                    }.padding([.leading, .trailing])
-                    SummaryView(carb: 10, fat: 10, sugar: 10, protein: 10, totalCalories: 10, calorieDeficit: 10)
-                    
-                    HStack{
-                        ChartsCustom(stackedBarData: .constant([DataCharts(name: "Protein", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Carb", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Fat", count: 10, color: .black.opacity(0.3) ),DataCharts(name: "Sugar", count: 10, color: .black.opacity(0.3) )]), text: "g")
-                            .frame( height: geometry.size.height * 0.4)
+            if isLoading {
+                ProgressView("Loading...")
+            } else {
+                ScrollView {
+                    VStack {
+                        UserProfileView(user: modelUser.user)
+                            .padding()
+                        
+                        HStack {
+                            Text("Chào mừng quay trở lại, \(modelUser.user.firstname)!")
+                                .bold()
+                                .font(.title2)
+                            Spacer()
+                        }
+                        .padding([.leading, .trailing])
+                        
+                        ProcressHomeView(calorie: $modelUser.user.calorie, info: $modelInfo.info)
+                            .frame(height: geometry.size.height * 0.4)
+                            .padding()
+                        
+                        SummaryView(
+                            carb: modelInfo.info.nutrition.total_carb,
+                            fat: modelInfo.info.nutrition.total_fat,
+                            sugar: modelInfo.info.nutrition.total_sugar,
+                            protein: modelInfo.info.nutrition.total_protein,
+                            totalCalories: modelInfo.info.nutrition.total_carb + modelInfo.info.nutrition.total_fat + modelInfo.info.nutrition.total_protein + modelInfo.info.nutrition.total_sugar,
+                            calorieDeficit: modelUser.user.calorie - (modelInfo.info.nutrition.total_carb + modelInfo.info.nutrition.total_fat + modelInfo.info.nutrition.total_protein + modelInfo.info.nutrition.total_sugar)
+                        )
+                        .padding()
+                        
+                        // Add more sections here as needed
                     }
-                    Spacer()
-                    
                 }
-                VStack{
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        FloatingPickerView(selected: $selected, list: list)
-                    }
-                }
-                
             }
         }
         .onAppear {
-            print("Selected item: \(selected)")
+            modelInfo.fetchInfoBydate { success in
+                if success {
+                    modelUser.fetchUser { success in
+                        if success {
+                            isLoading = false
+                        }
+                    }
+                }
+            }
         }
     }
-}
-struct DataCharts: Identifiable {
-    var name: String
-    var count: Double
-    var color: Color
-    var id = UUID()
 }
 
-struct ChartsCustom:View {
-    @Binding var stackedBarData: [DataCharts]
-    @State var text: String
+struct UserProfileView: View {
+    let user: User
+    
     var body: some View {
-        HStack{
-            Chart {
-                ForEach(stackedBarData) { shape in
-                    BarMark(
-                        x: .value("Shape Type", shape.name),
-                        y: .value("Total Count", shape.count)
-                    )
-                    .foregroundStyle(shape.color)
-                }
+        HStack {
+            if let uiImage = UIImage(data: user.photo?.image ?? Data()) {
+                CircleImage(uiImage: uiImage)
+                    .frame(width: 60, height: 60)
+            } else {
+                Circle()
+                    .fill(Color.gray)
+                    .frame(width: 60, height: 0)
             }
             
-            
-            VStack(alignment: .leading){
-                ForEach(stackedBarData) { shape in
-                    HStack{
-                        Image(systemName: "circle.fill")
-                            .foregroundStyle(shape.color)
-                        Text("\(shape.name): \(String(format: "%.2f", shape.count))\(text)")
-                            .foregroundStyle(.black.opacity(0.3))
-                    }
-                    
-                }
+            VStack(alignment: .leading) {
+                Text("\(user.firstname) \(user.lastname)")
+                    .font(.headline)
+                Text(user.email)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
             }
+            Spacer()
         }
-       
     }
 }
+
+struct ProcressHomeView: View {
+    @Binding var calorie: Double
+    @Binding var info: GetInfomationDate
+    @State var total: Double = 0
+
+    var body: some View {
+        VStack {
+            HStack {
+                NutritionProgressView(progress: info.nutrition.total_carb / total, color: .green, label: "Carb", value: info.nutrition.total_carb / total)
+                NutritionProgressView(progress: info.nutrition.total_fat / total, color: .red, label: "Fat", value: info.nutrition.total_fat / total)
+                NutritionProgressView(progress: info.nutrition.total_protein / total, color: .blue, label: "Protein", value: info.nutrition.total_protein / total)
+                NutritionProgressView(progress: info.nutrition.total_sugar / total, color: .yellow, label: "Sugar", value: info.nutrition.total_sugar / total)
+               
+            }
+            if total / calorie < 0.5 {
+                ProgressBar(progress: .constant(total / calorie), color: .yellow)
+                    .frame(width: 200, height: 200)
+                    .padding(40.0)
+            } else if total / calorie > 1 {
+                ProgressBar(progress: .constant(1 - total / calorie), color: .red)
+                    .frame(width: 200, height: 200)
+                    .padding(40.0)
+            } else {
+                ProgressBar(progress: .constant(total / calorie), color: .green)
+                    .frame(width: 200, height: 200)
+                    .padding(40.0)
+            }
+        }
+        .onAppear {
+            total = info.nutrition.total_carb + info.nutrition.total_sugar + info.nutrition.total_protein + info.nutrition.total_fat
+        }
+    }
+}
+
 
 struct SummaryView: View {
     let carb: Double
@@ -151,64 +136,38 @@ struct SummaryView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Tổng kết")
-                .bold()
                 .font(.headline)
                 .foregroundColor(.red)
                 .underline()
-
+                .padding(.bottom, 5)
+            
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Carb:\(String(format: "%.2f", carb))g")
-                    Text("Sugar: \(String(format: "%.2f", sugar))g")
+                    Text("Carb: \(String(format: "%.2f", carb)) g")
+                    Text("Sugar: \(String(format: "%.2f", sugar)) g")
                 }
                 Spacer()
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Fat: \(String(format: "%.2f", fat))g")
-                    Text("Protein: \(String(format: "%.2f", protein))g")
+                    Text("Fat: \(String(format: "%.2f", fat)) g")
+                    Text("Protein: \(String(format: "%.2f", protein)) g")
                 }
             }
-            Text("Tổng calories : \(String(format: "%.2f", totalCalories)) calo")
+            
+            Text("Tổng calories: \(String(format: "%.2f", totalCalories)) calo")
                 .font(.headline)
                 .fontWeight(.bold)
+                .padding(.top, 5)
+            
             if calorieDeficit > 0 {
                 Text("*Còn thiếu so với bạn \(String(format: "%.2f", calorieDeficit)) calo")
                     .foregroundColor(.red)
+                    .padding(.top, 5)
             }
         }
         .padding()
-    }
-}
-struct TabBarView: View {
-    @State private var tabSelected: Tab = .home
-    @Binding var isLogin : Bool
-
-    init(isLogin: Binding<Bool>) {
-           self._isLogin = isLogin
-           UITabBar.appearance().isHidden = true
-       }
-
-    var body: some View {
-        ZStack {
-            
-            VStack {
-                switch tabSelected {
-                case .home:
-                    homeView()
-                case .dish:
-                    dishView()
-                case .exersice:
-                    exersiceView()
-                case .content:
-                    contentView()
-                case .chat :
-                    PhotoPicker()
-                case .profile:
-                    profileView(isLogin: $isLogin)
-                }
-            
-                Spacer()
-                TabBarCustom(selectedTab: $tabSelected)
-            }.background(.gray.opacity(0.2))
-        }.edgesIgnoringSafeArea([.bottom, .trailing,. leading])
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
+        .shadow(radius: 5)
+        .padding([.leading, .trailing, .top])
     }
 }

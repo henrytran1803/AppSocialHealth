@@ -4,8 +4,7 @@
 //
 //  Created by Tran Viet Anh on 19/7/24.
 //
-
-import SwiftUI
+import Foundation
 import UserNotifications
 
 class WebSocketViewModel: ObservableObject {
@@ -13,7 +12,7 @@ class WebSocketViewModel: ObservableObject {
     @Published var receivedMessage: String = ""
 
     init() {
-        self.webSocketManager = WebSocketManager()
+        self.webSocketManager = WebSocketManager.shared
         NotificationCenter.default.addObserver(self, selector: #selector(handleReceivedMessage(_:)), name: .didReceiveMessage, object: nil)
     }
 
@@ -30,8 +29,8 @@ class WebSocketViewModel: ObservableObject {
         webSocketManager.disconnect()
     }
 
-    func sendMessage(message: String) {
-        webSocketManager.sendMessage(message: message)
+    func sendMessage(to userID: String, message: String) {
+        webSocketManager.sendMessage(to: userID, message: message)
     }
 
     @objc private func handleReceivedMessage(_ notification: Notification) {

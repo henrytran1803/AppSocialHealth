@@ -1,14 +1,14 @@
 //
-//  DetailExersice.swift
+//  DetailExersiceCreateView.swift
 //  AppSocialHealth
 //
-//  Created by Tran Viet Anh on 17/7/24.
+//  Created by Tran Viet Anh on 23/7/24.
 //
 
 import SwiftUI
 
-
-struct DetailExersice: View {
+struct DetailExersiceCreateView: View {
+    @State var id :Int
     @State var exersice : Exersice
     @State var isAdd = false
     @State private var inputNumber = ""
@@ -69,26 +69,13 @@ struct DetailExersice: View {
                                .keyboardType(.numberPad)
                            Button("OK", action: {
                                if let num = Double(inputNumber) {
-                                   let isMealEmpty = UserDefaults.standard.bool(forKey: "scheduleEmpty")
-                                   print(isMealEmpty)
-                                   if isMealEmpty {
-                                       ScheduleViewModel().CreateSchedule(schedule: ScheduleCreateFull(user_id: 0, time: getCurrentDateFullString(), detail:[ScheduleDetailCreateSigle(exersice_id: exersice.id, rep: Int(num), time: Int(num))] )){success in
+                                   ScheduleViewModel().CreateScheduleDetail(schedule: ScheduleDetailCreate(schedule_id: id, exersice_id: exersice.id, rep: Int(num), time: Int(num))){success in
                                            if success {
                                                alertsuccess = true
                                            }else {
                                                alertfail = true
                                            }
                                        }
-                                   }else {
-                                       let idSchedule = UserDefaults.standard.integer(forKey: "scheduleId")
-                                       ScheduleViewModel().CreateScheduleDetail(schedule: ScheduleDetailCreate(schedule_id: idSchedule, exersice_id: exersice.id, rep: Int(num), time: Int(num))){success in
-                                               if success {
-                                                   alertsuccess = true
-                                               }else {
-                                                   alertfail = true
-                                               }
-                                           }
-                                   }
                                }
                            })
                    Button("Cancel", role: .cancel, action: {})

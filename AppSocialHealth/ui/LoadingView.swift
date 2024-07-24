@@ -7,20 +7,14 @@
 
 import SwiftUI
 struct LoadingView : View {
-    @State private var progress: CGFloat = 0
-      let gradient1 = Gradient(colors: [.black, .white])
-      let gradient2 = Gradient(colors: [.gray, .white])
-
-      var body: some View {
-
-          Rectangle()
-              .animatableGradient(fromGradient: gradient1, toGradient: gradient2, progress: progress)
-              .ignoresSafeArea()
-              .onAppear {
-                  withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
-                      self.progress = 1.0
-                  }
-              }
+    var body: some View {
+        ProgressView("Loading..")
+        ProgressView {
+            HStack{
+                Image(systemName: "hand.raised")
+                Text("Please wait..")
+            }
+        }
     }
 }
 extension View {
