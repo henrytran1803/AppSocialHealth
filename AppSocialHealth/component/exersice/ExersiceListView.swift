@@ -15,7 +15,7 @@ struct ExersiceListView: View {
     var body: some View {
             NavigationStack{
                 if isLoading {
-                    LoadingView()
+                    AnimatedPlaceHolder()
                 }else {
                     VStack{
                         HStack{

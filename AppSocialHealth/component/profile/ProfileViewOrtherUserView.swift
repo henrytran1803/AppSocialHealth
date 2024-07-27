@@ -19,7 +19,7 @@ struct ProfileViewOrtherUserView: View {
     var body: some View {
         GeometryReader{ geomrtry in
             if isLoading {
-                ProgressView()
+                AnimatedPlaceHolder()
             }else {
                 HStack{
                     Button {

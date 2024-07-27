@@ -7,45 +7,54 @@
 
 import SwiftUI
 
+// ContentView.swift
 struct ContentView: View {
-    @State  var isLogin : Bool = true
-    @State  var login : Bool = true
-    @State var isForgot :Bool = false
-    @State var isRegister : Bool = false
-    @State var isFirstTime :Bool = false
-    @State var isConfirm:Bool = false
+    @StateObject private var loginViewModel = LoginViewModel()
 
     var body: some View {
         VStack {
-            if isFirstTime {
-                WelcomeView(isFirstTime : $isFirstTime)
-            }else {
-                if isLogin {
-                    TabBarView(isLogin: $isLogin)
-                }else {
-                    if login {
-                        loginView(isLogin: $isLogin, isForgot: $isForgot, isRegister: $isRegister,login: $login)
-                    }
-                    if isForgot {
-                        RequestResetPasswordView(login: $login, isForgot: $isForgot, isRegister: $isRegister,isConfirm : $isConfirm)
-                    }
-                    if isRegister
-                    {
-                        registerView(login: $login, isForgot: $isForgot, isRegister: $isRegister )
-                    }
-                    if isConfirm {
-                        ConfirmResetView(login: $login, isForgot: $isForgot, isRegister: $isRegister,isConfirm : $isConfirm)
-                    }
+            if loginViewModel.isFirstTime {
+                WelcomeView(isFirstTime: $loginViewModel.isFirstTime)
+            } else {
+                if loginViewModel.isLogin {
+                    TabBarView(isLogin: $loginViewModel.isLogin)
+                } else {
+                    AuthenticationView()
+                        .environmentObject(loginViewModel)
                 }
             }
-            
-        }.onAppear{
-            isLogin = UserDefaults.standard.bool(forKey: "isLogin")
-            isFirstTime = UserDefaults.standard.bool(forKey: "isFirstTime")
+        }
+        .onAppear {
+            loginViewModel.checkToken { success in
+                if !success {
+                    loginViewModel.logout()
+                }
+            }
         }
     }
 }
 
-#Preview {
-    ContentView()
+struct AuthenticationView: View {
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    @State private var login = true
+    @State private var isForgot = false
+    @State private var isRegister = false
+    @State private var isConfirm = false
+
+    var body: some View {
+        VStack {
+            if login {
+                loginView(isLogin: $loginViewModel.isLogin, isForgot: $isForgot, isRegister: $isRegister, login: $login)
+            }
+            if isForgot {
+                RequestResetPasswordView(login: $login, isForgot: $isForgot, isRegister: $isRegister, isConfirm: $isConfirm)
+            }
+            if isRegister {
+                registerView(login: $login, isForgot: $isForgot, isRegister: $isRegister)
+            }
+            if isConfirm {
+                ConfirmResetView(login: $login, isForgot: $isForgot, isRegister: $isRegister, isConfirm: $isConfirm)
+            }
+        }
+    }
 }

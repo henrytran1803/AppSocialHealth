@@ -7,22 +7,19 @@
 
 import SwiftUI
 import Charts
-
+import TipKit
 struct homeView: View {
     @State var modelUser = UserViewModel()
     @State var modelInfo = InfomationViewModel()
     @State var isLoading = true
-    
+    @StateObject private var tipViewModel = TipViewModel()
     var body: some View {
         GeometryReader { geometry in
             if isLoading {
-                ProgressView("Loading...")
+                AnimatedPlaceHolder()
             } else {
                 ScrollView {
                     VStack {
-                        UserProfileView(user: modelUser.user)
-                            .padding()
-                        
                         HStack {
                             Text("Chào mừng quay trở lại, \(modelUser.user.firstname)!")
                                 .bold()
@@ -30,21 +27,31 @@ struct homeView: View {
                             Spacer()
                         }
                         .padding([.leading, .trailing])
-                        
-                        ProcressHomeView(calorie: $modelUser.user.calorie, info: $modelInfo.info)
-                            .frame(height: geometry.size.height * 0.4)
+                        UserProfileView(user: modelUser.user)
                             .padding()
                         
-                        SummaryView(
-                            carb: modelInfo.info.nutrition.total_carb,
-                            fat: modelInfo.info.nutrition.total_fat,
-                            sugar: modelInfo.info.nutrition.total_sugar,
-                            protein: modelInfo.info.nutrition.total_protein,
-                            totalCalories: modelInfo.info.nutrition.total_carb + modelInfo.info.nutrition.total_fat + modelInfo.info.nutrition.total_protein + modelInfo.info.nutrition.total_sugar,
-                            calorieDeficit: modelUser.user.calorie - (modelInfo.info.nutrition.total_carb + modelInfo.info.nutrition.total_fat + modelInfo.info.nutrition.total_protein + modelInfo.info.nutrition.total_sugar)
-                        )
-                        .padding()
                         
+                        VStack{
+                            ProcressHomeView(calorie: $modelUser.user.calorie, info: $modelInfo.info)
+                                .frame(height: geometry.size.height * 0.4)
+                                .padding()
+                            TipView( CustomTip(titleText: "Biểu đồ", messageText: "Đây là biểu đồ của ngày hôm nay", iconName: "scribble"), arrowEdge: .top)
+
+                        }
+                        VStack{
+                            TipView( CustomTip(titleText: "Tổng kết", messageText: "Bảng này có tất cả các thông số của bạn", iconName: "scribble"), arrowEdge: .bottom)
+                           
+                            SummaryView(
+                                carb: modelInfo.info.nutrition.total_carb,
+                                fat: modelInfo.info.nutrition.total_fat,
+                                sugar: modelInfo.info.nutrition.total_sugar,
+                                protein: modelInfo.info.nutrition.total_protein,
+                                totalCalories: modelInfo.info.nutrition.total_carb + modelInfo.info.nutrition.total_fat + modelInfo.info.nutrition.total_protein + modelInfo.info.nutrition.total_sugar,
+                                calorieDeficit: modelUser.user.calorie - (modelInfo.info.nutrition.total_carb + modelInfo.info.nutrition.total_fat + modelInfo.info.nutrition.total_protein + modelInfo.info.nutrition.total_sugar)
+                            )
+                            
+                            .padding()
+                        }
                         // Add more sections here as needed
                     }
                 }

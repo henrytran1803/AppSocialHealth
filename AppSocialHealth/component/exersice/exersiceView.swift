@@ -26,7 +26,7 @@ struct exersiceView: View {
     var body: some View {
         GeometryReader { geometry in
             if isLoading {
-                LoadingView()
+                AnimatedPlaceHolder()
             }else {
                 ZStack{
                     ScrollView{

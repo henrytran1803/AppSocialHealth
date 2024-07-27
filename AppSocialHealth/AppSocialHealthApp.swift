@@ -5,13 +5,18 @@
 //  Created by Tran Viet Anh on 3/7/24.
 //
 import SwiftUI
-
+import TipKit
 @main
 struct AppSocialHealthApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var webSocketManager = WebSocketManager.shared
     @State var id: Int = 0
     init() {
+        do {
+           try Tips.configure()
+       } catch {
+           print("Failed to configure TipKit: \(error)")
+       }
          UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
              if granted {
                  print("Notification permission granted.")

@@ -16,15 +16,7 @@ struct contentView: View {
         GeometryReader { geometry in
             VStack{
                 if isLoading {
-                    HStack{
-                        Spacer()
-                        VStack{
-                            Spacer()
-                            ProgressView()
-                            Spacer()
-                        }
-                        Spacer()
-                    }
+                    AnimatedPlaceHolder()
                 }else {
                     ScrollView{
                         Button(action: {

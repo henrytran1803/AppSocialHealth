@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MessageView : View {
-    @State var user: User?
+    @Binding var user: User?
     @State var currentMessage: Message
     @State var user_current = 0
     var body: some View {

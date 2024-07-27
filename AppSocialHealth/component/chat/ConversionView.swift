@@ -24,56 +24,60 @@ struct ConversationView: View {
         }
         return "Unknown User"
     }
-
+@State var isLoading = true
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                HStack {
-                    Button {
-                        isOpen = false
-                    } label: {
-                        Text("Back")
+            if isLoading {
+                AnimatedPlaceHolder()
+            }else {
+                VStack {
+                    HStack {
+                        Button {
+                            isOpen = false
+                        } label: {
+                            Text("Back")
+                        }
+                        Text("\(firstUserEmail)")
                     }
-                    Text("\(firstUserEmail)")
-                }
-
-                ScrollView {
-                    ScrollViewReader { proxy in
-                        LazyVStack {
-                            ForEach(messageModel.message.messages, id: \.id) { msg in
-                                MessageView(currentMessage: msg)
-                                    .frame(width: geometry.size.width)
+                    
+                    ScrollView {
+                        ScrollViewReader { proxy in
+                            LazyVStack {
+                                ForEach(messageModel.message.messages, id: \.id) { msg in
+                                    MessageView(user: $user,currentMessage: msg)
+                                        .frame(width: geometry.size.width)
+                                }
+                            }
+                            .onAppear {
+                                scrollViewProxy = proxy
+                                scrollToBottom(proxy: proxy)
+                            }
+                            .onChange(of: messageModel.message.messages.count) { _ in
+                                scrollToBottom(proxy: proxy)
                             }
                         }
-                        .onAppear {
-                            scrollViewProxy = proxy
-                            scrollToBottom(proxy: proxy)
-                        }
-                        .onChange(of: messageModel.message.messages.count) { _ in
-                            scrollToBottom(proxy: proxy)
+                    }
+                    HStack {
+                        TextField("Message...", text: $typingMessage)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(minHeight: CGFloat(30))
+                        Button(action: sendMessage) {
+                            Text("Send")
                         }
                     }
+                    .frame(minHeight: CGFloat(50))
+                    .padding()
                 }
-                HStack {
-                    TextField("Message...", text: $typingMessage)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(minHeight: CGFloat(30))
-                    Button(action: sendMessage) {
-                        Text("Send")
-                    }
-                }
-                .frame(minHeight: CGFloat(50))
-                .padding()
             }
-            .onAppear {
-                messageModel.convertion = convertion
-                messageModel.fetchAllMessageConvertionByuser { success in
-                    if success {
-                        print("ok")
-                        scrollToBottom(proxy: scrollViewProxy)
-                    } else {
-                        print("fail")
-                    }
+            
+        }
+        .onAppear {
+            messageModel.convertion = convertion
+            messageModel.fetchAllMessageConvertionByuser { success in
+                if success {
+                    scrollToBottom(proxy: scrollViewProxy)
+                } else {
+                    
                 }
             }
         }

@@ -34,13 +34,39 @@ struct CreateNewConversationView: View {
                 
                
             }.padding([.leading, .trailing])
-            ForEach(filteredUsers,id: \.id) { user in
-                Text("\(user.firstname) \(user.lastname)")
-                    .onTapGesture {
-                        userSelected = user
-                        isAlert = true
-                    }
-            }
+            List(filteredUsers, id: \.id) { user in
+                      HStack {
+                          if let photoData = user.photo?.image, let uiImage = UIImage(data: photoData) {
+                              Image(uiImage: uiImage)
+                                  .resizable()
+                                  .aspectRatio(contentMode: .fill)
+                                  .frame(width: 50, height: 50)
+                                  .clipShape(Circle())
+                          } else {
+                              Circle()
+                                  .fill(Color.gray)
+                                  .frame(width: 50, height: 50)
+                          }
+                          VStack(alignment: .leading) {
+                              Text("\(user.firstname) \(user.lastname)")
+                                  .font(.headline)
+                              Text(user.email)
+                                  .font(.subheadline)
+                                  .foregroundColor(.secondary)
+                          }
+                          Spacer()
+                      }
+                      .padding()
+                      .background(Color.white)
+                      .cornerRadius(10)
+                      .shadow(radius: 5)
+                      .onTapGesture {
+                          userSelected = user
+                          isAlert = true
+                      }
+                  }
+                  .listStyle(PlainListStyle())
+                  .padding()
                 .alert("Bạn có muốn tạo đoạn hội thoại mới không", isPresented: $isAlert) {
                     Button("OK", role: .destructive) {
                         let id = UserDefaults.standard.integer(forKey: "user_id")

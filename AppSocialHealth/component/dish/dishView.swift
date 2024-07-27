@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct dishView: View {
     @ObservedObject var model = MealViewModel()
@@ -18,11 +19,11 @@ struct dishView: View {
     @State var id = 0
     @ObservedObject var modelFood = FoodViewModel()
     @State var isLoading = true
-    let list = ["Add", "Edit"]
+    let list = ["Add"]
     var body: some View {
         GeometryReader { geometry in
             if isLoading {
-                LoadingView()
+                AnimatedPlaceHolder()
             }else {
                 ZStack{
                     ScrollView{
@@ -40,7 +41,10 @@ struct dishView: View {
                                         RoundedRectangle(cornerRadius: 5)
                                             .stroke(.black.opacity(0.2),lineWidth: 2)
                                     }
+                                TipView( CustomTip(titleText: "Tìm kiếm", messageText: "Tìm kiếm trong lịch của bạn", iconName: "scribble"), arrowEdge: .bottom)
+
                             }.padding([.leading, .trailing])
+                            TipView( CustomTip(titleText: "Tìm kiếm", messageText: "Tìm kiếm trong lịch của bạn", iconName: "scribble"), arrowEdge: .top)
                             VStack {
                                 ScrollView {
                                     if let dishes = model.meal.dishes {
@@ -92,8 +96,11 @@ struct dishView: View {
                                         .stroke(.black.opacity(0.3),lineWidth: 3)
                                 }
                             
-                            
+                            TipView( CustomTip(titleText: "Tổng kết", messageText: "Bảng này có tất cả các thông số của bạn", iconName: "scribble"), arrowEdge: .bottom)
+
                             SummaryView(carb: modelInfo.info.nutrition.total_carb, fat: modelInfo.info.nutrition.total_fat, sugar: modelInfo.info.nutrition.total_sugar, protein: modelInfo.info.nutrition.total_protein, totalCalories: modelInfo.info.meal, calorieDeficit: modelInfo.info.calorie)
+                            TipView( CustomTip(titleText: "Biểu đồ", messageText: "Biểu đồ macro của bạn", iconName: "scribble"), arrowEdge: .bottom)
+
                             HStack{
                                 ChartsCustom(stackedBarData: .constant([DataCharts(name: "Protein", count: modelInfo.info.nutrition.total_protein, color: .black.opacity(0.3) ),DataCharts(name: "Carb", count: modelInfo.info.nutrition.total_carb, color: .black.opacity(0.3) ),DataCharts(name: "Fat", count: modelInfo.info.nutrition.total_fat, color: .black.opacity(0.3) ),DataCharts(name: "Sugar", count: modelInfo.info.nutrition.total_sugar, color: .black.opacity(0.3) )]), text: "g")
                                     .frame( height: geometry.size.height * 0.4)

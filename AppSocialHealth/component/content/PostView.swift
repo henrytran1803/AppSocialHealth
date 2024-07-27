@@ -26,148 +26,154 @@ struct PostView: View {
     @State var alertDelete = false
     @Binding var isReload : Bool
     @State var isOpenProfile = false
+    @State var isLoading = true
     var body: some View {
+        
         VStack {
-            HStack {
-                if let uiImage = UIImage(data: post.user.photo?.image ?? Data()) {
-                    MiniCircleimage(uiImage: uiImage)
-                        .frame(width: 30, height: 30)
-                        .onTapGesture {
-                            isOpenProfile = true
-                        }
-                } else {
-                    Circle()
-                        .fill(Color.gray)
-                        .frame(width: 30, height: 30)
-                        .onTapGesture {
-                            isOpenProfile = true
-                        }
-                }
-                Text("\(post.user.firstname) \(post.user.lastname)")
-                    .bold()
-                    .font(.system(size: 15))
-
-                Spacer()
-                Menu("•••") {
-                    Button("Edit", action: {
-                        
-                        var id =  UserDefaults.standard.integer(forKey: "user_id")
-                        if id == post.user_id {
-                            isEdit = true
-                        }
-                        
-                        
-                        
-                    } )
-                    Button("Delete", action: {
-                        var id =  UserDefaults.standard.integer(forKey: "user_id")
-                        if id == post.user_id {
-                            alertDelete = true
-                        }
-                        
-                        
-                        
-                    })
-                }
-            }
-            .padding(.horizontal)
-
-            if post.photos.isEmpty {
-                // Handle case where there are no photos
-            } else {
-                TabView {
-                    ForEach(post.photos, id: \.id) { photo in
-                        if let uiImage = UIImage(data: photo.image) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFill()
-                        } else {
-                            Color.gray
-                        }
+            if isLoading {
+                AnimatedPlaceHolder()
+            }else {
+                HStack {
+                    if let uiImage = UIImage(data: post.user.photo?.image ?? Data()) {
+                        MiniCircleimage(uiImage: uiImage)
+                            .frame(width: 30, height: 30)
+                            .onTapGesture {
+                                isOpenProfile = true
+                            }
+                    } else {
+                        Circle()
+                            .fill(Color.gray)
+                            .frame(width: 30, height: 30)
+                            .onTapGesture {
+                                isOpenProfile = true
+                            }
                     }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                .frame(height: 250)
-            }
-
-            VStack (alignment: .leading){
-                HStack{
-                    Text("\(post.title)")
+                    Text("\(post.user.firstname) \(post.user.lastname)")
                         .bold()
-                   Spacer()
-                }
-               
-                HStack{
-                    ExpandableText(text: post.body)
-                    Spacer()
-                }
+                        .font(.system(size: 15))
                     
-            }.padding(.horizontal)
-
-            HStack {
-                Button(action: {
-                    if likeModel.isLike {
-                        likeModel.DelteLike(post_id: post.id){success in
-                            if success {
-                                likeModel.isLike = false
-                            }else {
-                                
+                    Spacer()
+                    Menu("•••") {
+                        Button("Edit", action: {
+                            
+                            var id =  UserDefaults.standard.integer(forKey: "user_id")
+                            if id == post.user_id {
+                                isEdit = true
                             }
-                        }
-                    }else {
-                        likeModel.CreateLikes(post_id: post.id){success in
-                            if success {
-                                likeModel.isLike = true
-                            }else {
-                                
+                            
+                            
+                            
+                        } )
+                        Button("Delete", action: {
+                            var id =  UserDefaults.standard.integer(forKey: "user_id")
+                            if id == post.user_id {
+                                alertDelete = true
+                            }
+                            
+                            
+                            
+                        })
+                    }
+                }
+                .padding(.horizontal)
+                
+                if post.photos.isEmpty {
+                    // Handle case where there are no photos
+                } else {
+                    TabView {
+                        ForEach(post.photos, id: \.id) { photo in
+                            if let uiImage = UIImage(data: photo.image) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFill()
+                            } else {
+                                Color.gray
                             }
                         }
                     }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                    .frame(height: 250)
+                }
+                
+                VStack (alignment: .leading){
+                    HStack{
+                        Text("\(post.title)")
+                            .bold()
+                        Spacer()
+                    }
                     
-                }, label: {
-                    Image(systemName: likeModel.isLike ? "heart.fill" : "heart")
-                        .foregroundColor(likeModel.isLike ? Color.red : Color.black)
-                })
-                Button(action: { isBubble.toggle() }, label: {
-                    Image(systemName: isBubble ? "bubble.fill" : "bubble")
-                        .foregroundColor(.black)
-                })
-                Spacer()
-                Button(action: { isShowingBottomShare = true }, label: {
-                    Image(systemName: "paperplane")
-                        .foregroundColor(.black)
-                })
-            }
-            .padding(.horizontal)
-            .font(.system(size: 25))
-
-            HStack {
-                Text("\(post.count_likes) lượt thích")
-                    .bold()
-                    .font(.system(size: 10))
-                Spacer()
-                Text("\(post.count_comments) lượt bình luận")
-                    .bold()
-                    .font(.system(size: 10))
-            }
-            .padding(.leading)
-            .alert("Bạn có chắc muốn xoá", isPresented: $alertDelete) {
-                        Button("OK", role: .destructive) {
-                            PostViewModel().deletePostById(id: post.id){
-                                success in
+                    HStack{
+                        ExpandableText(text: post.body)
+                        Spacer()
+                    }
+                    
+                }.padding(.horizontal)
+                
+                HStack {
+                    Button(action: {
+                        if likeModel.isLike {
+                            likeModel.DelteLike(post_id: post.id){success in
                                 if success {
-                                    print("oke")
+                                    likeModel.isLike = false
                                 }else {
-                                    print("fail")
+                                    
+                                }
+                            }
+                        }else {
+                            likeModel.CreateLikes(post_id: post.id){success in
+                                if success {
+                                    likeModel.isLike = true
+                                }else {
+                                    
                                 }
                             }
                         }
-                        Button("Cancel", role: .cancel) { }
+                        
+                    }, label: {
+                        Image(systemName: likeModel.isLike ? "heart.fill" : "heart")
+                            .foregroundColor(likeModel.isLike ? Color.red : Color.black)
+                    })
+                    Button(action: { isBubble.toggle() }, label: {
+                        Image(systemName: isBubble ? "bubble.fill" : "bubble")
+                            .foregroundColor(.black)
+                    })
+                    Spacer()
+                    Button(action: { isShowingBottomShare = true }, label: {
+                        Image(systemName: "paperplane")
+                            .foregroundColor(.black)
+                    })
+                }
+                .padding(.horizontal)
+                .font(.system(size: 25))
+                
+                HStack {
+                    Text("\(post.count_likes) lượt thích")
+                        .bold()
+                        .font(.system(size: 10))
+                    Spacer()
+                    Text("\(post.count_comments) lượt bình luận")
+                        .bold()
+                        .font(.system(size: 10))
+                }
+                .padding(.leading)
+                .alert("Bạn có chắc muốn xoá", isPresented: $alertDelete) {
+                    Button("OK", role: .destructive) {
+                        PostViewModel().deletePostById(id: post.id){
+                            success in
+                            if success {
+                                print("oke")
+                            }else {
+                                print("fail")
+                            }
+                        }
                     }
+                    Button("Cancel", role: .cancel) { }
+                }
+            }
         }.onAppear{
             likeModel.CheckIsLike(post_id: post.id){success in
                 if success {
-                    
+                    isLoading = false
                 }else {
                     
                 }

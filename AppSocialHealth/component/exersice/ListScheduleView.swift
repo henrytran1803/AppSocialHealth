@@ -49,15 +49,21 @@ struct ListScheduleView: View {
                     
                 }
                 VStack{
-                    ScrollView{
-                        ForEach(filteredSchedules, id: \.id){schedule in
-                                Text("\(schedule.time)\(schedule.id)")
-                                .onTapGesture {
-                                    scheduleSelected = schedule
-                                    isOpenDetail = true
-                                }
-                        }
-                    }
+                    ScrollView {
+                       ForEach(filteredSchedules, id: \.id) { schedule in
+                           ScheduleRow(schedule: schedule)
+                               .onTapGesture {
+                                   scheduleSelected = schedule
+                                   isOpenDetail = true
+                               }
+                               .padding(.vertical, 5)
+                               .padding(.horizontal)
+                               .background(Color.white)
+                               .cornerRadius(10)
+                               .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                       }
+                   }
+                   .padding()
                 }
                 .sheet(isPresented: $showDatePicker) {
                             DatePickerView(selectedDate: $selectedDate)
@@ -95,3 +101,23 @@ struct ListScheduleView: View {
 //#Preview {
 //    ListScheduleView()
 //}
+struct ScheduleRow: View {
+    var schedule: Schedule
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text("Time: \(schedule.time)")
+                    .font(.headline)
+                Text("Calories: \(schedule.calories, specifier: "%.2f") kcal")
+                    .font(.subheadline)
+                Text("Status: \(schedule.status == 1 ? "Active" : "Inactive")")
+                    .font(.subheadline)
+                    .foregroundColor(schedule.status == 1 ? .green : .red)
+            }
+            Spacer()
+            Image(systemName: "chevron.right")
+                .foregroundColor(.gray)
+        }
+    }
+}

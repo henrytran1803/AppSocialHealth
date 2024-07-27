@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @State private var isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
     @State private var tabSelected: Tab = .home
     @Binding var isLogin : Bool
 
@@ -17,26 +18,32 @@ struct TabBarView: View {
        }
 
     var body: some View {
-        ZStack {
-            VStack {
-                switch tabSelected {
-                case .home:
-                    homeView()
-                case .dish:
-                    dishView()
-                case .exersice:
-                    exersiceView()
-                case .content:
-                    contentView()
-                case .chat :
-                    ChatView()
-                case .profile:
-                    ProfileView(isLogin: $isLogin)
-                }
+        if !isFirstLaunch {
+                OnboardingView(isFirstLaunch: $isFirstLaunch)
+        } else {
             
-                Spacer()
-                TabBarCustom(selectedTab: $tabSelected)
-            }.background(.gray.opacity(0.2))
-        }.edgesIgnoringSafeArea([.bottom, .trailing,. leading])
+            ZStack {
+                VStack {
+                    switch tabSelected {
+                    case .home:
+                        homeView()
+                    case .dish:
+                        dishView()
+                    case .exersice:
+                        exersiceView()
+                    case .content:
+                        contentView()
+                    case .chat :
+                        ChatView()
+                    case .profile:
+                        ProfileView(isLogin: $isLogin)
+                    }
+                    
+                    Spacer()
+                    TabBarCustom(selectedTab: $tabSelected)
+                }.background(.gray.opacity(0.2))
+            }.edgesIgnoringSafeArea([.bottom, .trailing,. leading])
+        }
     }
+    
 }

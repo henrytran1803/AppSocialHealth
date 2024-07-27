@@ -55,7 +55,6 @@ class ScheduleViewModel: ObservableObject {
                                        }
                             let schedule = try JSONDecoder().decode(ScheduleResponse.self, from: data)
                             self.scheduleToday = schedule.data ?? Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
-                            print( self.scheduleToday)
                             if self.scheduleToday.id == 0  {
                                 UserDefaults.standard.setValue(true, forKey: "scheduleEmpty")
                                 UserDefaults.standard.setValue(self.scheduleToday.id, forKey: "scheduleId")
@@ -90,8 +89,7 @@ class ScheduleViewModel: ObservableObject {
         
         let fromDate = dateFormatter.string(from: startOfMonth)
         let toDate = dateFormatter.string(from: endOfMonth)
-        print(fromDate)
-        print(toDate)
+        
         guard let url = API.getScheduleFromDateToDate(id: id,fromDate: fromDate, date: toDate).asURLRequest().url else {
                 print("URL không hợp lệ")
                 completion(false)

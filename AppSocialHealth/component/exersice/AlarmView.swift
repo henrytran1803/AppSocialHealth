@@ -4,8 +4,8 @@
 //
 //  Created by Tran Viet Anh on 23/7/24.
 //
-
 import SwiftUI
+import UserNotifications
 
 struct AlarmView: View {
     @State private var selectedDate = Date()
@@ -13,21 +13,41 @@ struct AlarmView: View {
 
     var body: some View {
         VStack {
-            DatePicker("Chọn Ngày & Giờ", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
+            Text("Chọn Ngày & Giờ")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .padding(.top, 20)
+
+            DatePicker("", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
                 .datePickerStyle(GraphicalDatePickerStyle())
+                .frame(maxWidth: .infinity, minHeight: 300)
+                .background(Color(UIColor.systemGray6))
+                .cornerRadius(12)
                 .padding()
 
             Button(action: scheduleNotification) {
                 Text("Đặt Báo Thức")
+                    .fontWeight(.bold)
                     .padding()
+                    .frame(maxWidth: .infinity)
                     .background(Color.blue)
                     .foregroundColor(.white)
-                    .cornerRadius(8)
+                    .cornerRadius(12)
+                    .shadow(radius: 5)
             }
+            .padding()
             .alert(isPresented: $showAlert) {
-                Alert(title: Text("Báo Thức Đã Đặt"), message: Text("Báo thức của bạn đã được đặt vào \(selectedDate.formatted())"), dismissButton: .default(Text("OK")))
+                Alert(
+                    title: Text("Báo Thức Đã Đặt"),
+                    message: Text("Báo thức của bạn đã được đặt vào \(selectedDate.formatted(date: .abbreviated, time: .shortened))"),
+                    dismissButton: .default(Text("OK"))
+                )
             }
         }
+        .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(16)
+        .shadow(radius: 10)
         .padding()
     }
 
@@ -52,3 +72,4 @@ struct AlarmView: View {
         }
     }
 }
+

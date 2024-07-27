@@ -16,15 +16,7 @@ struct ChatView: View {
     var body: some View {
         GeometryReader{ geomtry in
         if isLoading {
-            VStack{
-                Spacer()
-                HStack{
-                    Spacer()
-                    LoadingView()
-                    Spacer()
-                }
-                Spacer()
-            }
+            AnimatedPlaceHolder()
         }else {
             VStack {
                 HStack{
@@ -72,8 +64,8 @@ struct ChatView: View {
             }
         }
         }
-
         .onAppear {
+            isLoading = true
             convertionModel.fetchAllConvertionByuser { success in
                 if success {
                     isLoading = false
@@ -82,6 +74,7 @@ struct ChatView: View {
                 }
             }
         }
+        .background(Color.white)
     }
 }
 
