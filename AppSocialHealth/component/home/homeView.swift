@@ -105,10 +105,17 @@ struct ProcressHomeView: View {
     var body: some View {
         VStack {
             HStack {
-                NutritionProgressView(progress: info.nutrition.total_carb / total, color: .green, label: "Carb", value: info.nutrition.total_carb / total)
-                NutritionProgressView(progress: info.nutrition.total_fat / total, color: .red, label: "Fat", value: info.nutrition.total_fat / total)
-                NutritionProgressView(progress: info.nutrition.total_protein / total, color: .blue, label: "Protein", value: info.nutrition.total_protein / total)
-                NutritionProgressView(progress: info.nutrition.total_sugar / total, color: .yellow, label: "Sugar", value: info.nutrition.total_sugar / total)
+                let total = info.nutrition.total_carb + info.nutrition.total_fat + info.nutrition.total_protein + info.nutrition.total_sugar
+
+                if total > 0 {
+                    NutritionProgressView(progress: info.nutrition.total_carb / total, color: .green, label: "Carb", value: info.nutrition.total_carb)
+                    NutritionProgressView(progress: info.nutrition.total_fat / total, color: .red, label: "Fat", value: info.nutrition.total_fat)
+                    NutritionProgressView(progress: info.nutrition.total_protein / total, color: .blue, label: "Protein", value: info.nutrition.total_protein)
+                    NutritionProgressView(progress: info.nutrition.total_sugar / total, color: .yellow, label: "Sugar", value: info.nutrition.total_sugar)
+                } else {
+                    Text("No nutritional information available")
+                        .foregroundColor(.secondary)
+                }
                
             }
             if total / calorie < 0.5 {

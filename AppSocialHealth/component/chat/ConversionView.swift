@@ -12,79 +12,111 @@ struct ConversationView: View {
     @Binding var isOpen: Bool
     @State private var typingMessage = ""
     @ObservedObject var messageModel: MessageViewModel = MessageViewModel()
-    @State private var scrollViewProxy: ScrollViewProxy?
-    @State var user : User?
+    @State var user: User?
+    @State private var scrollTo: Int?
+    @State private var isLoading = true
+    @Environment(\.colorScheme) var colorScheme
+    
     private var currentUserID: Int {
-        return UserDefaults.standard.integer(forKey: "user_id")
+        UserDefaults.standard.integer(forKey: "user_id")
     }
-
-    var firstUserEmail: String {
-        if let user = convertion.users.first(where: { $0.id != currentUserID }) {
-            return "\(user.firstname) \(user.lastname)"
-        }
-        return "Unknown User"
+    
+    private var firstUserEmail: String {
+        convertion.users.first { $0.id != currentUserID }.map { "\($0.firstname) \($0.lastname)" } ?? "Unknown User"
     }
-@State var isLoading = true
+    
     var body: some View {
         GeometryReader { geometry in
-            if isLoading {
-                AnimatedPlaceHolder()
-            }else {
-                VStack {
-                    HStack {
-                        Button {
-                            isOpen = false
-                        } label: {
-                            Text("Back")
-                        }
-                        Text("\(firstUserEmail)")
+            ZStack {
+                backgroundGradient
+                
+                if isLoading {
+                    AnimatedPlaceHolder()
+                } else {
+                    VStack(spacing: 0) {
+                        headerView
+                        messagesScrollView(geometry: geometry)
+                        messageInputView
                     }
-                    
-                    ScrollView {
-                        ScrollViewReader { proxy in
-                            LazyVStack {
-                                ForEach(messageModel.message.messages, id: \.id) { msg in
-                                    MessageView(user: $user,currentMessage: msg)
-                                        .frame(width: geometry.size.width)
-                                }
-                            }
-                            .onAppear {
-                                scrollViewProxy = proxy
-                                scrollToBottom(proxy: proxy)
-                            }
-                            .onChange(of: messageModel.message.messages.count) { _ in
-                                scrollToBottom(proxy: proxy)
-                            }
-                        }
-                    }
-                    HStack {
-                        TextField("Message...", text: $typingMessage)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .frame(minHeight: CGFloat(30))
-                        Button(action: sendMessage) {
-                            Text("Send")
-                        }
-                    }
-                    .frame(minHeight: CGFloat(50))
-                    .padding()
                 }
+            }
+        }
+        .onAppear(perform: loadMessages)
+    }
+    
+    private var backgroundGradient: some View {
+        LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.1)]),
+                       startPoint: .topLeading,
+                       endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.all)
+    }
+    
+    private var headerView: some View {
+        HStack {
+            Button(action: { isOpen = false }) {
+                HStack {
+                    Image(systemName: "chevron.left")
+                    Text("Back")
+                }
+                .foregroundColor(.blue)
             }
             
+            Text(firstUserEmail)
+                .font(.headline)
+                .padding(.leading)
+            
+            Spacer()
         }
-        .onAppear {
-            messageModel.convertion = convertion
-            messageModel.fetchAllMessageConvertionByuser { success in
-                if success {
-                    scrollToBottom(proxy: scrollViewProxy)
-                } else {
-                    
+        .padding(.horizontal)
+        .frame(height: 60)
+        .background(Color(UIColor.systemBackground).opacity(0.8))
+        .shadow(radius: 1)
+    }
+    
+    private func messagesScrollView(geometry: GeometryProxy) -> some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(messageModel.message.messages, id: \.id) { msg in
+                    MessageView(user: $user, currentMessage: msg)
+                        .frame(width: geometry.size.width)
                 }
             }
+            .scrollTargetLayout()
         }
-        .background(Color.white)
+        .scrollPosition(id: $scrollTo)
     }
-
+    
+    private var messageInputView: some View {
+        HStack {
+            TextField("Type a message...", text: $typingMessage)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(minHeight: 40)
+            
+            Button(action: sendMessage) {
+                Image(systemName: "paperplane.fill")
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .background(Color.blue)
+                    .clipShape(Circle())
+            }
+        }
+        .padding()
+        .background(Color(UIColor.systemBackground).opacity(0.8))
+    }
+    
+    private func loadMessages() {
+        messageModel.convertion = convertion
+        messageModel.fetchAllMessageConvertionByuser { success in
+            if success {
+                scrollTo = messageModel.message.messages.last?.id
+                isLoading = false
+            }
+        }
+    }
+    
     private func sendMessage() {
+        guard !typingMessage.isEmpty else { return }
+        
         let message = SendMessage(conversation_id: convertion.id, sender_id: currentUserID, content: typingMessage)
         messageModel.sendMessage(message: message) { success in
             if success {
@@ -92,24 +124,21 @@ struct ConversationView: View {
                     webSocketViewModel.sendMessage(to: "\(user.id)", message: typingMessage)
                     typingMessage = ""
                 }
-                messageModel.fetchAllMessageConvertionByuser { success in
-                    if success {
-                        print("Messages updated")
-                        scrollToBottom(proxy: scrollViewProxy)
-                    } else {
-                        print("Failed to update messages")
-                    }
-                }
+                updateMessages()
             } else {
                 print("Failed to send message")
             }
         }
     }
-
-    private func scrollToBottom(proxy: ScrollViewProxy?) {
-        guard let proxy = proxy else { return }
-        withAnimation {
-            proxy.scrollTo(messageModel.message.messages.last?.id, anchor: .bottom)
+    
+    private func updateMessages() {
+        messageModel.fetchAllMessageConvertionByuser { success in
+            if success {
+                print("Messages updated")
+                scrollTo = messageModel.message.messages.last?.id
+            } else {
+                print("Failed to update messages")
+            }
         }
     }
 }

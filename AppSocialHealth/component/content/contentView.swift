@@ -12,6 +12,8 @@ struct contentView: View {
     @State var isNew = false
     @State var isLoading = true
     @State var isReload = false
+    @State private var showingHeader = true
+    
     var body: some View {
         GeometryReader { geometry in
             VStack{
@@ -94,8 +96,4 @@ struct contentView: View {
             }
         }
     }
-}
-
-#Preview {
-    contentView()
 }

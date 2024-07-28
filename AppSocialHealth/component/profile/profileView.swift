@@ -20,15 +20,22 @@ struct ProfileView: View {
             if isLoading {
                 AnimatedPlaceHolder()
             } else {
-                ScrollView {
-                    VStack(spacing: 16) {
-                        header
-                        profileInfo
-                        Divider()
-                        photoGrid(geometry: geometry)
+                VStack(alignment:.center){
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            header
+                            profileInfo
+                            Divider()
+                            HStack{
+                                Spacer()
+                                photoGrid(geometry: geometry)
+                                Spacer()
+                            }
+                            
+                        }
                     }
-                    .padding()
                 }
+                    
                 .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
                 
                 .fullScreenCover(isPresented: $isOpenPost) {
@@ -91,44 +98,81 @@ struct ProfileView: View {
     }
     
     private var profileInfo: some View {
-        HStack {
+        HStack(spacing: 20) {
+            profileImage
+            
+            VStack(alignment: .leading, spacing: 8) {
+                nameAndEmail
+                Divider()
+                physicalStats
+            }
+        }
+        .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(15)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+    }
+
+    private var profileImage: some View {
+        Group {
             if let uiImage = UIImage(data: modeluser.user.photo?.image ?? Data()) {
                 CircleImage(uiImage: uiImage)
-                    .frame(width: 70, height: 70)
+                    .frame(width: 100, height: 100)
             } else {
-                Circle()
-                    .fill(Color.gray)
-                    .frame(width: 70, height: 70)
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.gray)
             }
-            VStack(alignment: .leading, spacing: 4) {
-                Text("\(modeluser.user.firstname) \(modeluser.user.lastname)")
-                    .font(.headline)
-                Text("Email: \(modeluser.user.email)")
-                    .font(.subheadline)
-                Text("Height: \(modeluser.user.height, specifier: "%.2f") cm")
-                    .font(.subheadline)
-                Text("Weight: \(modeluser.user.weight, specifier: "%.2f") kg")
-                    .font(.subheadline)
-                Text("Body Fat: \(modeluser.user.bdf, specifier: "%.2f") %")
-                    .font(.subheadline)
-                Text("TDEE: \(modeluser.user.tdee, specifier: "%.2f") kcal")
-                    .font(.subheadline)
-                Text("Calorie: \(modeluser.user.calorie, specifier: "%.2f") kcal")
-                    .font(.subheadline)
-            }
-            .padding(.leading, 8)
-            Spacer()
+        }
+        .overlay(Circle().stroke(Color.blue, lineWidth: 3))
+    }
+
+    private var nameAndEmail: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("\(modeluser.user.firstname) \(modeluser.user.lastname)")
+                .font(.title2)
+                .fontWeight(.bold)
+            Text(modeluser.user.email)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
         }
     }
-    
+
+    private var physicalStats: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            statRow(title: "Height", value: modeluser.user.height, unit: "cm")
+            statRow(title: "Weight", value: modeluser.user.weight, unit: "kg")
+            statRow(title: "Body Fat", value: modeluser.user.bdf, unit: "%")
+            statRow(title: "TDEE", value: modeluser.user.tdee, unit: "kcal")
+            statRow(title: "Calorie", value: modeluser.user.calorie, unit: "kcal")
+        }
+    }
+
+    private func statRow(title: String, value: Double, unit: String) -> some View {
+        HStack {
+            Text(title)
+                .foregroundColor(.secondary)
+            Spacer()
+            Text("\(value, specifier: "%.1f") \(unit)")
+                .fontWeight(.medium)
+        }
+        .font(.subheadline)
+    }
     private func photoGrid(geometry: GeometryProxy) -> some View {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
-            ForEach(modelpost.posts, id: \.id) { post in
+        let gridItems = [GridItem(.fixed(geometry.size.width * 0.31), spacing: 3, alignment: .leading),
+                         GridItem(.fixed(geometry.size.width * 0.31), spacing: 3, alignment: .leading),
+                         GridItem(.fixed(geometry.size.width * 0.31), spacing: 3, alignment: .leading)]
+
+        return LazyVGrid(columns: gridItems, spacing: 3) {
+            ForEach(Array(modelpost.posts.enumerated()), id: \.element.id) { index, post in
                 if let uiImage = UIImage(data: post.photos.first?.image ?? Data()) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: geometry.size.width * 0.32, height: geometry.size.width * 0.32)
+                        .frame(width: index == 4 ? geometry.size.width * 0.63 : geometry.size.width * 0.31,
+                               height: index == 4 ? geometry.size.width * 0.63 : geometry.size.width * 0.31)
                         .clipped()
                         .cornerRadius(8)
                         .onTapGesture {
@@ -136,21 +180,34 @@ struct ProfileView: View {
                             isOpenPost = true
                         }
                         .shadow(radius: 5)
+                        .frame(height: geometry.size.width * 0.32, alignment: .top)
                 } else {
                     Rectangle()
                         .fill(Color.gray.opacity(0.15))
-                        .frame(width: geometry.size.width * 0.32, height: geometry.size.width * 0.32)
+                        .frame(width: index == 4 ? geometry.size.width * 0.63 : geometry.size.width * 0.31,
+                               height: index == 4 ? geometry.size.width * 0.63 : geometry.size.width * 0.31)
                         .cornerRadius(8)
                         .onTapGesture {
                             selectedPost = post
                             isOpenPost = true
                         }
                         .shadow(radius: 5)
+                        .frame(height: geometry.size.width * 0.31, alignment: .top)
                 }
-            }.padding()
+                
+                if index == 4 {
+                    Color.clear
+                }
+                if index == 5 {
+                    Group {
+                        Color.clear
+                        Color.clear
+                    }
+                }
+            }
         }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
-    
     @ViewBuilder
     func sectionElementButton(title: String, icon: String, action: @escaping () -> Void) -> some View {
         Button(action: {
