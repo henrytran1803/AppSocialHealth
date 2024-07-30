@@ -91,6 +91,7 @@
 		D2CDBF2B2C460AAF00013370 /* profileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CDBF2A2C460AAF00013370 /* profileView.swift */; };
 		D2CDBF2E2C464F7800013370 /* meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CDBF2D2C464F7800013370 /* meal.swift */; };
 		D2CDBF302C4653D000013370 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CDBF2F2C4653D000013370 /* MealViewModel.swift */; };
+		D2D1688F2C588A5700D51394 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D1688E2C588A5700D51394 /* SettingView.swift */; };
 		D2E6BBC22C4E99500049B77A /* ProfileViewOrtherUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BBC12C4E99500049B77A /* ProfileViewOrtherUserView.swift */; };
 		D2E6BBC42C4E9C820049B77A /* UserUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BBC32C4E9C820049B77A /* UserUpdateView.swift */; };
 		D2EA70852C359939005CC9D1 /* AppSocialHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70842C359939005CC9D1 /* AppSocialHealthApp.swift */; };
@@ -207,6 +208,7 @@
 		D2CDBF2A2C460AAF00013370 /* profileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileView.swift; sourceTree = "<group>"; };
 		D2CDBF2D2C464F7800013370 /* meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meal.swift; sourceTree = "<group>"; };
 		D2CDBF2F2C4653D000013370 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
+		D2D1688E2C588A5700D51394 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		D2E6BBC12C4E99500049B77A /* ProfileViewOrtherUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewOrtherUserView.swift; sourceTree = "<group>"; };
 		D2E6BBC32C4E9C820049B77A /* UserUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateView.swift; sourceTree = "<group>"; };
 		D2EA70812C359939005CC9D1 /* AppSocialHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppSocialHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -452,6 +454,7 @@
 				D2CDBF2A2C460AAF00013370 /* profileView.swift */,
 				D2E6BBC12C4E99500049B77A /* ProfileViewOrtherUserView.swift */,
 				D2E6BBC32C4E9C820049B77A /* UserUpdateView.swift */,
+				D2D1688E2C588A5700D51394 /* SettingView.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				D2B884962C4D55C300EC8DD6 /* ItemCommentView.swift in Sources */,
 				D2210A5B2C4AC0DA00B55D04 /* NewScheduleView.swift in Sources */,
 				D208BAB72C44A977008BB9E5 /* loginView.swift in Sources */,
+				D2D1688F2C588A5700D51394 /* SettingView.swift in Sources */,
 				D2673DC52C46B88100685A06 /* FoodViewModel.swift in Sources */,
 				D27DF81E2C49EFF700972820 /* comment.swift in Sources */,
 				D2673DC32C46B83A00685A06 /* food.swift in Sources */,

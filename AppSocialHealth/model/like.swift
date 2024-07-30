@@ -19,3 +19,12 @@ struct LikeResponse: Codable {
 
 
 
+struct GetLike: Codable, Identifiable  {
+    var id : Int
+    var user_id : Int
+    var post_id :Int
+    var title: String
+    var name: String
+    
+}
+

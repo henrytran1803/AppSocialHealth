@@ -13,6 +13,7 @@ struct ProfileView: View {
     @State var isLoading = true
     @State var isEdit = false
     @State var isOpenPost = false
+    @State var isSetting = false
     @State var selectedPost :Post = Post(id: 0, title: "", body: "", user_id: 0, count_likes: 0, count_comments: 0, photos: [], user: User(email: "", firstname: "", lastname: "", role: 0, height: 0, weight: 0, bdf: 0, tdee: 0, calorie: 0, id: 0, status: 0))
     
     var body: some View {
@@ -44,6 +45,9 @@ struct ProfileView: View {
                 .fullScreenCover(isPresented: $isEdit) {
                     UserUpdateView(isOpen: $isEdit)
                 }
+                .fullScreenCover(isPresented: $isSetting) {
+                    SettingView(isOpen : $isSetting)
+                }
             }
         }.onAppear {
             isLoading = true
@@ -73,7 +77,7 @@ struct ProfileView: View {
             Spacer()
             Menu {
                 sectionElementButton(title: "Setting", icon: "gear", action: {
-                    
+                    isSetting = true
                 })
                 sectionElementButton(title: "Edit profile", icon: "pencil", action: {
                     isEdit = true

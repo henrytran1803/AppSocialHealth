@@ -81,6 +81,7 @@ enum API {
     case checkIsLikeUserIdAndPostId(id : Int, post : Int)
     case createCommentNonePhoto
     case getAllPostByUserId(id : Int)
+    case getAllLikeByUserId(id : Int)
     var path: String {
         switch self {
         case .register:
@@ -177,6 +178,8 @@ enum API {
             return "/v1/content/commentnonephoto"
         case .getAllPostByUserId(let id):
             return "/v1/content/user/\(id)"
+        case .getAllLikeByUserId(let id):
+            return "/v1/content/like/\(id)"
         }
     }
     var method: String {
@@ -187,7 +190,7 @@ enum API {
             return "PUT"
         case .deleteFood, .deleteExercise, .deleteUser, .deleteMeal, .deleteMealDetail, .deletePost, .deleteLike, .deleteSchedule, .deleteScheduleDetail, .deleteConversation, .deleteMessage, .deleteReminder,.deletePhotoById:
             return "DELETE"
-        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate ,.checkIsLikeUserIdAndPostId, .getAllPostByUserId:
+        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate ,.checkIsLikeUserIdAndPostId, .getAllPostByUserId,.getAllLikeByUserId:
             return "GET"
         }
     }
