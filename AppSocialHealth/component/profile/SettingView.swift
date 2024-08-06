@@ -7,82 +7,57 @@
 import SwiftUI
 
 struct SettingView: View {
-    @ObservedObject var likemodel = LikeModelView()
+    @State private var isNotificationsEnabled: Bool = UserDefaults.standard.bool(forKey: "notificationsEnabled")
     @State var isLoading = true
     @Binding var isOpen: Bool
     
     var body: some View {
-        GeometryReader { geometry in
-            if isLoading {
-                AnimatedPlaceHolder()
-            } else {
-            VStack(spacing: 0) {
-                HStack {
-                    Button(action: { isOpen = false }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.blue)
-                    }
-                    Spacer()
-                    Text("Lịch sử yêu thích")
+        NavigationView {
+            VStack {
+                Text("Cài Đặt")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.top, 40)
+                
+                Divider()
+                    .padding(.vertical, 20)
+                
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Thông Báo")
                         .font(.headline)
-                    Spacer()
+                    
+                    Toggle(isOn: $isNotificationsEnabled) {
+                        Text(isNotificationsEnabled ? "Thông báo được bật" : "Thông báo bị tắt")
+                            .fontWeight(.medium)
+                            .foregroundColor(isNotificationsEnabled ? .green : .red)
+                    }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                    .onChange(of: isNotificationsEnabled) { value in
+                        UserDefaults.standard.set(value, forKey: "notificationsEnabled")
+                        if value {
+                            AppSocialHealthApp.requestNotificationAuthorization()
+                        } else {
+                            AppSocialHealthApp.disableNotifications()
+                        }
+                    }
                 }
                 .padding()
-                .background(Color(.systemBackground))
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                 
-                
-                    ScrollView {
-                        LazyVStack(spacing: 12) {
-                            ForEach(likemodel.likes) { like in
-                                LikeRow(like: like)
-                                    .padding(.horizontal)
-                            }
-                        }
-                        .padding(.vertical)
-                    }
-                } .background(Color(.systemGroupedBackground))
+                Spacer()
             }
-           
-        }
-        .onAppear {
-            likemodel.fetchAllLikeById { success in
-                if !success {
-                } else {
-                    isLoading = false
-                }
-            }
-        }
-    }
-}
-
-struct LikeRow: View {
-    var like: GetLike
-    
-    var body: some View {
-        HStack(spacing: 16) {
-            Image(systemName: "heart.fill")
-                .foregroundColor(.red)
-                .font(.title2)
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(like.title)
-                    .font(.headline)
+            .padding()
+            .background(Color(.systemBackground))
+            .cornerRadius(20)
+            .shadow(radius: 10)
+            .padding(.horizontal, 20)
+            .navigationBarItems(trailing: Button(action: {
+                isOpen = false
+            }) {
+                Image(systemName: "xmark")
                     .foregroundColor(.primary)
-                
-                Text("User: \(like.name)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                Text("User ID: \(like.user_id)")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            Spacer()
+            })
         }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }

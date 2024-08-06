@@ -94,6 +94,7 @@
 		D2D1688F2C588A5700D51394 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D1688E2C588A5700D51394 /* SettingView.swift */; };
 		D2E6BBC22C4E99500049B77A /* ProfileViewOrtherUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BBC12C4E99500049B77A /* ProfileViewOrtherUserView.swift */; };
 		D2E6BBC42C4E9C820049B77A /* UserUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BBC32C4E9C820049B77A /* UserUpdateView.swift */; };
+		D2E906372C59E2F70092FD01 /* LikesHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E906362C59E2F70092FD01 /* LikesHistoryView.swift */; };
 		D2EA70852C359939005CC9D1 /* AppSocialHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70842C359939005CC9D1 /* AppSocialHealthApp.swift */; };
 		D2EA70872C359939005CC9D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA70862C359939005CC9D1 /* ContentView.swift */; };
 		D2EA708C2C35993C005CC9D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EA708B2C35993C005CC9D1 /* Preview Assets.xcassets */; };
@@ -211,6 +212,8 @@
 		D2D1688E2C588A5700D51394 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		D2E6BBC12C4E99500049B77A /* ProfileViewOrtherUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewOrtherUserView.swift; sourceTree = "<group>"; };
 		D2E6BBC32C4E9C820049B77A /* UserUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateView.swift; sourceTree = "<group>"; };
+		D2E906352C59DCFF0092FD01 /* Lemonada-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lemonada-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		D2E906362C59E2F70092FD01 /* LikesHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesHistoryView.swift; sourceTree = "<group>"; };
 		D2EA70812C359939005CC9D1 /* AppSocialHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppSocialHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EA70842C359939005CC9D1 /* AppSocialHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSocialHealthApp.swift; sourceTree = "<group>"; };
 		D2EA70862C359939005CC9D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -302,6 +305,7 @@
 		D2B32A9C2C383019009E0C56 /* comon */ = {
 			isa = PBXGroup;
 			children = (
+				D2E906352C59DCFF0092FD01 /* Lemonada-VariableFont_wght.ttf */,
 				D2F0E9802C5484EE00051D14 /* Assets.xcassets */,
 				D2B32AA42C383230009E0C56 /* Localizable.strings */,
 				D208BABC2C44AEB8008BB9E5 /* enum.swift */,
@@ -455,6 +459,7 @@
 				D2E6BBC12C4E99500049B77A /* ProfileViewOrtherUserView.swift */,
 				D2E6BBC32C4E9C820049B77A /* UserUpdateView.swift */,
 				D2D1688E2C588A5700D51394 /* SettingView.swift */,
+				D2E906362C59E2F70092FD01 /* LikesHistoryView.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -660,6 +665,7 @@
 				D259E4D42C5400AB00905774 /* OnboardingView.swift in Sources */,
 				D27DF8242C4A52A300972820 /* PostViewModel.swift in Sources */,
 				D207736F2C48136400642B9E /* ExersiceItemView.swift in Sources */,
+				D2E906372C59E2F70092FD01 /* LikesHistoryView.swift in Sources */,
 				D2EA70872C359939005CC9D1 /* ContentView.swift in Sources */,
 				D2E6BBC42C4E9C820049B77A /* UserUpdateView.swift in Sources */,
 				D27DF81C2C49EFE800972820 /* like.swift in Sources */,

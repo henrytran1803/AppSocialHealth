@@ -11,20 +11,15 @@ struct AppSocialHealthApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var webSocketManager = WebSocketManager.shared
     @State var id: Int = 0
+
     init() {
         do {
            try Tips.configure()
        } catch {
            print("Failed to configure TipKit: \(error)")
        }
-         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-             if granted {
-                 print("Notification permission granted.")
-             } else {
-                 print("Notification permission denied.")
-             }
-         }
-     }
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -37,6 +32,21 @@ struct AppSocialHealthApp: App {
                     webSocketManager.disconnect()
                 }
         }
+    }
+
+    static func requestNotificationAuthorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                print("Notification permission granted.")
+            } else {
+                print("Notification permission denied.")
+            }
+        }
+    }
+
+    static func disableNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        print("All notifications have been disabled.")
     }
 }
 

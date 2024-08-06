@@ -93,12 +93,6 @@ class MessageViewModel : ObservableObject {
                             completion(false)
                             return
                         }
-                        
-                        guard let data = data else {
-                            print("No data received from server")
-                            completion(false)
-                            return
-                        }
                         completion(true)
                         
                     }

@@ -130,9 +130,31 @@ struct exersiceView: View {
             .fullScreenCover(isPresented: $isOpen){
                 ExersiceListView(isOpen: $isOpen, modelEx: modelExersice)
                 
+            } .onChange(of: isOpen) { newValue in
+                if !newValue {
+                    print("Detail view closed")
+                    isLoading = true
+                    model.scheduleToday = Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
+                    model.fetchScheduleByIdAndDate { success in
+                        if success {
+                            isLoading = false
+                        }
+                    }
+                }
             }
-            .fullScreenCover(isPresented: $isOpenDetail){
-                DetailExersiceUpdateView(exersice: $exersiceSelected, id: id, isOpen : $isOpenDetail)
+            .fullScreenCover(isPresented: $isOpenDetail) {
+                DetailExersiceUpdateView(exersice: $exersiceSelected, id: id, isOpen: $isOpenDetail)
+            }
+            .onChange(of: isOpenDetail) { newValue in
+                if !newValue {
+                    isLoading = true
+                    model.scheduleToday = Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
+                    model.fetchScheduleByIdAndDate { success in
+                        if success {
+                            isLoading = false
+                        }
+                    }
+                }
             }
             .fullScreenCover(isPresented: $isAddNewSchedule){
                 ListScheduleView(model: model, isOpen: $isAddNewSchedule)

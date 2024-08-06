@@ -133,9 +133,40 @@ struct dishView: View {
             FoodListView(isOpen: $isOpen, model: modelFood)
             
         }
+        .onChange(of: isOpen) { newValue in
+            if !newValue {
+                isLoading = true
+                
+                model.meal = Meal(id: 0, user_id: 0, description: ":", date: "", total_calorie: 0)
+                
+                model.GetMealByIdAndDate{
+                    
+                    success in
+                    if success {
+                        isLoading = false
+                    }
+                }
+            }
+        }
         .fullScreenCover(isPresented: $isOpenDetail){
             DetailFoodUpdateView(isOpen: $isOpenDetail, id: $id, food: $foodSelected)
         }
+        .onChange(of: isOpenDetail) { newValue in
+            if !newValue {
+                isLoading = true
+                
+                model.meal = Meal(id: 0, user_id: 0, description: ":", date: "", total_calorie: 0)
+                
+                model.GetMealByIdAndDate{
+                    
+                    success in
+                    if success {
+                        isLoading = false
+                    }
+                }
+            }
+        }
+
         .onAppear {
             isLoading = true
             modelFood.fetchAllFood{

@@ -59,9 +59,8 @@ struct ChatView: View {
             }
             .fullScreenCover(isPresented: $isOpen){
                 let currentUserID = UserDefaults.standard.integer(forKey: "user_id")
-
                 ConversationView(convertion: $message, isOpen : $isOpen, user: message.users.first(where: { $0.id != currentUserID }))
-            }
+            }.background(Color.white)
         }
         }
         .onAppear {
@@ -74,7 +73,7 @@ struct ChatView: View {
                 }
             }
         }
-        .background(Color.white)
+        
     }
 }
 
