@@ -7,7 +7,7 @@
 
 import Foundation
 class InfomationViewModel: ObservableObject {
-    @Published var info = GetInfomationDate(schedule: 0, meal: 0, calorie: 0, nutrition: Nutrition(total_protein: 0, total_fat: 0, total_carb: 0, total_sugar: 0))
+    @Published var info = GetInfomationDate(schedule: 0, meal: 0, calorie: 0, nutrition: Nutrition(total_calorie: 0, total_protein: 0, total_fat: 0, total_carb: 0, total_sugar: 0))
     
     
     func fetchInfoBydate(completion: @escaping (Bool) -> Void) {

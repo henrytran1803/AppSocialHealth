@@ -74,14 +74,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 
     func showNotifications(for messages: [String]) {
+        NotificationCenter.default.post(name: NSNotification.Name("NewMessagesReceived"), object: nil)
         for message in messages {
             let content = UNMutableNotificationContent()
-            content.title = "Tin nhắn mới" // Vietnamese for "New Message"
+            content.title = "Tin nhắn mới"
             content.body = message
             content.sound = .default
 
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         }
-    }
-}
+    }}

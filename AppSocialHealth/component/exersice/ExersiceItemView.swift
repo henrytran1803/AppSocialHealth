@@ -23,7 +23,6 @@ struct ExersiceItemView: View {
                     .background(Color.gray.opacity(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-            
             VStack(alignment: .leading, spacing: 5) {
                 Text(exersice.name)
                     .font(.headline)
@@ -33,7 +32,7 @@ struct ExersiceItemView: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
-                Text("Serving: \(String(format: "%.2f", exersice.rep_serving == 0 ? exersice.time_serving : exersice.rep_serving))")
+                Text("Serving: \(exersice.rep_serving)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }

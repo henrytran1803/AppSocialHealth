@@ -32,7 +32,7 @@ struct ItemCommentView: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 20)
+                    .frame(width: 40)
             } else {
                 Color.gray
             }

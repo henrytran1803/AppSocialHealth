@@ -20,7 +20,6 @@ class CommentViewModel : ObservableObject {
             completion(false)
             return
         }
-        
         var request = URLRequest(url: url)
         request.httpMethod = API.getAllComments(postId: postId).method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -33,13 +32,11 @@ class CommentViewModel : ObservableObject {
                     completion(false)
                     return
                 }
-                
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                     print("Invalid response from server")
                     completion(false)
                     return
                 }
-                
                 guard let data = data else {
                     print("No data received from server")
                     completion(false)

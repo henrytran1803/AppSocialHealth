@@ -13,6 +13,12 @@ enum API {
     static let baseURL = "http://localhost:8080"
     static var bearerToken: String? = nil
     static let baseURLWS = "ws://localhost:8080/ws"
+//    
+//    static let baseURL = "http://172.20.10.4:8080"
+//    static var bearerToken: String? = nil
+//    static let baseURLWS = "ws://172.20.10.4:8080/ws"
+    
+    
     case register
     case login
     case requestPasswordReset

@@ -46,8 +46,8 @@ struct homeView: View {
                                 fat: modelInfo.info.nutrition.total_fat,
                                 sugar: modelInfo.info.nutrition.total_sugar,
                                 protein: modelInfo.info.nutrition.total_protein,
-                                totalCalories: modelInfo.info.nutrition.total_carb + modelInfo.info.nutrition.total_fat + modelInfo.info.nutrition.total_protein + modelInfo.info.nutrition.total_sugar,
-                                calorieDeficit: modelUser.user.calorie - (modelInfo.info.nutrition.total_carb + modelInfo.info.nutrition.total_fat + modelInfo.info.nutrition.total_protein + modelInfo.info.nutrition.total_sugar)
+                                totalCalories: modelInfo.info.nutrition.total_calorie,
+                                calorieDeficit: modelUser.user.calorie - modelInfo.info.nutrition.total_calorie
                             )
                             
                             .padding()

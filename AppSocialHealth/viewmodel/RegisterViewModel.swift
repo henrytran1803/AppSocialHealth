@@ -40,7 +40,7 @@ class RegisterViewModel: ObservableObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let parameters: [String: Any] = [
             "email": register.email,
-            "fistname":register.firstName,
+            "firstname":register.firstName,
             "lastname":register.lastName,
             "role": 1,
             "password": register.password

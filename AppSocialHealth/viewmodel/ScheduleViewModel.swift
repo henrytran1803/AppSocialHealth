@@ -48,11 +48,7 @@ class ScheduleViewModel: ObservableObject {
                             return
                         }
                         do {
-                            if let rawDataString = String(data: data, encoding: .utf8) {
-                                           print("Raw Data: \(rawDataString)")
-                                       } else {
-                                           print("Unable to convert raw data to string")
-                                       }
+                         
                             let schedule = try JSONDecoder().decode(ScheduleResponse.self, from: data)
                             self.scheduleToday = schedule.data ?? Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
                             if self.scheduleToday.id == 0  {

@@ -13,13 +13,14 @@ struct dishView: View {
     @State var searchText = ""
     @State private var selected = ""
     @State private var isOpen = false
+    @State private var isOpenScan = false
     @State private var isOpenDetail = false
     @State var modelInfo = InfomationViewModel()
 @State var foodSelected = Food(id: 0, name: "", description: "", calorie: 0, protein: 0, fat: 0, carb: 0, sugar: 0, serving: 0, photos: [])
     @State var id = 0
     @ObservedObject var modelFood = FoodViewModel()
     @State var isLoading = true
-    let list = ["Add"]
+    let list = ["Add", "Scan"]
     var body: some View {
         GeometryReader { geometry in
             if isLoading {
@@ -62,7 +63,7 @@ struct dishView: View {
                                                                id: dish.dish_id,
                                                                name: matchingFood.name,
                                                                description: matchingFood.description,
-                                                               calorie: dish.calorie,
+                                                               calorie: (dish.serving * matchingFood.calorie) / matchingFood.serving,
                                                                protein: matchingFood.protein,
                                                                fat: matchingFood.fat,
                                                                carb: matchingFood.carb,
@@ -98,7 +99,7 @@ struct dishView: View {
                             
                             TipView( CustomTip(titleText: "Tổng kết", messageText: "Bảng này có tất cả các thông số của bạn", iconName: "scribble"), arrowEdge: .bottom)
 
-                            SummaryView(carb: modelInfo.info.nutrition.total_carb, fat: modelInfo.info.nutrition.total_fat, sugar: modelInfo.info.nutrition.total_sugar, protein: modelInfo.info.nutrition.total_protein, totalCalories: modelInfo.info.meal, calorieDeficit: modelInfo.info.calorie)
+                            SummaryView(carb: modelInfo.info.nutrition.total_carb, fat: modelInfo.info.nutrition.total_fat, sugar: modelInfo.info.nutrition.total_sugar, protein: modelInfo.info.nutrition.total_protein, totalCalories: calculateTotalCalories() , calorieDeficit: modelInfo.info.calorie)
                             TipView( CustomTip(titleText: "Biểu đồ", messageText: "Biểu đồ macro của bạn", iconName: "scribble"), arrowEdge: .bottom)
 
                             HStack{
@@ -121,8 +122,8 @@ struct dishView: View {
                    .onChange(of: selected) { newValue in
                        if newValue == "Add" {
                            isOpen = true
-                       } else {
-                           
+                       } else if newValue == "Scan" {
+                           isOpenScan = true
                        }
                    }
                 }
@@ -131,6 +132,10 @@ struct dishView: View {
 
         } .fullScreenCover(isPresented: $isOpen){
             FoodListView(isOpen: $isOpen, model: modelFood)
+            
+        }
+        .fullScreenCover(isPresented: $isOpenScan){
+            FindWithBarcode(isOpen: $isOpenScan)
             
         }
         .onChange(of: isOpen) { newValue in
@@ -200,6 +205,23 @@ struct dishView: View {
            
         }
     }
+    func calculateTotalCalories() -> Double {
+        guard let dishes = model.meal.dishes else {
+            return 0
+        }
+
+        var totalCalories = 0.0
+        
+        for dish in dishes {
+            if let matchingFood = modelFood.foods.first(where: { $0.id == dish.dish_id }) {
+                let dishCalories = (dish.serving * matchingFood.calorie) / matchingFood.serving
+                totalCalories += dishCalories
+            }
+        }
+        
+        return totalCalories
+    }
+
 }
 
 #Preview {

@@ -64,7 +64,7 @@ struct exersiceView: View {
                                             ForEach(details, id: \.id) { detail in
                                                 if let matchingEx = modelExersice.exersices.first(where: { $0.id == detail.exersice_id }) {
                                                     
-                                                    
+//                                                    Text("\(matchingEx.time)\(matchingEx.time)")
                                                     ExersiceItemView(exersice: Exersice(id: matchingEx.id, name: matchingEx.name, description: matchingEx.description, calorie: matchingEx.calorie, rep_serving: detail.rep, time_serving: detail.time, exersice_type: matchingEx.exersice_type, photo: matchingEx.photo))
                                                        .onTapGesture {
                                                            exersiceSelected = matchingEx
@@ -72,7 +72,7 @@ struct exersiceView: View {
                                                            isOpenDetail = true
                                                        }
                                                    } else {
-                                                       Text("Food not found")
+                                                       Text("Ex not found")
                                                    }
                                             }
                                         }

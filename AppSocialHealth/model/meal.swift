@@ -67,6 +67,7 @@ struct CreateNewMealDetail : Codable {
 }
 
 struct Nutrition : Codable {
+    var total_calorie : Double
     var total_protein : Double
     var total_fat : Double
     var total_carb : Double

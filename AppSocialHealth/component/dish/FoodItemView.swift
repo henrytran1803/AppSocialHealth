@@ -30,7 +30,6 @@ struct FoodItemView: View {
                 Text(food.name)
                     .font(.headline)
                     .foregroundColor(.primary)
-                
                 Text("Calorie: \(String(format: "%.2f", food.calorie)) cal")
                     .font(.subheadline)
                     .foregroundColor(.secondary)

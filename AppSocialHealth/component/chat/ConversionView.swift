@@ -41,7 +41,15 @@ struct ConversationView: View {
                 }
             }
         }
-        .onAppear(perform: loadMessages)
+        .onAppear {
+            loadMessages()
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("NewMessagesReceived"), object: nil, queue: .main) { _ in
+                updateMessages()
+            }
+        }
+        .onDisappear {
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name("NewMessagesReceived"), object: nil)
+        }
     }
     
     private var backgroundGradient: some View {
