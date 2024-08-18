@@ -54,9 +54,23 @@ struct ChatView: View {
                 }
                 
             }
-            .fullScreenCover(isPresented: $isCreateNew){
-                CreateNewConversationView(isOpen : $isCreateNew)
+            .fullScreenCover(isPresented: $isCreateNew) {
+                CreateNewConversationView(isOpen: $isCreateNew)
             }
+            .onChange(of: isCreateNew){ newValue in
+                if !newValue {
+                    isLoading = true
+                    convertionModel.convertions = []
+                    convertionModel.fetchAllConvertionByuser { success in
+                        if success {
+                            isLoading = false
+                        }else {
+                            print("fail")
+                        }
+                    }
+                }
+            }
+
             .fullScreenCover(isPresented: $isOpen){
                 let currentUserID = UserDefaults.standard.integer(forKey: "user_id")
                 ConversationView(convertion: $message, isOpen : $isOpen, user: message.users.first(where: { $0.id != currentUserID }))

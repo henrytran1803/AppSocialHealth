@@ -22,7 +22,7 @@ struct CommentView: View {
     @Binding var isOpen: Bool
     @ObservedObject var likeModel = LikeModelView()
     @ObservedObject var modelComment = CommentViewModel()
-    
+    @State var isReload = false
     var body: some View {
         VStack {
             headerView
@@ -54,6 +54,7 @@ struct CommentView: View {
                 }
             }
         }
+        .id(isReload)
         .padding()
         .background(Color.white)
         .cornerRadius(10)
@@ -232,7 +233,8 @@ struct CommentView: View {
             let comment = CreateComment(body: bodyy, user_id: 6, post_id: post.id, photo: data)
             modelComment.createComment(comment: comment) { success in
                 if success {
-                    print("Comment created successfully")
+                    isReload.toggle()
+                    bodyy = ""
                 } else {
                     print("Failed to create comment")
                 }
@@ -241,6 +243,8 @@ struct CommentView: View {
             let comment = CreateCommentNonePhoto(body: bodyy, user_id: 6, post_id: post.id)
             modelComment.createCommentNonePhoto(comment: comment) { success in
                 if success {
+                    isReload.toggle()
+                    bodyy = ""
                     print("Comment created successfully")
                 } else {
                     print("Failed to create comment")

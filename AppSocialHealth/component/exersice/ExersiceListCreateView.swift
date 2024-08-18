@@ -12,7 +12,7 @@ struct ExersiceListCreateView: View {
         @Binding var isOpen :Bool
         @State var searchText = ""
         @State var isLoading = false
-        @ObservedObject var modelEx : ExersiceViewModel
+        @ObservedObject var modelEx : ExerciseViewModel
         var body: some View {
                 NavigationStack{
                     if isLoading {
@@ -48,7 +48,7 @@ struct ExersiceListCreateView: View {
                 }
             }
         
-        private var filteredExersices: [Exersice] {
+        private var filteredExersices: [Exercise] {
             if searchText.isEmpty {
                 return modelEx.exersices
             } else {

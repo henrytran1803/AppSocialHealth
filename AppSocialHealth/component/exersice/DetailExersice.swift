@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct DetailExersice: View {
-    @State var exersice: Exersice
+    @State var exersice: Exercise
     @State var isAdd = false
     @State private var inputNumber = ""
     @State var alertsuccess = false
@@ -30,14 +30,8 @@ struct DetailExersice: View {
                         
                         Text("Calorie: \(exersice.calorie, specifier: "%.2f")")
                             .font(.body)
-                        
-                        if exersice.time_serving == 0 {
-                            Text("Time Serving: \(exersice.time_serving)")
-                                .font(.body)
-                        } else {
-                            Text("Rep Serving: \(exersice.rep_serving)")
-                                .font(.body)
-                        }
+                        Text("Rep Serving: \(exersice.rep_serving)")
+                            .font(.body)
                         
                         Text("Type Exercise: \(exersice.exersice_type)")
                             .font(.body)

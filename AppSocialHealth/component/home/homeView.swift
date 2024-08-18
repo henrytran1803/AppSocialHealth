@@ -32,7 +32,7 @@ struct homeView: View {
                         
                         
                         VStack{
-                            ProcressHomeView(calorie: $modelUser.user.calorie, info: $modelInfo.info)
+                            ProcressHomeView(calorie: $modelUser.user.calorie, info: $modelInfo.info, totalOrther: $modelInfo.info.nutrition.total_calorie)
                                 .frame(height: geometry.size.height * 0.4)
                                 .padding()
                             TipView( CustomTip(titleText: "Biểu đồ", messageText: "Đây là biểu đồ của ngày hôm nay", iconName: "scribble"), arrowEdge: .top)
@@ -101,7 +101,7 @@ struct ProcressHomeView: View {
     @Binding var calorie: Double
     @Binding var info: GetInfomationDate
     @State var total: Double = 0
-
+    @Binding var totalOrther: Double
     var body: some View {
         VStack {
             HStack {
@@ -118,16 +118,16 @@ struct ProcressHomeView: View {
                 }
                
             }
-            if total / calorie < 0.5 {
-                ProgressBar(progress: .constant(total / calorie), color: .yellow)
+            if totalOrther / calorie < 0.5 {
+                ProgressBar(progress: .constant(totalOrther / calorie), color: .yellow)
                     .frame(width: 200, height: 200)
                     .padding(40.0)
-            } else if total / calorie > 1 {
-                ProgressBar(progress: .constant(1 - total / calorie), color: .red)
+            } else if totalOrther / calorie > 1 {
+                ProgressBar(progress: .constant(1 - totalOrther / calorie), color: .red)
                     .frame(width: 200, height: 200)
                     .padding(40.0)
             } else {
-                ProgressBar(progress: .constant(total / calorie), color: .green)
+                ProgressBar(progress: .constant(totalOrther / calorie), color: .green)
                     .frame(width: 200, height: 200)
                     .padding(40.0)
             }

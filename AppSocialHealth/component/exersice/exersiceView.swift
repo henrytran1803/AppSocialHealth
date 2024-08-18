@@ -15,20 +15,23 @@ struct exersiceView: View {
     @State var stepCount = 0
     let list = ["Add Ex", "New Sche"]
     @ObservedObject var model = ScheduleViewModel()
-    @ObservedObject var modelExersice = ExersiceViewModel()
-    @State var exersiceSelected = Exersice(id: 0, name: "", description: "", calorie: 0, rep_serving: 0, time_serving: 0, exersice_type: ExersiceType(id: 0, name: ""), photo: [])
+    @ObservedObject var modelExersice = ExerciseViewModel()
+    @State var exersiceSelected = Exercise(id: 0, name: "", description: "", calorie: 0, rep_serving: 0, time_serving: 0, exersice_type: ExersiceType(id: 0, name: ""), photo: [])
     @State var id = 0
     @State var isOpenDetail = false
     @State var isOpen = false
     @State var isAddNewSchedule = false
     @ObservedObject var modelUser = UserViewModel()
     @ObservedObject var modelInfo = InfomationViewModel()
+    @State var isReload = false
     var body: some View {
         GeometryReader { geometry in
             if isLoading {
                 AnimatedPlaceHolder()
             }else {
                 ZStack{
+                  
+
                     ScrollView{
                         VStack {
                             HStack{
@@ -49,8 +52,6 @@ struct exersiceView: View {
                             
                             let markedDates = uniqueDates(from: model.scheduleFromDatetoDate)
                             let nearestFutureDate = getNearestFutureDate(from: markedDates)
-                            
-                            // danh sách tập
                             VStack {
                                 ScrollView {
                                     if let details = model.scheduleToday.detail {
@@ -65,7 +66,7 @@ struct exersiceView: View {
                                                 if let matchingEx = modelExersice.exersices.first(where: { $0.id == detail.exersice_id }) {
                                                     
 //                                                    Text("\(matchingEx.time)\(matchingEx.time)")
-                                                    ExersiceItemView(exersice: Exersice(id: matchingEx.id, name: matchingEx.name, description: matchingEx.description, calorie: matchingEx.calorie, rep_serving: detail.rep, time_serving: detail.time, exersice_type: matchingEx.exersice_type, photo: matchingEx.photo))
+                                                    ExersiceItemView(exersice: Exercise(id: matchingEx.id, name: matchingEx.name, description: matchingEx.description, calorie: matchingEx.calorie, rep_serving: detail.rep, time_serving: detail.time, exersice_type: matchingEx.exersice_type, photo: matchingEx.photo))
                                                        .onTapGesture {
                                                            exersiceSelected = matchingEx
                                                            id = detail.id
@@ -92,7 +93,6 @@ struct exersiceView: View {
                             
                             
                             
-                            // một số thông tin
                             
                             StatisticsView(stepCount: $stepCount, user: $modelUser.user, scheduleCalories: .constant(modelInfo.info.schedule))
 
@@ -131,30 +131,32 @@ struct exersiceView: View {
                 ExersiceListView(isOpen: $isOpen, modelEx: modelExersice)
                 
             } .onChange(of: isOpen) { newValue in
-                if !newValue {
-                    print("Detail view closed")
-                    isLoading = true
-                    model.scheduleToday = Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
-                    model.fetchScheduleByIdAndDate { success in
-                        if success {
-                            isLoading = false
-                        }
-                    }
-                }
+//                if !newValue {
+//                    print("Detail view closed")
+//                    isLoading = true
+//                    model.scheduleToday = Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
+//                    model.fetchScheduleByIdAndDate { success in
+//                        if success {
+//                            isLoading = false
+//                        }
+//                    }
+//                }
+                        isReload.toggle()
+                
             }
             .fullScreenCover(isPresented: $isOpenDetail) {
                 DetailExersiceUpdateView(exersice: $exersiceSelected, id: id, isOpen: $isOpenDetail)
             }
             .onChange(of: isOpenDetail) { newValue in
-                if !newValue {
-                    isLoading = true
-                    model.scheduleToday = Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
-                    model.fetchScheduleByIdAndDate { success in
-                        if success {
-                            isLoading = false
-                        }
-                    }
-                }
+//                if !newValue {
+//                    isLoading = true
+//                    model.scheduleToday = Schedule(id: 0, user_id: 0, time: "", calories: 0, status: 0, create_at: "", detail: [])
+//                    model.fetchScheduleByIdAndDate { success in
+//                        if success {
+//                            isLoading = false
+//                        }
+//                    }
+                isReload.toggle()
             }
             .fullScreenCover(isPresented: $isAddNewSchedule){
                 ListScheduleView(model: model, isOpen: $isAddNewSchedule)
@@ -213,12 +215,14 @@ struct exersiceView: View {
                 }
             }
         }
+        .id(isReload)
     }
     
     func calculateCalories(from steps: Double, weight: Double) -> Double {
             return 3.5 * weight * (steps / 600)
         }
 }
+
 func convertToDate(from dateString: String) -> Date? {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"

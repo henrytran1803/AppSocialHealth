@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Exersice : Codable{
+struct Exercise : Codable{
     var id :Int
     var name: String
     var description: String
@@ -59,5 +59,5 @@ struct PhotoExersice: Codable {
 
 
 struct ExersiceResponseData: Codable {
-    var data: [Exersice]
+    var data: [Exercise]
 }

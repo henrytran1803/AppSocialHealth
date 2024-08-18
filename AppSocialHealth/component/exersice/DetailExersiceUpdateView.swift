@@ -8,7 +8,7 @@ import SwiftUI
 
 struct DetailExersiceUpdateView: View {
     
-    @Binding var exersice: Exersice
+    @Binding var exersice: Exercise
     @State var isAdd = false
     @State private var inputNumber = ""
     @State var alertsuccess = false
@@ -103,14 +103,8 @@ struct DetailExersiceUpdateView: View {
             
             Text("Calorie: \(exersice.calorie, specifier: "%.2f")")
                 .font(.body)
-            
-            if exersice.time_serving == 0 {
-                Text("Time Serving: \(exersice.time_serving)")
-                    .font(.body)
-            } else {
                 Text("Rep Serving: \(exersice.rep_serving)")
                     .font(.body)
-            }
             
             Text("Type Exercise: \(exersice.exersice_type)")
                 .font(.body)

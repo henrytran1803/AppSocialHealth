@@ -15,6 +15,8 @@ struct ProfileView: View {
     @State var isOpenPost = false
     @State var isSetting = false
     @State var isLikes = false
+    @State var isMeal = false
+    @State var isSchedule = false
     @State var selectedPost :Post = Post(id: 0, title: "", body: "", user_id: 0, count_likes: 0, count_comments: 0, photos: [], user: User(email: "", firstname: "", lastname: "", role: 0, height: 0, weight: 0, bdf: 0, tdee: 0, calorie: 0, id: 0, status: 0))
     
     var body: some View {
@@ -42,6 +44,12 @@ struct ProfileView: View {
                 
                 .fullScreenCover(isPresented: $isOpenPost) {
                     CommentView(post: $selectedPost, isLike: false, isOpen: $isOpenPost)
+                }
+                .fullScreenCover(isPresented: $isMeal) {
+                    MealHistoryView(isOpen: $isMeal)
+                }
+                .fullScreenCover(isPresented: $isSchedule) {
+                    ScheduleHistoryView(isOpen: $isSchedule)
                 }
                 .fullScreenCover(isPresented: $isEdit) {
                     UserUpdateView(isOpen: $isEdit)
@@ -85,6 +93,12 @@ struct ProfileView: View {
                 })
                 sectionElementButton(title: "Likes", icon: "heart", action: {
                     isLikes = true
+                })
+                sectionElementButton(title: "Meals", icon: "book.pages", action: {
+                    isMeal = true
+                })
+                sectionElementButton(title: "Schedules", icon: "calendar", action: {
+                    isSchedule = true
                 })
                 sectionElementButton(title: "Edit profile", icon: "pencil", action: {
                     isEdit = true

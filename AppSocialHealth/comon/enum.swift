@@ -83,6 +83,7 @@ enum API {
     case getMealByidAndDate(id : Int, date : String)
     case getInfomationByIdAndDate(id : Int, date : String)
     case getScheduleByidAndDate(id : Int, date : String)
+    case getScheduleByUserId(id: Int)
     case getScheduleFromDateToDate(id : Int,fromDate: String, date: String)
     case checkIsLikeUserIdAndPostId(id : Int, post : Int)
     case createCommentNonePhoto
@@ -110,8 +111,10 @@ enum API {
             return "/v1/user"
         case .updateUser(let id), .deleteUser(let id), .getUser(let id):
             return "/v1/user/\(id)"
-        case .createMeal, .getMealsByUserId:
+        case .createMeal:
             return "/v1/meal"
+        case .getMealsByUserId(let id):
+            return "/v1/meal/user/\(id)"
         case .getMeal(let id), .deleteMeal(let id):
             return "/v1/meal/\(id)"
         case .createMealDetail:
@@ -186,6 +189,8 @@ enum API {
             return "/v1/content/user/\(id)"
         case .getAllLikeByUserId(let id):
             return "/v1/content/like/\(id)"
+        case .getScheduleByUserId(let id):
+            return"/v1/schedule/user/\(id)"
         }
     }
     var method: String {
@@ -196,7 +201,7 @@ enum API {
             return "PUT"
         case .deleteFood, .deleteExercise, .deleteUser, .deleteMeal, .deleteMealDetail, .deletePost, .deleteLike, .deleteSchedule, .deleteScheduleDetail, .deleteConversation, .deleteMessage, .deleteReminder,.deletePhotoById:
             return "DELETE"
-        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate ,.checkIsLikeUserIdAndPostId, .getAllPostByUserId,.getAllLikeByUserId:
+        case .getListFood, .getFood, .getListExercise, .getExercise, .getAllUser, .getUser, .getMealsByUserId, .getMeal, .getAllPost, .getPost, .getAllComments, .getAllSchedule, .getSchedule, .listUserConversations, .listConversationMessages, .getReminder, .getRemindersByUserId,.dashBoard,.exType, .getMealByidAndDate, .getInfomationByIdAndDate, .getScheduleByidAndDate, .getScheduleFromDateToDate ,.checkIsLikeUserIdAndPostId, .getAllPostByUserId,.getAllLikeByUserId,.getScheduleByUserId:
             return "GET"
         }
     }

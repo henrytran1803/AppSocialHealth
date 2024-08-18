@@ -16,6 +16,7 @@ struct ListScheduleView: View {
     @State private var showDatePicker = false
     @State private var selectedDate = Date()
     @State private var showAlert = false
+    @State private var showAlertsuccess = false
     var body: some View {
         GeometryReader{ geomtry in
             VStack {
@@ -65,9 +66,17 @@ struct ListScheduleView: View {
                    }
                    .padding()
                 }
+                
                 .sheet(isPresented: $showDatePicker) {
                             DatePickerView(selectedDate: $selectedDate)
-                        }
+                }.onDisappear{
+                    model.scheduleFromDatetoDate = []
+                    model.fetchScheduleFromdateTodate{
+                        success in
+                        
+                    }
+
+                }
             }.onAppear{
                 model.fetchScheduleFromdateTodate{
                     success in

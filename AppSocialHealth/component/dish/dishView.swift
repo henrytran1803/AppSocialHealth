@@ -16,6 +16,8 @@ struct dishView: View {
     @State private var isOpenScan = false
     @State private var isOpenDetail = false
     @State var modelInfo = InfomationViewModel()
+    @State var isReload = false
+@ObservedObject var modelUser = UserViewModel()
 @State var foodSelected = Food(id: 0, name: "", description: "", calorie: 0, protein: 0, fat: 0, carb: 0, sugar: 0, serving: 0, photos: [])
     @State var id = 0
     @ObservedObject var modelFood = FoodViewModel()
@@ -99,7 +101,7 @@ struct dishView: View {
                             
                             TipView( CustomTip(titleText: "Tổng kết", messageText: "Bảng này có tất cả các thông số của bạn", iconName: "scribble"), arrowEdge: .bottom)
 
-                            SummaryView(carb: modelInfo.info.nutrition.total_carb, fat: modelInfo.info.nutrition.total_fat, sugar: modelInfo.info.nutrition.total_sugar, protein: modelInfo.info.nutrition.total_protein, totalCalories: calculateTotalCalories() , calorieDeficit: modelInfo.info.calorie)
+                            SummaryView(carb: modelInfo.info.nutrition.total_carb, fat: modelInfo.info.nutrition.total_fat, sugar: modelInfo.info.nutrition.total_sugar, protein: modelInfo.info.nutrition.total_protein, totalCalories: calculateTotalCalories() , calorieDeficit: modelUser.user.calorie - calculateTotalCalories())
                             TipView( CustomTip(titleText: "Biểu đồ", messageText: "Biểu đồ macro của bạn", iconName: "scribble"), arrowEdge: .bottom)
 
                             HStack{
@@ -139,41 +141,47 @@ struct dishView: View {
             
         }
         .onChange(of: isOpen) { newValue in
-            if !newValue {
-                isLoading = true
-                
-                model.meal = Meal(id: 0, user_id: 0, description: ":", date: "", total_calorie: 0)
-                
-                model.GetMealByIdAndDate{
-                    
-                    success in
-                    if success {
-                        isLoading = false
-                    }
-                }
-            }
+            isReload.toggle()
+//            if !newValue {
+//                isLoading = true
+//                
+//                model.meal = Meal(id: 0, user_id: 0, description: ":", date: "", total_calorie: 0)
+//                
+//                model.GetMealByIdAndDate{
+//                    
+//                    success in
+//                    if success {
+//                        isLoading = false
+//                    }
+//                }
+//            }
         }
+        
         .fullScreenCover(isPresented: $isOpenDetail){
             DetailFoodUpdateView(isOpen: $isOpenDetail, id: $id, food: $foodSelected)
         }
         .onChange(of: isOpenDetail) { newValue in
-            if !newValue {
-                isLoading = true
-                
-                model.meal = Meal(id: 0, user_id: 0, description: ":", date: "", total_calorie: 0)
-                
-                model.GetMealByIdAndDate{
-                    
-                    success in
-                    if success {
-                        isLoading = false
-                    }
-                }
-            }
+            isReload.toggle()
+//            if !newValue {
+//                isLoading = true
+//                
+//                model.meal = Meal(id: 0, user_id: 0, description: ":", date: "", total_calorie: 0)
+//                
+//                model.GetMealByIdAndDate{
+//                    
+//                    success in
+//                    if success {
+//                        isLoading = false
+//                    }
+//                }
+//            }
         }
 
         .onAppear {
             isLoading = true
+            modelUser.fetchUser{success in
+                
+            }
             modelFood.fetchAllFood{
                 success in
                 if success {
@@ -204,6 +212,7 @@ struct dishView: View {
             
            
         }
+        .id(isReload)
     }
     func calculateTotalCalories() -> Double {
         guard let dishes = model.meal.dishes else {

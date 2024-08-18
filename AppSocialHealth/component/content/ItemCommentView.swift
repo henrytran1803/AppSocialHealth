@@ -34,8 +34,8 @@ struct ItemCommentView: View {
                     .scaledToFill()
                     .frame(width: 40)
             } else {
-                Color.gray
             }
+            Divider()
         }
     }
 }

@@ -55,7 +55,9 @@ struct ScheduleCreateFull :Codable {
 struct ScheduleCreateResponse : Codable {
     var id :Int
 }
-
+struct ScheduleAllUser: Codable {
+    var data : [Schedule]
+}
 //{
 //    "user_id": 3,
 //    "time": null,

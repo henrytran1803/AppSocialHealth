@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct NewScheduleView: View {
-    @ObservedObject var model = ExersiceViewModel()
+    @ObservedObject var model = ExerciseViewModel()
     @Binding var schedule: Schedule
     @Binding var isOpen : Bool
     @State var isAdd : Bool = false
     @State var searchText = ""
-    @State var exersiceSelected = Exersice(id: 0, name: "", description: "", calorie: 0, rep_serving: 0, time_serving: 0, exersice_type: ExersiceType(id: 0, name: ""), photo: [])
+    @State var exersiceSelected = Exercise(id: 0, name: "", description: "", calorie: 0, rep_serving: 0, time_serving: 0, exersice_type: ExersiceType(id: 0, name: ""), photo: [])
     @State var id = 0
     @State var isOpenDetail = false
     @State private var reminderDate = Date()
@@ -38,7 +38,7 @@ struct NewScheduleView: View {
                             ForEach(details, id: \.id) { detail in
                                 if let matchingEx = model.exersices.first(where: { $0.id == detail.exersice_id }) {
                                     
-                                        ExersiceItemView(exersice: Exersice(id: matchingEx.id, name: matchingEx.name, description: matchingEx.description, calorie: matchingEx.calorie, rep_serving: detail.rep, time_serving: detail.time, exersice_type: matchingEx.exersice_type, photo: matchingEx.photo))
+                                        ExersiceItemView(exersice: Exercise(id: matchingEx.id, name: matchingEx.name, description: matchingEx.description, calorie: matchingEx.calorie, rep_serving: detail.rep, time_serving: detail.time, exersice_type: matchingEx.exersice_type, photo: matchingEx.photo))
                                             .onTapGesture {
                                         exersiceSelected = matchingEx
                                         id = detail.id
@@ -72,7 +72,6 @@ struct NewScheduleView: View {
                             .datePickerStyle(WheelDatePickerStyle())
                         
                         Button("Set Reminder") {
-                            // Định dạng ngày thành chuỗi
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                             let formattedDate = dateFormatter.string(from: reminderDate)
@@ -109,9 +108,6 @@ struct NewScheduleView: View {
                 .fullScreenCover(isPresented: $isAdd){
                     ExersiceListCreateView(id: $schedule.id, isOpen: $isAdd, modelEx: model)
                 }
-                
-                
-                
             }.onAppear{
                 model.fetchAllExersice{
                     success in

@@ -8,9 +8,9 @@
 import Foundation
 
 
-class ExersiceViewModel:ObservableObject{
+class ExerciseViewModel:ObservableObject{
     
-    @Published var exersices:[Exersice] = []
+    @Published var exersices:[Exercise] = []
     @Published var exersicesType: [ExersiceType] = []
     func fetchAllExersice(completion: @escaping (Bool) -> Void) {
         guard let token = UserDefaults.standard.string(forKey: "token") else {
